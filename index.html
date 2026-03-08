@@ -66,13 +66,13 @@
     }
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DCY119MTC0"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WD12NGKY9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', 'G-DCY119MTC0');
+        gtag('config', 'G-7WD12NGKY9');
     </script>
 
     <!-- Assets -->
@@ -147,7 +147,7 @@
             position: fixed; 
             z-index: 100; 
             left: 50%; 
-            bottom: 30px; 
+            bottom: 30px; <!-- Google tag (gtag.js) -->
             transform: translateX(-50%);
             font-size: 14px;
             opacity: 0;
@@ -174,6 +174,31 @@
     <!-- TOAST NOTIFICATION -->
     <div id="toast">Text Copied to Clipboard!</div>
 
+    <!-- NOTIFICATION BAR -->
+    <div id="notification-bar"
+        class="fixed top-0 w-full z-[60] bg-brand-yellow text-brand-dark px-4 py-2 shadow-md transition-transform duration-300 transform translate-y-0 hidden">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="https://kamero.ai/pawse2026" target="_blank" rel="noopener noreferrer"
+                class="flex-1 text-center font-bold text-sm md:text-base hover:underline flex items-center justify-center gap-2">
+                <span
+                    class="bg-white text-xs px-2 py-0.5 rounded-full border border-brand-dark/20 uppercase tracking-wider">New</span>
+                <span class="font-semibold text-sm md:text-base leading-tight
+                       group-hover:underline underline-offset-4">
+                    🎉 Exciting News:
+                    <span class="font-extrabold">Event Pictures Are Live!</span> !!
+                    <span class="opacity-80 max-[506px]:whitespace-nowrap">View and download your event pictures
+                        here.</span>
+                </span>
+
+            </a>
+            <button id="close-notification" class="ml-4 p-1 hover:bg-black/10 rounded-full transition"
+                aria-label="Close Notification">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+
     <!-- NAVIGATION -->
     <nav
         class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -198,6 +223,8 @@
                     <a href="#services"
                         class="font-semibold text-gray-600 hover:text-brand-cyan transition">Activities</a>
                     <a href="#team" class="font-semibold text-gray-600 hover:text-brand-cyan transition">Team</a>
+                    <a href="#events"
+                        class="font-semibold text-gray-600 hover:text-brand-cyan transition">Kaaya(Events)</a>
                     <a href="#financial-support"
                         class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-yellow text-brand-dark font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
                         <i data-lucide="heart" class="w-4 h-4 text-red-600 fill-current"></i> Support Us
@@ -229,6 +256,10 @@
                 <a href="#team"
                     class="px-4 py-3 text-gray-700 font-semibold hover:bg-brand-cyan/10 hover:text-brand-cyan rounded-lg transition">Our
                     Team</a>
+                <a href="#events"
+                    class="px-4 py-3 text-gray-700 font-semibold hover:bg-brand-cyan/10 hover:text-brand-cyan rounded-lg transition">
+                    Kaaya(Events)
+                </a>
                 <a href="#financial-support"
                     class="block w-full text-center mt-2 px-4 py-3 bg-brand-yellow text-brand-dark font-bold rounded-lg shadow-sm">
                     Donate
@@ -258,7 +289,7 @@
             <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight mb-4 font-hindi leading-[0.9] md:leading-normal"
                 data-aos="fade-up" data-aos-delay="200">
                 <span class="text-brand-cyan block md:inline">दयालुः भवतु,</span> <span
-                    class="block md:inline mt-2 md:mt-0">सर्वविधाय।</span>
+                    class="block md:inline mt-2 md:mt-0  max-[780px]:mt-[18px]">सर्वविधाय।</span>
             </h1>
             <p class="text-2xl md:text-3xl text-gray-600 font-medium italic mb-8 font-hindi" data-aos="fade-up"
                 data-aos-delay="400">
@@ -476,7 +507,8 @@
     <section id="team" class="py-20 bg-white border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Meet Our Animals With Humanity</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Meet Our <span
+                        class="max-[506px]:whitespace-nowrap">Animals With Humanity</span></h2>
                 <p class="text-gray-600 text-lg">The hoomans behind the mission.</p>
             </div>
 
@@ -500,6 +532,40 @@
         </div>
     </section>
 
+    <!-- EVENTS SECTION -->
+    <section id="events" class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+                    Our Events
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    Join our events, workshops and many more.
+                </p>
+            </div>
+
+            <div class="relative">
+
+                <button onclick="scrollEvents('left')"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white border shadow rounded-full hover:bg-brand-cyan hover:text-white transition  hidden md:block">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+
+                <div id="events-carousel" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth px-4 pb-8 snap-x"
+                    style="padding-left: 56px; padding-right:56px;">
+
+                </div>
+
+                <button onclick="scrollEvents('right')"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 bg-white border shadow rounded-full hover:bg-brand-cyan hover:text-white transition hidden md:block">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
     <!-- AWARDS SECTION (New) -->
     <section id="awards" class="py-20 bg-gray-50 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -557,8 +623,8 @@
     <section id="volunteer" class="py-20 relative overflow-hidden text-white">
         <!-- Photographic Background -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Volunteers Group" class="w-full h-full object-cover">
+            <img src="assets/images/group_photo.webp" alt="Volunteers Group"
+                class="w-full h-full max-[760px]:object-cover">
             <!-- Increased opacity for less visibility of bg image -->
             <div class="absolute inset-0 bg-brand-cyan/75"></div>
         </div>
@@ -716,7 +782,7 @@
                         </div>
 
                         <!-- Financial Statement Link -->
-                        <a href="https://awhbharat.org/statement.pdf" download
+                        <a href="#" onclick="openPdfModal('https://awhbharat.org/statement.pdf'); return false;"
                             class="block text-center w-full px-4 py-3 border border-gray-300 rounded-lg text-sm text-gray-600 font-semibold hover:bg-gray-50 transition flex items-center justify-center gap-2">
                             <i data-lucide="file-bar-chart-2" class="w-4 h-4"></i> Transparency: Download Financial
                             Statement
@@ -1108,7 +1174,7 @@
         const teamMembers = [
             {
                 name: "Ishika Kakde",
-                role: "President",
+                role: "Founder<br>&   President",
                 // Placeholder image. Replace with actual photo URL.
                 image: "assets/images/ishika_kakde.jpg"
             },
@@ -1119,63 +1185,33 @@
             },
             {
                 name: "Geetika Kakde",
-                role: "Secretary<br>& Vastu Manager",
-                image: "https://picsum.photos/seed/Geetika/300/300"
+                role: "Co-founder,<br>Secretary<br>& Head of Vastu",
+                image: "assets/images/geetika_kakde.jpg"
             },
             {
                 name: "Yashika Kukatkar",
-                role: "Vice Secretary<br>& Head of Marketing",
+                role: "Co-founder,<br>Vice Secretary<br>& Head of Marketing",
                 image: "assets/images/yashika_kukatkar.jpg"
             },
             {
                 name: "Pranav Kukatkar",
-                role: "Treasurer",
+                role: "Co-founder<br>& Treasurer",
                 image: "assets/images/pranav_kukatkar.jpg"
             },
             {
                 name: "Moksh Kshetri",
-                role: "On-field Unit Head",
+                role: "Head of On-field Unit",
                 image: "assets/images/moksh_kshetri.JPG"
             },
             {
                 name: "Praneet Botke",
-                role: "Human Resource Manager",
+                role: "Head of Human Resource Management",
                 image: "assets/images/praneet_botke.jpg"
             },
             {
                 name: "Sanya Gurung",
-                role: "Paltu Manager",
+                role: "Head of Paltu",
                 image: "assets/images/sanya_gurung.jpg"
-            },
-            {
-                name: "Rajkumari Vishwakarma",
-                role: "Finance & Fundraising Manager",
-                image: "assets/images/ranu_vishwakarma.jpg"
-            },
-            {
-                name: "Dia Huriya",
-                role: "Kaaya Manager",
-                image: "assets/images/dia_huria.jpg"
-            },
-            {
-                name: "Priyal Bankey",
-                role: "Kaaya Manager",
-                image: "assets/images/priyal_bankey.jpg"
-            },
-            {
-                name: "Aditya Chopariya",
-                role: "Volunteer",
-                image: "assets/images/aditya_chopariya.png"
-            },
-            {
-                name: "Vedant Patil",
-                role: "Volunteer",
-                image: "assets/images/vedant_patil.JPG"
-            },
-            {
-                name: "Sneha Chopra",
-                role: "Volunteer",
-                image: "assets/images/sneha_chopra.JPG"
             },
             {
                 name: "Sagar Arora",
@@ -1183,10 +1219,40 @@
                 image: "assets/images/sagar_arora.jpg"
             },
             {
-                name: "Devash Wadekar",
+                name: "Dia Huriya",
+                role: "Kaaya Manager",
+                image: "assets/images/dia_huria.jpg"
+            },
+            {
+                name: "Aditya Chopariya",
+                role: "Volunteer",
+                image: "assets/images/aditya_chopariya.png"
+            },
+            {
+                name: "Priyal Bankey",
+                role: "Volunteer",
+                image: "assets/images/priyal_bankey.jpg"
+            },
+            {
+                name: "Sneha Chopra",
+                role: "Volunteer",
+                image: "assets/images/sneha_chopra.JPG"
+            },
+            {
+                name: "Devansh Wadekar",
                 role: "Volunteer",
                 image: "assets/images/devansh_photo.jpg"
-            }
+            },
+            {
+                name: "Vedant Patil",
+                role: "Volunteer",
+                image: "assets/images/vedant_patil.JPG"
+            },
+            {
+                name: "Rajkumari Vishwakarma",
+                role: "Volunteer",
+                image: "assets/images/ranu_vishwakarma.jpg"
+            },
         ];
 
         /* ============================================================ */
@@ -1226,6 +1292,390 @@
         document.addEventListener('DOMContentLoaded', renderTeam);
 
     </script>
+    <!-- Notification Bar Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationBar = document.getElementById('notification-bar');
+            const closeBtn = document.getElementById('close-notification');
+            const mainNav = document.querySelector('nav'); // Select the nav element directly
+
+            // Check if notification was closed previously
+            const isNotificationClosed = false; // localStorage.getItem('awh_notification_closed_v1');
+
+            if (!isNotificationClosed) {
+                // Show notification
+                notificationBar.classList.remove('hidden');
+
+                // Adjust nav position
+                const updateNavPosition = () => {
+                    if (!notificationBar.classList.contains('hidden')) {
+                        const barHeight = notificationBar.offsetHeight;
+                        mainNav.style.top = `${barHeight}px`;
+                    } else {
+                        mainNav.style.top = '0';
+                    }
+                };
+
+                // Initial update
+                updateNavPosition();
+
+                // Update on resize
+                window.addEventListener('resize', updateNavPosition);
+
+                // Close handler
+                closeBtn.addEventListener('click', () => {
+                    notificationBar.classList.add('hidden');
+                    // localStorage.setItem('awh_notification_closed_v1', 'true');
+                    updateNavPosition();
+                });
+            }
+        });
+    </script>
+    <!-- PDF PREVIEW MODAL -->
+    <div id="pdf-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-gray-900/75 transition-opacity backdrop-blur-sm" onclick="closePdfModal()">
+        </div>
+
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div
+                class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl w-full h-[80vh] flex flex-col">
+
+                <!-- Modal Header -->
+                <div class="bg-white px-4 py-3 sm:px-6 flex justify-between items-center border-b border-gray-200">
+                    <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title">Financial Statement
+                        Preview</h3>
+                    <button type="button"
+                        class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+                        onclick="closePdfModal()">
+                        <span class="sr-only">Close</span>
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body (Iframe) -->
+                <div class="flex-1 bg-gray-100 relative">
+                    <iframe id="pdf-frame" src="" class="w-full h-full absolute inset-0" frameborder="0"></iframe>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-gray-200 gap-3">
+
+                    <button type="button"
+                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                        onclick="closePdfModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPdfModal(pdfUrl) {
+            const modal = document.getElementById('pdf-modal');
+            const frame = document.getElementById('pdf-frame');
+
+
+            if (modal && frame) {
+                frame.src = pdfUrl;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closePdfModal() {
+            const modal = document.getElementById('pdf-modal');
+            const frame = document.getElementById('pdf-frame');
+
+            if (modal && frame) {
+                modal.classList.add('hidden');
+                frame.src = ''; // Clear source to stop loading
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closePdfModal();
+            }
+        });
+
+        /* ============================================================
+EVENT DATA CONFIGURATION
+============================================================ */
+
+        const events = [
+
+
+            {
+                title: "Pawse 2026",
+
+                status: "past",
+
+                shortDescription:
+                    "AWH flagship awareness and adoption event.",
+
+                longDescription:
+                    "Our biggest annual gathering featuring adoption drives, rescue stories, and community engagement.",
+
+                date: "24 Jan 2026",
+
+                time: "Full Day",
+
+                location: "Bhopal",
+
+                image:
+                    "assets/images/pawse.png",
+
+                buttonText:
+                    "View Photos",
+
+                buttonLink:
+                    "https://kamero.ai/pawse2026"
+
+            },
+
+
+
+
+        ];
+
+        /* ============================================================
+        RENDER EVENTS
+        ============================================================ */
+
+        function renderEvents() {
+
+            const container =
+                document.getElementById("events-carousel");
+
+            if (!container) return;
+
+            container.innerHTML =
+                events.map(event => {
+
+                    const isPast =
+                        event.status === "past";
+
+                    const buttonColor =
+                        isPast
+                            ? "bg-gray-800 text-white"
+                            : "bg-brand-cyan text-white";
+
+                    return `
+
+<div
+class="min-w-[300px] bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition relative group snap-center">
+
+<img src="${event.image}"
+class="w-full h-48 object-cover">
+
+<div class="p-4">
+
+<h3 class="font-bold text-lg">
+${event.title}
+</h3>
+
+<p class="text-sm text-gray-500">
+${event.date}
+</p>
+
+<div class="flex items-center justify-between mt-2">
+
+<span class="text-xs font-bold px-2 py-1 rounded-full
+${isPast
+                            ? "bg-gray-100 text-gray-600"
+                            : "bg-green-100 text-green-700"}">
+
+${isPast ? "PAST EVENT" : "UPCOMING"}
+
+</span>
+
+<a href="${event.buttonLink}"
+target="_blank"
+class="${buttonColor}
+px-4 py-2 rounded-lg font-semibold text-sm">
+
+${event.buttonText}
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- hover overlay -->
+
+<div
+class="absolute inset-0 bg-black/80 text-white opacity-0 group-hover:opacity-100 transition p-4 flex flex-col justify-center">
+
+<h3 class="font-bold text-xl mb-2">
+${event.title}
+</h3>
+
+<p class="text-sm mb-2">
+${event.longDescription}
+</p>
+
+<p class="text-sm">
+📅 ${event.date}
+</p>
+
+<p class="text-sm">
+⏰ ${event.time}
+</p>
+
+<p class="text-sm mb-3">
+📍 ${event.location}
+</p>
+
+<a href="${event.buttonLink}"
+target="_blank"
+class="${isPast ? "bg-white text-black" : "bg-brand-yellow text-black"}
+px-3 py-2 rounded font-bold text-center">
+
+${event.buttonText}
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+                }).join("");
+
+            lucide.createIcons();
+
+        }
+
+
+        /* ============================================================
+        SCROLL
+        ============================================================ */
+
+        function scrollEvents(direction) {
+
+            const container =
+                document.getElementById("events-carousel");
+
+            const scroll = 320;
+
+            container.scrollBy({
+
+                left:
+                    direction === "left"
+                        ? -scroll
+                        : scroll,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+
+        /* ============================================================
+        POPUP
+        ============================================================ */
+
+        function showEventPopup() {
+
+            const upcoming =
+                events.find(e => e.status === "upcoming");
+
+            if (!upcoming) return;
+
+            document.getElementById("popup-image").src =
+                upcoming.image;
+
+            document.getElementById("popup-title").innerText =
+                upcoming.title;
+
+            document.getElementById("popup-date").innerText =
+                upcoming.date + " • " + upcoming.location;
+
+            document.getElementById("popup-link").href =
+                upcoming.buttonLink;
+
+            const popup =
+                document.getElementById("event-popup");
+
+            setTimeout(() => {
+
+                popup.classList.remove("hidden");
+
+                setTimeout(() => {
+                    popup.classList.remove("translate-y-10", "opacity-0");
+                }, 50);
+
+            }, 2000);
+
+        }
+        function closeEventPopup() {
+
+            document.getElementById("event-popup")
+                .classList.add("hidden");
+
+        }
+
+
+
+        /* INIT */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                renderEvents();
+
+                showEventPopup();
+
+            });
+    </script>
+    <!-- EVENT POPUP -->
+    <!-- EVENT POPUP -->
+    <div id="event-popup"
+        class="fixed bottom-24 right-4 md:right-6 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 z-[200] hidden translate-y-10 opacity-0 transition-all duration-500 overflow-hidden">
+
+        <!-- Highlight header -->
+        <div class="bg-brand-yellow text-brand-dark text-xs font-bold px-4 py-2 tracking-wide flex items-center gap-2">
+            <span class="animate-pulse">●</span>
+            UPCOMING EVENT
+        </div>
+
+        <!-- Image -->
+        <img id="popup-image" class="w-full h-40 object-cover">
+
+        <!-- Content -->
+        <div class="p-4">
+
+            <h3 id="popup-title" class="font-bold text-lg text-gray-900 mb-1"></h3>
+
+            <p id="popup-date" class="text-sm text-gray-500 mb-4"></p>
+
+            <!-- Buttons -->
+            <div class="flex gap-2">
+
+                <a id="popup-link" target="_blank"
+                    class="flex-1 text-center bg-brand-cyan text-white py-2 rounded-lg font-bold hover:scale-105 transition">
+                    Book Ticket
+                </a>
+
+                <button onclick="closeEventPopup()"
+                    class="px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-100 transition">
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 </body>
 
 </html>
