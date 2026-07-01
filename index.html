@@ -1113,7 +1113,7 @@
                 <path class="check-path" d="M22 40l12 12 24-24" stroke="#10b981" stroke-width="4.5"
                   stroke-linecap="round" stroke-linejoin="round" fill="none" />
               </svg>
-              <h3 class="text-2xl font-extrabold text-gray-900 mb-2">
+              <h3 class="text-2xl font-extrabold text-gray-900 mb-2" id="success-plan-title">
                 You're a Guardian! 🐾
               </h3>
               <p class="text-gray-500 text-sm leading-relaxed mb-2" id="success-msg">
@@ -1709,33 +1709,33 @@
       // Check if notification was closed previously
       const isNotificationClosed = false; // localStorage.getItem('awh_notification_closed_v1');
 
-      if (!isNotificationClosed) {
-        // Show notification
-        notificationBar.classList.remove("hidden");
+      // if (!isNotificationClosed) {
+      //   // Show notification
+      //   notificationBar.classList.remove("hidden");
 
-        // Adjust nav position
-        const updateNavPosition = () => {
-          if (!notificationBar.classList.contains("hidden")) {
-            const barHeight = notificationBar.offsetHeight;
-            mainNav.style.top = `${barHeight}px`;
-          } else {
-            mainNav.style.top = "0";
-          }
-        };
+      //   // Adjust nav position
+      //   const updateNavPosition = () => {
+      //     if (!notificationBar.classList.contains("hidden")) {
+      //       const barHeight = notificationBar.offsetHeight;
+      //       mainNav.style.top = `${barHeight}px`;
+      //     } else {
+      //       mainNav.style.top = "0";
+      //     }
+      //   };
 
-        // Initial update
-        updateNavPosition();
+      //   // Initial update
+      //   updateNavPosition();
 
-        // Update on resize
-        window.addEventListener("resize", updateNavPosition);
+      //   // Update on resize
+      //   window.addEventListener("resize", updateNavPosition);
 
-        // Close handler
-        closeBtn.addEventListener("click", () => {
-          notificationBar.classList.add("hidden");
-          // localStorage.setItem('awh_notification_closed_v1', 'true');
-          updateNavPosition();
-        });
-      }
+      //   // Close handler
+      //   closeBtn.addEventListener("click", () => {
+      //     notificationBar.classList.add("hidden");
+      //     // localStorage.setItem('awh_notification_closed_v1', 'true');
+      //     updateNavPosition();
+      //   });
+      // }
     });
   </script>
   <!-- PDF PREVIEW MODAL -->
@@ -2352,11 +2352,14 @@ ${event.buttonText}
       const successEl = document.getElementById("sub-success");
       successEl.classList.remove("hidden");
 
+      const titleEl = document.getElementById("success-plan-title");
+      if (titleEl) titleEl.textContent = `You're a ${planLabel}! `;
+
       const msgEl = document.getElementById("success-msg");
       if (msgEl) {
         msgEl.textContent =
           `Your ₹${selectedPlan?.amount_inr?.toLocaleString("en-IN") || ""}/month ${planLabel} plan is now active. ` +
-          `A confirmation has been sent to ${email}. Thank you for standing with the animals! 🐾`;
+          `A confirmation has been sent to ${email}. Thank you for your support`;
       }
       const subIdEl = document.getElementById("success-sub-id");
       if (subIdEl) subIdEl.textContent = `Subscription ID: ${subId}`;
