@@ -2337,7 +2337,7 @@ ${event.buttonText}
       }
       if (!Number.isInteger(amountInr) || amountInr < min || amountInr > max || amountInr % step !== 0) {
         if (err) {
-          err.textContent = `Enter a multiple of ₹${step} between ₹${min} and ₹${max.toLocaleString("en-IN")}.`;
+          err.textContent = `Enter a multiple of ₹${step} between ₹${min}.`;
           err.classList.remove("hidden");
         }
         return;
