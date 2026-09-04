@@ -244,25 +244,25 @@
 
   <!-- NOTIFICATION BAR -->
   <div id="notification-bar"
-        class="fixed top-0 w-full z-[60] bg-brand-yellow text-brand-dark px-4 py-2 shadow-md transition-transform duration-300 transform translate-y-0 hidden">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="https://pawse.awhbharat.org/" target="_blank" rel="noopener noreferrer"
-                class="flex-1 text-center font-bold text-sm md:text-base hover:underline flex items-center justify-center gap-2">
-                <span
-                    class="bg-white text-xs px-2 py-0.5 rounded-full border border-brand-dark/20 uppercase tracking-wider">New</span>
-                <span class="font-semibold text-sm md:text-base leading-tight
+        class="fixed top-0 w-full z-[60] bg-brand-yellow text-brand-dark px-4 py-2 shadow-md transition-transform duration-300 transform translate-y-0 ">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="https://pawse.awhbharat.org/" target="_blank" rel="noopener noreferrer"
+        class="flex-1 text-center font-bold text-sm md:text-base hover:underline flex items-center justify-center gap-2">
+        <span
+          class="bg-white text-xs px-2 py-0.5 rounded-full border border-brand-dark/20 uppercase tracking-wider">New</span>
+        <span class="font-semibold text-sm md:text-base leading-tight
                        group-hover:underline underline-offset-4">
-                    🎉 Exciting News:
+          🎉 Exciting News:
           <span class="font-extrabold">Eco-Friendly Ganpati Making Workshop Tickets Are Live!</span> !!
-                    <span class="opacity-80 max-[506px]:whitespace-nowrap">Book your tickets now.</span>
-                </span>
+          <span class="opacity-80 max-[506px]:whitespace-nowrap">Book your tickets now.</span>
+        </span>
 
-            </a>
-            <button id="close-notification" class="ml-4 p-1 hover:bg-black/10 rounded-full transition"
-                aria-label="Close Notification">
-                <i data-lucide="x" class="w-4 h-4"></i>
-            </button>
-        </div>
+      </a>
+      <button id="close-notification" class="ml-4 p-1 hover:bg-black/10 rounded-full transition"
+        aria-label="Close Notification">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
   </div>
 
   <!-- NAVIGATION -->
@@ -288,6 +288,7 @@
           <a href="#services" class="font-semibold text-gray-600 hover:text-brand-cyan transition">Activities</a>
           <a href="#team" class="font-semibold text-gray-600 hover:text-brand-cyan transition">Team</a>
           <a href="#events" class="font-semibold text-gray-600 hover:text-brand-cyan transition">Kaaya(Events)</a>
+          <!-- <a href="lalita.html" class="font-semibold text-red-600 hover:text-red-700 transition">Help Lalita</a> -->
           <a href="#financial-support"
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-yellow text-brand-dark font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
             <i data-lucide="heart" class="w-4 h-4 text-red-600 fill-current"></i>
@@ -324,6 +325,9 @@
           class="px-4 py-3 text-gray-700 font-semibold hover:bg-brand-cyan/10 hover:text-brand-cyan rounded-lg transition">
           Kaaya(Events)
         </a>
+        <!-- <a href="lalita.html" class="px-4 py-3 text-red-600 font-semibold hover:bg-red-50 rounded-lg transition">
+          Help Lalita
+        </a> -->
         <a href="#financial-support"
           class="block w-full text-center mt-2 px-4 py-3 bg-brand-yellow text-brand-dark font-bold rounded-lg shadow-sm">
           Donate
@@ -794,6 +798,36 @@
         </p>
       </div>
 
+      <!-- 0. LALITA EMERGENCY FUNDRAISER -->
+      <!-- <a href="lalita.html"
+        class="block bg-white border border-red-100 rounded-3xl overflow-hidden mb-12 shadow-xl hover:shadow-2xl transition group"
+        data-aos="flip-up">
+        <div class="flex flex-col md:flex-row">
+          <div class="w-full md:w-2/5 relative h-56 md:h-auto">
+            <img src="assets/images/lalita/hero.png" alt="Lalita the rescue dog"
+              class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-700" />
+            <span
+              class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">
+              Urgent
+            </span>
+          </div>
+          <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col justify-center">
+            <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-3">
+              Urgently raising ₹45,000 for Lalita 🙏
+            </h3>
+            <p class="text-gray-600 text-lg mb-5 leading-relaxed">
+              She fell from the 4th floor of an under-construction building.
+              Help fund her surgery, medicines, food, and fostering. Bills will be provided.
+            </p>
+            <span
+              class="inline-flex items-center gap-2 bg-brand-yellow text-brand-dark px-6 py-3 rounded-full font-bold w-fit group-hover:-translate-y-0.5 transition">
+              <i data-lucide="heart" class="w-5 h-5 text-red-600 fill-current"></i>
+              Open Lalita's fundraiser
+            </span>
+          </div>
+        </div>
+      </a> -->
+
       <!-- 1. MATERIAL SUPPORT (Amazon Wishlist) -->
       <div class="bg-white border border-gray-200 rounded-3xl overflow-hidden mb-12 flex flex-col md:flex-row shadow-xl"
         data-aos="flip-up">
@@ -974,17 +1008,7 @@
             <!-- Cards rendered by JS -->
           </div>
 
-          <!-- Custom plan teaser (disabled, coming soon) -->
-          <div class="flex items-center justify-center mb-10">
-            <div
-              class="flex items-center gap-3 bg-white border border-dashed border-gray-300 rounded-2xl px-6 py-3 text-sm text-gray-400 select-none cursor-not-allowed">
-              <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-              </svg>
-              <span>Custom amount — <strong>coming soon</strong></span>
-              <span class="text-xs bg-gray-100 text-gray-400 px-2 py-0.5 rounded-full font-semibold">SOON</span>
-            </div>
-          </div>
+          <div id="custom-amount-wrap" class="flex items-center justify-center mb-10"></div>
 
           <!-- Trust strip -->
           <div class="flex flex-wrap justify-center gap-4 mb-4">
@@ -1198,6 +1222,9 @@
             </li>
             <li>
               <a href="#financial-support" class="hover:text-brand-cyan transition">Donate</a>
+            </li>
+            <li>
+              <a href="lalita.html" class="hover:text-brand-cyan transition">Help Lalita</a>
             </li>
             <li class="pt-4">
               <a href="#" onclick="
@@ -1709,33 +1736,33 @@
       // Check if notification was closed previously
       const isNotificationClosed = false; // localStorage.getItem('awh_notification_closed_v1');
 
-      // if (!isNotificationClosed) {
-      //   // Show notification
-      //   notificationBar.classList.remove("hidden");
+      if (!isNotificationClosed) {
+        // Show notification
+        notificationBar.classList.remove("hidden");
 
-      //   // Adjust nav position
-      //   const updateNavPosition = () => {
-      //     if (!notificationBar.classList.contains("hidden")) {
-      //       const barHeight = notificationBar.offsetHeight;
-      //       mainNav.style.top = `${barHeight}px`;
-      //     } else {
-      //       mainNav.style.top = "0";
-      //     }
-      //   };
+        // Adjust nav position
+        const updateNavPosition = () => {
+          if (!notificationBar.classList.contains("hidden")) {
+            const barHeight = notificationBar.offsetHeight;
+            mainNav.style.top = `${barHeight}px`;
+          } else {
+            mainNav.style.top = "0";
+          }
+        };
 
-      //   // Initial update
-      //   updateNavPosition();
+        // Initial update
+        updateNavPosition();
 
-      //   // Update on resize
-      //   window.addEventListener("resize", updateNavPosition);
+        // Update on resize
+        window.addEventListener("resize", updateNavPosition);
 
-      //   // Close handler
-      //   closeBtn.addEventListener("click", () => {
-      //     notificationBar.classList.add("hidden");
-      //     // localStorage.setItem('awh_notification_closed_v1', 'true');
-      //     updateNavPosition();
-      //   });
-      // }
+        // Close handler
+        closeBtn.addEventListener("click", () => {
+          notificationBar.classList.add("hidden");
+          // localStorage.setItem('awh_notification_closed_v1', 'true');
+          updateNavPosition();
+        });
+      }
     });
   </script>
   <!-- PDF PREVIEW MODAL -->
@@ -2109,6 +2136,61 @@ ${event.buttonText}
     }
     function closeEventPopup() {
       document.getElementById("event-popup").classList.add("hidden");
+
+      // On small screens the rabies popup waits for this card to clear before showing.
+      if (!isDesktopViewport()) showRabiesPopup(100);
+    }
+
+    /* ============================================================
+      MISSION RABIES POPUP
+      ============================================================ */
+
+    let rabiesPopupShown = false;
+
+    function isDesktopViewport() {
+      return window.matchMedia("(min-width: 768px)").matches;
+    }
+
+    function showRabiesPopup(delay) {
+      const popup = document.getElementById("rabies-popup");
+
+      // Guard: only ever reveal once per page load, and never if the markup is absent.
+      if (!popup || rabiesPopupShown) return;
+
+      rabiesPopupShown = true;
+
+      setTimeout(() => {
+        popup.classList.remove("hidden");
+
+        setTimeout(() => {
+          popup.classList.remove("translate-y-10", "opacity-0");
+        }, 50);
+      }, delay);
+    }
+
+    function closeRabiesPopup() {
+      const popup = document.getElementById("rabies-popup");
+
+      if (!popup) return;
+
+      popup.classList.add("translate-y-10", "opacity-0");
+
+      setTimeout(() => popup.classList.add("hidden"), 400);
+    }
+
+    function initRabiesPopup() {
+      // Desktop has room for both cards (event popup right, rabies popup left).
+      if (isDesktopViewport()) {
+        showRabiesPopup(4000);
+        return;
+      }
+
+      // Mobile: show only if the event popup never appeared, to avoid stacked cards.
+      setTimeout(() => {
+        const eventPopup = document.getElementById("event-popup");
+
+        if (!eventPopup || eventPopup.classList.contains("hidden")) showRabiesPopup(0);
+      }, 4000);
     }
 
     /* INIT */
@@ -2117,11 +2199,14 @@ ${event.buttonText}
       renderEvents();
 
       showEventPopup();
+
+      initRabiesPopup();
     });
     /* ================================================================
  CONFIG — update this URL to wherever you deploy the backend
  ================================================================ */
     const API_BASE = "https://awh-autopay.onrender.com"; // e.g. "https://api.awhbharat.org"
+    // const API_BASE = "http://localhost:3001";
 
     /* ================================================================
  STATE
@@ -2136,10 +2221,12 @@ ${event.buttonText}
         const data = await res.json();
         if (!data.success) throw new Error("Failed to load plans");
         renderPlanCards(data.plans);
+        renderCustomAmount(data);
       } catch (err) {
         console.error("loadPlans error:", err);
         document.getElementById("plan-grid").innerHTML =
           `<p class="col-span-4 text-center text-gray-400 py-8">Unable to load plans. Please refresh the page.</p>`;
+        renderCustomAmount({ custom_enabled: false });
       }
     }
 
@@ -2201,6 +2288,66 @@ ${event.buttonText}
       </div>
     `;
       }).join("");
+    }
+
+    function renderCustomAmount(data) {
+      const wrap = document.getElementById("custom-amount-wrap");
+      if (!wrap) return;
+      if (!data.custom_enabled || !data.custom) {
+        wrap.innerHTML = `
+          <div class="flex items-center gap-3 bg-white border border-dashed border-gray-300 rounded-2xl px-6 py-3 text-sm text-gray-400 select-none">
+            <span>Custom amount is unavailable right now</span>
+          </div>`;
+        return;
+      }
+      const min = data.custom.min_inr;
+      const step = data.custom.step_inr;
+      const max = data.custom.max_inr;
+      wrap.innerHTML = `
+        <div class="w-full max-w-xl bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-end gap-3">
+            <div class="flex-1">
+              <label for="custom-amount-input" class="block text-sm font-bold text-gray-800 mb-1">Or choose a custom monthly amount</label>
+              <p class="text-xs text-gray-500 mb-2">Multiples of ₹${step.toLocaleString("en-IN")} · min ₹${min.toLocaleString("en-IN")} · max ₹${max.toLocaleString("en-IN")}</p>
+              <div class="relative">
+                <span class="absolute left-3 top-2.5 font-bold text-gray-500">₹</span>
+                <input id="custom-amount-input" type="number" min="${min}" max="${max}" step="${step}" value="${min}"
+                  class="awh-input w-full pl-8 pr-3 py-2.5 border border-gray-300 rounded-xl" />
+              </div>
+              <p id="custom-amount-error" class="hidden text-xs text-red-500 font-medium mt-1.5"></p>
+            </div>
+            <button type="button" onclick="openCustomSubModal()"
+              class="shrink-0 px-5 py-2.5 bg-brand-yellow text-brand-dark font-bold rounded-xl hover:shadow-md transition">
+              Continue
+            </button>
+          </div>
+        </div>`;
+    }
+
+    function openCustomSubModal() {
+      const input = document.getElementById("custom-amount-input");
+      const err = document.getElementById("custom-amount-error");
+      const amountInr = Number(input && input.value);
+      const min = Number(input && input.min) || 500;
+      const step = Number(input && input.step) || 500;
+      const max = Number(input && input.max) || 20000;
+      if (err) {
+        err.classList.add("hidden");
+        err.textContent = "";
+      }
+      if (!Number.isInteger(amountInr) || amountInr < min || amountInr > max || amountInr % step !== 0) {
+        if (err) {
+          err.textContent = `Enter a multiple of ₹${step} between ₹${min} and ₹${max.toLocaleString("en-IN")}.`;
+          err.classList.remove("hidden");
+        }
+        return;
+      }
+      openSubModal({
+        key: "custom",
+        label: "Custom",
+        description: "Monthly support of your choice",
+        amount_inr: amountInr,
+      });
     }
 
     /* ── Modal open/close ───────────────────────────────────────────── */
@@ -2310,7 +2457,11 @@ ${event.buttonText}
             method: "POST",
             headers: { "Content-Type": "application/json" },
             signal: controller.signal,
-            body: JSON.stringify({ planKey: selectedPlan.key, name, email, contact }),
+            body: JSON.stringify(
+              selectedPlan.key === "custom"
+                ? { planKey: "custom", amountInr: selectedPlan.amount_inr, name, email, contact }
+                : { planKey: selectedPlan.key, name, email, contact }
+            ),
           });
           clearTimeout(timeoutId);
           subData = await res.json();
@@ -2458,6 +2609,64 @@ ${event.buttonText}
           Close
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- MISSION RABIES POPUP -->
+  <div id="rabies-popup" role="dialog" aria-labelledby="rabies-popup-title"
+    class="fixed bottom-6 left-4 md:left-6 w-[19rem] md:w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 z-[200] hidden translate-y-10 opacity-0 transition-all duration-500 overflow-hidden">
+    <!-- Highlight header -->
+    <div
+      class="bg-gradient-to-r from-brand-cyan to-[#1B9CB8] text-white text-xs font-bold px-4 py-2 tracking-wide flex items-center justify-between gap-2">
+      <span class="flex items-center gap-2">
+        <span class="animate-pulse">●</span>
+        FREE VACCINATION DRIVE
+      </span>
+      <button onclick="closeRabiesPopup()" class="p-1 -mr-1 rounded-full hover:bg-white/20 transition"
+        aria-label="Close Mission Rabies Popup">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <!-- Content -->
+    <div class="p-4">
+      <div class="flex items-start gap-3 mb-3">
+        <div class="shrink-0 w-11 h-11 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
+          <i data-lucide="syringe" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 id="rabies-popup-title" class="font-bold text-lg leading-tight text-gray-900">
+            Mission Rabies
+          </h3>
+          <p class="text-sm text-gray-500">Bhopal · Anti-Rabies Drive</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mb-3">
+        Register your community dog for a <span class="font-semibold text-gray-900">100% free</span> anti-rabies shot
+        and help us build a rabies-free Bhopal.
+      </p>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="text-[11px] font-semibold bg-brand-yellow/60 text-brand-dark px-2 py-0.5 rounded-full">
+          1,100+ dogs vaccinated in 2025
+        </span>
+        <span class="text-[11px] font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
+          Takes under a minute
+        </span>
+      </div>
+
+      <!-- Buttons -->
+      <a href="https://missionrabies.awhbharat.org/" target="_blank" rel="noopener noreferrer"
+        class="flex items-center justify-center gap-2 w-full text-center bg-brand-cyan text-white py-2 rounded-lg font-bold hover:scale-105 transition">
+        Register My Community Dog
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+
+      <button onclick="closeRabiesPopup()"
+        class="w-full mt-2 py-1.5 text-xs text-gray-500 hover:text-gray-700 transition">
+        Maybe later
+      </button>
     </div>
   </div>
 </body>
