@@ -289,6 +289,7 @@
           <a href="#team" class="font-semibold text-gray-600 hover:text-brand-cyan transition">Team</a>
           <a href="#events" class="font-semibold text-gray-600 hover:text-brand-cyan transition">Kaaya(Events)</a>
           <!-- <a href="lalita.html" class="font-semibold text-red-600 hover:text-red-700 transition">Help Lalita</a> -->
+           <a href="https://missionrabies.awhbharat.org/" target="_blank" class="font-semibold text-red-600 hover:text-red-700 transition">Mission Rabies</a>
           <a href="#financial-support"
             class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-yellow text-brand-dark font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
             <i data-lucide="heart" class="w-4 h-4 text-red-600 fill-current"></i>
@@ -328,6 +329,9 @@
         <!-- <a href="lalita.html" class="px-4 py-3 text-red-600 font-semibold hover:bg-red-50 rounded-lg transition">
           Help Lalita
         </a> -->
+        <a href="https://missionrabies.awhbharat.org/" target="_blank" class="px-4 py-3 text-red-600 font-semibold hover:bg-red-50 rounded-lg transition">
+          Mission Rabies
+        </a>
         <a href="#financial-support"
           class="block w-full text-center mt-2 px-4 py-3 bg-brand-yellow text-brand-dark font-bold rounded-lg shadow-sm">
           Donate
@@ -1225,6 +1229,9 @@
             </li>
             <li>
               <a href="lalita.html" class="hover:text-brand-cyan transition">Help Lalita</a>
+            </li>
+            <li>
+              <a href="https://missionrabies.awhbharat.org/" class="hover:text-brand-cyan transition">Mission Rabies</a>
             </li>
             <li class="pt-4">
               <a href="#" onclick="
@@ -2304,24 +2311,100 @@ ${event.buttonText}
       const step = data.custom.step_inr;
       const max = data.custom.max_inr;
       wrap.innerHTML = `
-        <div class="w-full max-w-xl bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
-          <div class="flex flex-col sm:flex-row sm:items-end gap-3">
-            <div class="flex-1">
-              <label for="custom-amount-input" class="block text-sm font-bold text-gray-800 mb-1">Or choose a custom monthly amount</label>
-              <p class="text-xs text-gray-500 mb-2">Multiples of ₹${step.toLocaleString("en-IN")} · min ₹${min.toLocaleString("en-IN")} </p>
-              <div class="relative">
-                <span class="absolute left-3 top-2.5 font-bold text-gray-500">₹</span>
-                <input id="custom-amount-input" type="number" min="${min}" max="${max}" step="${step}" value="${min}"
-                  class="awh-input w-full pl-8 pr-3 py-2.5 border border-gray-300 rounded-xl" />
-              </div>
-              <p id="custom-amount-error" class="hidden text-xs text-red-500 font-medium mt-1.5"></p>
-            </div>
-            <button type="button" onclick="openCustomSubModal()"
-              class="shrink-0 px-5 py-2.5 bg-brand-yellow text-brand-dark font-bold rounded-xl hover:shadow-md transition">
-              Continue
-            </button>
+          <div class="w-full max-w-xl bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+    <div class="flex flex-col sm:flex-row sm:items-end gap-3">
+      <div class="flex-1">
+        <label for="custom-amount-input"
+          class="block text-sm font-bold text-gray-800 mb-1">
+          Or choose a custom monthly amount
+        </label>
+
+        <p class="text-xs text-gray-500 mb-2">
+          Multiples of ₹${step.toLocaleString("en-IN")} · min ₹${min.toLocaleString("en-IN")}
+        </p>
+
+        <!-- Counter -->
+        <div class="flex items-center w-full border border-gray-300 rounded-xl overflow-hidden">
+          
+          <button
+            type="button"
+            id="decrease-amount"
+            class="w-12 h-12 shrink-0 flex items-center justify-center
+                   text-xl font-bold text-gray-700 bg-gray-50
+                   hover:bg-gray-100 transition"
+            aria-label="Decrease amount">
+            −
+          </button>
+
+          <div class="relative flex-1">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold text-gray-500">
+              ₹
+            </span>
+
+            <input
+              id="custom-amount-input"
+              type="number"
+              min="${min}"
+              max="${max}"
+              step="${step}"
+              value="${min}"
+              class="awh-input w-full h-12 pl-8 pr-3 text-center font-bold border-0
+                     focus:ring-0 focus:outline-none"
+            />
           </div>
-        </div>`;
+
+          <button
+            type="button"
+            id="increase-amount"
+            class="w-12 h-12 shrink-0 flex items-center justify-center
+                   text-xl font-bold text-gray-700 bg-gray-50
+                   hover:bg-gray-100 transition"
+            aria-label="Increase amount">
+            +
+          </button>
+
+        </div>
+
+        <p id="custom-amount-error"
+          class="hidden text-xs text-red-500 font-medium mt-1.5"></p>
+      </div>
+
+      <button
+        type="button"
+        onclick="openCustomSubModal()"
+        class="shrink-0 px-5 py-2.5 bg-brand-yellow text-brand-dark
+               font-bold rounded-xl hover:shadow-md transition">
+        Continue
+      </button>
+    </div>
+  </div>`;
+  const amountInput = document.getElementById("custom-amount-input");
+const decreaseBtn = document.getElementById("decrease-amount");
+const increaseBtn = document.getElementById("increase-amount");
+
+decreaseBtn.addEventListener("click", () => {
+  let amount = Number(amountInput.value) || min;
+
+  amount -= step;
+
+  if (amount < min) {
+    amount = min;
+  }
+
+  amountInput.value = amount;
+});
+
+increaseBtn.addEventListener("click", () => {
+  let amount = Number(amountInput.value) || min;
+
+  amount += step;
+
+  if (amount > max) {
+    amount = max;
+  }
+
+  amountInput.value = amount;
+});
     }
 
     function openCustomSubModal() {
@@ -2337,7 +2420,7 @@ ${event.buttonText}
       }
       if (!Number.isInteger(amountInr) || amountInr < min || amountInr > max || amountInr % step !== 0) {
         if (err) {
-          err.textContent = `Enter a multiple of ₹${step} between ₹${min}.`;
+          err.textContent = `Enter a multiple of ₹${step}. Minimum ₹${min}.`;
           err.classList.remove("hidden");
         }
         return;
