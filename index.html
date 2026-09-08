@@ -200,6 +200,8 @@
       /* ---- modal backdrop ---- */
       #sub-modal-backdrop { transition: opacity 0.25s ease; }
       #sub-modal-inner  { transition: opacity 0.25s ease, transform 0.25s ease; }
+      #ot-modal-backdrop { transition: opacity 0.25s ease; }
+      #ot-modal-inner  { transition: opacity 0.25s ease, transform 0.25s ease; }
 
       /* ---- success checkmark draw ---- */
       @keyframes draw-check {
@@ -985,6 +987,111 @@
                 Certified</span>
               <span
                 class="px-2 py-1 bg-gray-100 text-xs font-bold text-gray-500 rounded border border-gray-200">E-Anudaan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. ONLINE DONATION (Razorpay modal — UPI, Cards, Net Banking, Wallets) -->
+      <div id="online-donation" class="text-center mb-12" data-aos="fade-up">
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Donate Online</h3>
+        <p class="text-gray-500 text-sm mb-4">Pay securely with UPI, cards, net banking or wallets.</p>
+        <button type="button" onclick="openOtModal()"
+          class="inline-flex items-center justify-center gap-2 bg-brand-cyan text-white font-bold py-3 px-8 rounded-xl hover:bg-cyan-500 active:scale-[0.98] transition-all text-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          Donate with Razorpay
+        </button>
+      </div>
+
+      <div id="ot-modal" class="fixed inset-0 z-[80] hidden">
+        <div id="ot-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0"
+          onclick="closeOtModal()"></div>
+        <div class="flex min-h-full items-end sm:items-center justify-center p-4">
+          <div id="ot-modal-inner"
+            class="relative bg-white rounded-3xl w-full max-w-md shadow-2xl opacity-0 translate-y-6 overflow-hidden">
+            <div class="h-1.5 bg-gradient-to-r from-brand-cyan via-sky-400 to-brand-yellow"></div>
+            <div class="px-7 pt-6 pb-3 flex justify-between items-start">
+              <div>
+                <h3 class="text-2xl font-extrabold text-gray-900">Donate Online</h3>
+                <p class="text-gray-500 text-sm mt-0.5">UPI, cards, net banking and wallets</p>
+              </div>
+              <button type="button" onclick="closeOtModal()" class="p-1 text-gray-400 hover:text-gray-700 transition"
+                aria-label="Close donation form">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="mx-7 border-t border-gray-100"></div>
+
+            <div id="ot-form-wrap" class="px-7 py-5 space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-2">Choose an amount</label>
+                <div id="ot-amount-chips" class="grid grid-cols-2 gap-2"></div>
+              </div>
+              <div>
+                <label for="ot-amount-input" class="block text-xs font-semibold text-gray-600 mb-1.5">Or enter your own
+                  amount *</label>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold text-gray-500">₹</span>
+                  <input id="ot-amount-input" type="number" inputmode="numeric" min="1" step="1" value="1000"
+                    oninput="onOtAmountInput()"
+                    class="awh-input w-full border border-gray-200 rounded-xl pl-8 pr-4 py-2.5 text-sm font-bold bg-gray-50 transition" />
+                </div>
+              </div>
+              <div>
+                <label for="ot-name" class="block text-xs font-semibold text-gray-600 mb-1.5">Full Name *</label>
+                <input id="ot-name" type="text" placeholder="Riya Sharma"
+                  class="awh-input w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-gray-50 transition" />
+              </div>
+              <div>
+                <label for="ot-email" class="block text-xs font-semibold text-gray-600 mb-1.5">Email Address *</label>
+                <input id="ot-email" type="email" placeholder="riya@example.com"
+                  class="awh-input w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-gray-50 transition" />
+              </div>
+              <div>
+                <label for="ot-phone" class="block text-xs font-semibold text-gray-600 mb-1.5">Mobile Number *</label>
+                <div class="flex items-center gap-2">
+                  <span
+                    class="text-sm text-gray-500 bg-gray-100 border border-gray-200 rounded-xl px-3 py-2.5 font-semibold">+91</span>
+                  <input id="ot-phone" type="tel" maxlength="10" placeholder="9876543210"
+                    class="awh-input flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-gray-50 transition" />
+                </div>
+              </div>
+
+              <p id="ot-error" class="text-red-500 text-xs font-medium hidden"></p>
+
+              <button id="ot-pay-btn" onclick="handleOneTimeDonate()"
+                class="w-full bg-brand-cyan text-white font-bold py-3.5 rounded-xl hover:bg-cyan-500 active:scale-[0.98] transition-all flex items-center justify-center gap-2 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span id="ot-pay-label">Donate ₹1,000</span>
+              </button>
+              <p class="text-center text-xs text-gray-400 pb-1">
+                Payments are processed by Razorpay. 80G tax exemption available — email your PAN to
+                <strong>team@awhbharat.org</strong> for a receipt.
+              </p>
+            </div>
+
+            <div id="ot-success" class="hidden px-7 py-10 flex flex-col items-center text-center">
+              <svg class="check-circle w-20 h-20 mb-5" viewBox="0 0 80 80" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="38" fill="#e0fdf4" stroke="#34d399" stroke-width="3" />
+                <path class="check-path" d="M22 40l12 12 24-24" stroke="#10b981" stroke-width="4.5"
+                  stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              </svg>
+              <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Thank you! 🐾</h3>
+              <p class="text-gray-500 text-sm leading-relaxed mb-2" id="ot-success-msg"></p>
+              <p class="text-xs text-gray-400 mb-6" id="ot-success-id"></p>
+              <button onclick="resetOtForm()"
+                class="px-8 py-3 bg-brand-yellow text-brand-dark font-bold rounded-xl hover:bg-yellow-400 transition">
+                Make another donation
+              </button>
             </div>
           </div>
         </div>
@@ -1873,6 +1980,27 @@ EVENT DATA CONFIGURATION
 
       },
       {
+        title: "Mission Rabies",
+
+        status: "Ongoing",
+
+        shortDescription:
+          "Mission Rabies",
+
+        longDescription:
+          "Mission Rabies - vaccinating over 2500 dogs of Bhopal",
+
+        date: "1st August : - Ongoing",
+
+        location: "Bhopal",
+        buttonText:"Register Your Community Dogs",
+        buttonLink:"https://missionrabies.awhbharat.org/",
+
+        image:
+          "https://missionrabies.awhbharat.org/assets/images/Screenshot from 2026-09-05 15-05-56.png",
+
+      },
+      {
         title: "Kitty Party",
 
         status: "past",
@@ -2654,11 +2782,291 @@ increaseBtn.addEventListener("click", () => {
       resetPayBtn();
     }
 
+    /* ══════════════════════════════════════════════════════════════════
+       ONE-TIME ONLINE DONATION (Razorpay — UPI / cards / net banking / wallets)
+       Fully independent of the monthly-giving flow above: its own state,
+       its own DOM ids, its own backend endpoints.
+    ══════════════════════════════════════════════════════════════════ */
+    const OT_DEFAULTS = { min_inr: 1, suggested_amounts: [500, 1000, 2500, 5000] };
+    let otConfig = { ...OT_DEFAULTS };
+    let otSelectedAmount = 1000;
+    let otIsSubmitting = false;
+    // A payment id lands here the moment it is sent for verification, so a
+    // repeated Razorpay success callback can never trigger a second verify call.
+    const otVerifiedPayments = new Set();
+
+    function otInr(value) {
+      return `₹${Number(value || 0).toLocaleString("en-IN")}`;
+    }
+
+    function setOtError(msg) {
+      const el = document.getElementById("ot-error");
+      if (!el) return;
+      el.textContent = msg || "";
+      el.classList.toggle("hidden", !msg);
+    }
+
+    function updateOtButton() {
+      const label = document.getElementById("ot-pay-label");
+      if (!label) return;
+      const amount = Number(document.getElementById("ot-amount-input")?.value);
+      label.textContent = Number.isFinite(amount) && amount > 0 ? `Donate ${otInr(amount)}` : "Donate now";
+    }
+
+    function setOtLoading(loading, text) {
+      const btn = document.getElementById("ot-pay-btn");
+      const label = document.getElementById("ot-pay-label");
+      if (!btn || !label) return;
+      btn.disabled = loading;
+      btn.classList.toggle("opacity-70", loading);
+      if (loading) label.textContent = text || "Processing…";
+      else updateOtButton();
+    }
+
+    function resetOtPayBtn() {
+      otIsSubmitting = false;
+      setOtLoading(false);
+    }
+
+    function highlightOtChips() {
+      document.querySelectorAll("#ot-amount-chips .ot-chip").forEach(btn => {
+        const selected = Number(btn.dataset.otAmount) === otSelectedAmount;
+        btn.classList.toggle("border-brand-cyan", selected);
+        btn.classList.toggle("bg-brand-cyan/10", selected);
+        btn.classList.toggle("text-brand-cyan", selected);
+        btn.classList.toggle("border-gray-200", !selected);
+        btn.classList.toggle("text-gray-700", !selected);
+      });
+    }
+
+    function renderOtChips(amounts) {
+      const wrap = document.getElementById("ot-amount-chips");
+      if (!wrap) return;
+      wrap.innerHTML = amounts.map(amt => `
+        <button type="button" data-ot-amount="${amt}"
+          class="ot-chip border border-gray-200 text-gray-700 rounded-xl py-2.5 font-bold text-sm hover:border-brand-cyan transition">
+          ${otInr(amt)}
+        </button>`).join("");
+
+      wrap.querySelectorAll(".ot-chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          otSelectedAmount = Number(btn.dataset.otAmount);
+          const input = document.getElementById("ot-amount-input");
+          if (input) input.value = otSelectedAmount;
+          highlightOtChips();
+          setOtError("");
+          updateOtButton();
+        });
+      });
+      highlightOtChips();
+    }
+
+    function onOtAmountInput() {
+      otSelectedAmount = Number(document.getElementById("ot-amount-input")?.value);
+      highlightOtChips();
+      setOtError("");
+      updateOtButton();
+    }
+
+    function applyOtConfig() {
+      const input = document.getElementById("ot-amount-input");
+      if (input) {
+        input.min = otConfig.min_inr;
+        input.removeAttribute("max");
+      }
+      renderOtChips(otConfig.suggested_amounts);
+      updateOtButton();
+    }
+
+    function openOtModal() {
+      resetOtForm();
+      applyOtConfig();
+      const modal = document.getElementById("ot-modal");
+      const backdrop = document.getElementById("ot-modal-backdrop");
+      const inner = document.getElementById("ot-modal-inner");
+      if (!modal || !backdrop || !inner) return;
+      modal.classList.remove("hidden");
+      requestAnimationFrame(() => {
+        backdrop.classList.add("opacity-100");
+        backdrop.classList.remove("opacity-0");
+        inner.classList.remove("opacity-0", "translate-y-6");
+        inner.classList.add("opacity-100", "translate-y-0");
+      });
+      setTimeout(() => document.getElementById("ot-amount-input")?.focus(), 150);
+    }
+
+    function closeOtModal() {
+      const modal = document.getElementById("ot-modal");
+      const backdrop = document.getElementById("ot-modal-backdrop");
+      const inner = document.getElementById("ot-modal-inner");
+      if (!modal || !backdrop || !inner) return;
+      backdrop.classList.remove("opacity-100");
+      backdrop.classList.add("opacity-0");
+      inner.classList.add("opacity-0", "translate-y-6");
+      inner.classList.remove("opacity-100", "translate-y-0");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        resetOtPayBtn();
+      }, 220);
+    }
+
+    async function loadDonationConfig() {
+      // Paint the form from defaults first — a cold backend must never leave
+      // the donor staring at an empty amount picker.
+      applyOtConfig();
+      try {
+        const res = await fetch(`${API_BASE}/donation-config`);
+        const data = await res.json();
+        if (!data.success) return;
+        otConfig = {
+          min_inr: data.min_inr ?? OT_DEFAULTS.min_inr,
+          suggested_amounts: data.suggested_amounts?.length ? data.suggested_amounts : OT_DEFAULTS.suggested_amounts,
+        };
+        applyOtConfig();
+      } catch (_err) {
+        // Backend unreachable — the defaults already rendered above still work
+      }
+    }
+
+    async function handleOneTimeDonate() {
+      if (otIsSubmitting) return;   // blocks double-clicks creating two orders
+      setOtError("");
+
+      const name = (document.getElementById("ot-name")?.value || "").trim();
+      const email = (document.getElementById("ot-email")?.value || "").trim().toLowerCase();
+      const contact = (document.getElementById("ot-phone")?.value || "").replace(/\D/g, "");
+      const amountInr = Number(document.getElementById("ot-amount-input")?.value);
+
+      if (name.length < 2) return setOtError("Please enter your full name.");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setOtError("Please enter a valid email address.");
+      if (!/^[6-9]\d{9}$/.test(contact)) return setOtError("Please enter a valid 10-digit Indian mobile number.");
+      if (!Number.isInteger(amountInr) || amountInr < otConfig.min_inr) {
+        return setOtError(`Please enter a whole amount of at least ${otInr(otConfig.min_inr)}.`);
+      }
+
+      otIsSubmitting = true;
+      setOtLoading(true, "Saving your details…");
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        const res = await fetch(`${API_BASE}/donate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+          body: JSON.stringify({ name, email, contact, amountInr }),
+        });
+        clearTimeout(timeoutId);
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || "Could not start the donation. Please try again.");
+
+        setOtLoading(true, "Opening Razorpay…");
+        await openOneTimeCheckout(data);
+      } catch (err) {
+        setOtError(err.name === "AbortError"
+          ? "Request timed out. Please check your connection and try again."
+          : (err.message || "Something went wrong. Please try again."));
+        resetOtPayBtn();
+      }
+    }
+
+    function openOneTimeCheckout({ order_id, razorpay_key, prefill, amount_inr }) {
+      return new Promise(resolve => {
+        const options = {
+          key: razorpay_key,
+          order_id,
+          amount: amount_inr * 100,
+          currency: "INR",
+          name: "Animals With Humanity",
+          description: `One-time donation — ${otInr(amount_inr)}`,
+          image: "/assets/images/logo.png",
+          prefill: {
+            name: prefill.name,
+            email: prefill.email,
+            contact: `+91${prefill.contact}`,
+          },
+          // No `method` filter is set, so Razorpay offers UPI, cards,
+          // net banking, wallets and pay-later in one checkout.
+          theme: { color: "#33CBE5" },
+          modal: {
+            ondismiss: () => {
+              resetOtPayBtn();
+              setOtError("Payment was cancelled. You can try again whenever you're ready.");
+              resolve();
+            },
+          },
+          handler: async response => {
+            const paymentId = response.razorpay_payment_id;
+            // On flaky networks this callback can fire more than once —
+            // only the first one is allowed to reach the backend.
+            if (otVerifiedPayments.has(paymentId)) { resolve(); return; }
+            otVerifiedPayments.add(paymentId);
+
+            setOtLoading(true, "Confirming…");
+            try {
+              await fetch(`${API_BASE}/verify-general-donation`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  razorpay_payment_id: paymentId,
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_signature: response.razorpay_signature,
+                }),
+              });
+            } catch (_err) {
+              // The charge already succeeded — the webhook records it either way
+            }
+            showOtSuccess({ name: prefill.name, amountInr: amount_inr, paymentId });
+            resolve();
+          },
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.on("payment.failed", response => {
+          setOtError(response.error?.description || response.error?.reason || "Payment failed. Please try a different payment method.");
+          resetOtPayBtn();
+          resolve();
+        });
+        rzp.open();
+      });
+    }
+
+    function showOtSuccess({ name, amountInr, paymentId }) {
+      document.getElementById("ot-form-wrap").classList.add("hidden");
+      const success = document.getElementById("ot-success");
+      success.classList.remove("hidden");
+
+      const msg = document.getElementById("ot-success-msg");
+      if (msg) {
+        msg.textContent =
+          `Thank you${name ? `, ${name}` : ""}. Your ${otInr(amountInr)} donation has been received. ` +
+          `A confirmation is on its way to your email.`;
+      }
+      const idEl = document.getElementById("ot-success-id");
+      if (idEl) idEl.textContent = `Payment ID: ${paymentId}`;
+
+      resetOtPayBtn();
+    }
+
+    function resetOtForm() {
+      document.getElementById("ot-success").classList.add("hidden");
+      document.getElementById("ot-form-wrap").classList.remove("hidden");
+      setOtError("");
+      resetOtPayBtn();
+    }
+
     /* ── Init ───────────────────────────────────────────────────────── */
     document.addEventListener("DOMContentLoaded", loadPlans);
+    document.addEventListener("DOMContentLoaded", loadDonationConfig);
     // Close modal on Escape
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSubModal();
+      if (e.key !== "Escape") return;
+      const otModal = document.getElementById("ot-modal");
+      if (otModal && !otModal.classList.contains("hidden")) {
+        closeOtModal();
+        return;
+      }
+      closeSubModal();
     });
   </script>
   <!-- EVENT POPUP -->
