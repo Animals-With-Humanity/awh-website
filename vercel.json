@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/lalita.html",
+      "destination": "/lalita",
+      "permanent": true
+    },
+  
+  ]
+}
