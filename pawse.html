@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawse | Paws, People, Planet | Animals With Humanity</title>
+  <meta name="description"
+    content="Pawse is Animals With Humanity's paw-friendly green festival in Bhopal. Adoption, vegan food, sustainable shops, workshops, and live music. Sponsor, book a stall, or share feedback." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://awhbharat.org/pawse" />
+  <link rel="icon" href="assets/images/logo.png" type="image/png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://awhbharat.org/pawse" />
+  <meta property="og:title" content="Pawse | Central India's celebration of Paws, People and Planet" />
+  <meta property="og:description"
+    content="A paw-friendly green festival by Animals With Humanity. Adoption, vegan living, workshops, and a city that pauses for a cause." />
+  <meta property="og:image" content="https://awhbharat.org/assets/images/pawse.png" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pawse | Animals With Humanity" />
+  <meta name="twitter:description" content="Paws, people, and planet. Bhopal's paw-friendly green festival." />
+  <meta name="twitter:image" content="https://awhbharat.org/assets/images/pawse.png" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WD12NGKY9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-7WD12NGKY9");
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Outfit", sans-serif;
+      --font-hindi: "Noto Sans Devanagari", sans-serif;
+      --color-paw-purple: #7a27a9;
+      --color-paw-violet: #a74cd4;
+      --color-paw-orange: #f76500;
+      --color-paw-amber: #ff7d22;
+      --color-paw-magenta: #f00281;
+      --color-paw-pink: #fd66c4;
+      --color-paw-lime: #bef521;
+      --color-paw-lemon: #eeff66;
+      --color-paw-blue: #0253d1;
+      --color-paw-sky: #2e74df;
+      --color-brand-dark: #1f2937;
+    }
+  </style>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f4f0fb; }
+    ::-webkit-scrollbar-thumb { background: #7a27a9; border-radius: 4px; }
+
+    .marquee-mask { overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: marquee 42s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    .rise { opacity: 0; transform: translateY(18px); animation: rise 0.7s ease forwards; }
+    .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; } .d3 { animation-delay: .24s; } .d4 { animation-delay: .32s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    .float-y { animation: floaty 6s ease-in-out infinite; }
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    .paw-orb {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 999px;
+      animation: floaty 7s ease-in-out infinite;
+    }
+    .paw-orb-a { width: 64px; height: 64px; background: #bef521; top: 11%; left: 44%; box-shadow: 0 14px 30px rgba(190, 245, 33, 0.35); }
+    .paw-orb-b { width: 36px; height: 36px; background: #fd66c4; top: 16%; right: 4%; animation-delay: -2.2s; }
+    .paw-orb-c { width: 22px; height: 22px; background: #eeff66; bottom: 14%; left: 6%; animation-delay: -3.4s; }
+    @media (max-width: 1023px) {
+      .paw-orb-a { left: auto; right: 8%; top: 8%; width: 42px; height: 42px; }
+      .paw-orb-b { display: none; }
+    }
+
+    .poster-tilt { transform: rotate(2.5deg); transition: transform .45s ease; }
+    .poster-tilt:hover { transform: rotate(0deg) scale(1.02); }
+
+    .paw-input, .paw-select, .paw-area {
+      width: 100%;
+      border-radius: 14px;
+      border: 1.5px solid #e7dff3;
+      background: #fff;
+      padding: 0.8rem 0.95rem;
+      font: inherit;
+      color: #1f2937;
+    }
+    .paw-input:focus, .paw-select:focus, .paw-area:focus {
+      outline: none;
+      border-color: #7a27a9;
+      box-shadow: 0 0 0 3px rgba(122, 39, 169, 0.18);
+    }
+    .paw-area { min-height: 120px; resize: vertical; }
+
+    .stars { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 6px; }
+    .stars input { position: absolute; opacity: 0; pointer-events: none; }
+    .stars label {
+      cursor: pointer;
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      background: #f6f1fb;
+      color: #7a27a9;
+      font-weight: 800;
+    }
+    .stars label:hover, .stars label:hover ~ label, .stars input:checked ~ label {
+      background: #bef521;
+      color: #1f2937;
+    }
+    .stars input:focus-visible + label { outline: 2px solid #0253d1; outline-offset: 2px; }
+
+    .tab-btn[aria-selected="true"] { background: #1f2937; color: #eeff66; }
+    .form-panel[hidden] { display: none; }
+
+    .glimpse-track { display: flex; transition: transform .45s ease; }
+    .glimpse-slide { position: relative; flex: 0 0 100%; }
+    .glimpse-slide img,
+    .glimpse-slide video,
+    .glimpse-slide iframe { display: block; width: 100%; height: min(68vw, 520px); object-fit: cover; background: #111; }
+    .glimpse-yt { display: block; position: relative; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; }
+    .glimpse-play {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 76px; height: 76px; border-radius: 999px;
+      display: grid; place-items: center;
+      background: #bef521; color: #1f2937; font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0,0,0,.28);
+    }
+    .glimpse-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.45); transition: width .2s ease, background .2s ease; }
+    .glimpse-dot[aria-current="true"] { width: 22px; background: #bef521; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track, .float-y, .rise, .paw-orb { animation: none !important; opacity: 1; transform: none; }
+      .glimpse-track { transition: none; }
+    }
+
+    /* ---- v2 design layer ---- */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+    .ticker{background:#1f2937;color:#eeff66;overflow:hidden;border-block:3px solid #bef521;transform:rotate(-1.2deg);margin:-14px -2vw 0;position:relative;z-index:5}
+    .ticker-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+    .ticker span{font-weight:800;font-size:1.6rem;padding:.7rem 1.6rem;white-space:nowrap;letter-spacing:.02em}
+    .ticker span:nth-child(even){color:#fd66c4}
+    .pop{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;position:relative;overflow:hidden}
+    .pop:hover{transform:translateY(-8px) rotate(-1.2deg);box-shadow:0 22px 40px rgba(58,18,128,.22)}
+    .pop .big{position:absolute;right:-6px;bottom:-26px;font-size:7.5rem;font-weight:800;line-height:1;opacity:.12;pointer-events:none;transition:transform .4s,opacity .4s}
+    .pop:hover .big{transform:scale(1.18) rotate(8deg);opacity:.22}
+    .hero-title{background:linear-gradient(100deg,#bef521,#eeff66,#fd66c4,#bef521);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+    @keyframes shine{to{background-position:250% 0}}
+    nav.scrolled{box-shadow:0 10px 30px rgba(31,41,55,.12)}
+    /* media rail */
+    .media-rail{overflow-x:auto;scrollbar-width:none;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+    .media-rail::-webkit-scrollbar{display:none}
+    .media-track{display:flex;gap:14px;width:max-content;padding:10px 24px 30px;animation:marquee 60s linear infinite}
+    .media-rail:hover .media-track,.media-rail:focus-within .media-track,.media-rail.paused .media-track{animation-play-state:paused}
+    .m-card{position:relative;flex:0 0 auto;width:150px;height:360px;border-radius:28px;overflow:hidden;color:#fff;cursor:pointer;text-align:left;
+      transition:width .55s cubic-bezier(.2,.8,.2,1),transform .4s;box-shadow:0 14px 30px rgba(31,41,55,.18);border:0;padding:0}
+    .m-card:hover,.m-card:focus-visible,.m-card.open{width:440px;transform:translateY(-6px)}
+    .m-card:focus-visible{outline:4px solid #1f2937;outline-offset:3px}
+    .m-name{position:absolute;left:0;top:0;bottom:0;width:150px;display:flex;align-items:flex-end;justify-content:center;padding:22px 0}
+    .m-name b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:1.7rem;font-weight:800;letter-spacing:.01em;white-space:nowrap;transition:opacity .3s}
+    .m-card:hover .m-name b,.m-card.open .m-name b,.m-card:focus-visible .m-name b{opacity:.35}
+    .m-no{position:absolute;top:18px;left:20px;font-weight:800;opacity:.75}
+    .m-body{position:absolute;inset:0;padding:26px 28px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;width:440px;opacity:0;transform:translateX(24px);transition:opacity .35s,transform .45s}
+    .m-card:hover .m-body,.m-card.open .m-body,.m-card:focus-visible .m-body{opacity:1;transform:none;transition-delay:.18s}
+    .m-body h3{font-size:2rem;font-weight:800;line-height:1.05}
+    .m-body p{font-weight:500;line-height:1.45;opacity:.92}
+    .m-go{display:inline-flex;align-items:center;gap:8px;width:fit-content;border-radius:999px;background:#bef521;color:#1f2937;font-weight:800;padding:.6rem 1.1rem;text-decoration:none}
+    @media(max-width:640px){.media-rail{overflow-x:auto}.media-track{animation:none}.m-card.open{width:min(84vw,360px)}.m-card:hover{width:150px}.m-card.open:hover{width:min(84vw,360px)}.m-body{width:min(84vw,360px)}}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track,.media-track,.hero-title{animation:none!important}}
+  </style>
+</head>
+
+<body class="bg-white text-brand-dark font-sans antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[80] focus:bg-paw-lemon focus:px-3 focus:py-2 focus:rounded-lg">Skip to content</a>
+
+  <div class="bg-paw-lemon text-brand-dark text-sm font-semibold">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 text-center">
+      <span class="hidden sm:inline tracking-wide">Paws · People · Planet</span>
+      <span class="sm:hidden">Paws · People · Planet</span>
+      <span class="opacity-40" aria-hidden="true">/</span>
+      <span>An initiative by Animals With Humanity</span>
+    </div>
+  </div>
+
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Animals With Humanity home">
+          <img src="assets/images/logo.png" alt="" class="h-10 w-10 object-contain" />
+          <span class="flex flex-col">
+            <span class="text-xl font-extrabold leading-none">Pawse</span>
+            <span class="text-[10px] font-bold text-paw-purple uppercase tracking-widest mt-0.5">Animals With Humanity</span>
+          </span>
+        </a>
+        <div class="hidden lg:flex items-center gap-7">
+          <a href="#experience" class="font-semibold text-gray-600 hover:text-paw-purple transition">Experience</a>
+          <a href="#glimpses" class="font-semibold text-gray-600 hover:text-paw-purple transition">Glimpses</a>
+          <a href="#editions" class="font-semibold text-gray-600 hover:text-paw-purple transition">Editions</a>
+          <a href="#sponsors" class="font-semibold text-gray-600 hover:text-paw-purple transition">Sponsors</a>
+          <a href="#media" class="font-semibold text-gray-600 hover:text-paw-purple transition">Media</a>
+          <a href="#desk" data-open-form="feedback" class="font-semibold text-gray-600 hover:text-paw-purple transition">Feedback</a>
+          <a href="#desk" data-open-form="stall" class="font-semibold text-paw-magenta hover:text-paw-purple transition">Book a stall</a>
+          <a href="#desk" data-open-form="sponsor" class="inline-flex items-center px-5 py-2.5 bg-paw-lime text-brand-dark font-bold rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 transition">Sponsor Pawse</a>
+        </div>
+        <button id="menu-btn" class="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+      <div class="flex flex-col p-4 gap-2">
+        <a href="#experience" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Experience</a>
+        <a href="#glimpses" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Glimpses</a>
+        <a href="#editions" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Editions</a>
+        <a href="#sponsors" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Sponsors</a>
+        <a href="#media" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Media</a>
+        <a href="#desk" data-open-form="feedback" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Feedback</a>
+        <a href="#desk" data-open-form="stall" class="px-4 py-3 font-semibold text-paw-magenta rounded-lg hover:bg-pink-50">Book a stall</a>
+        <a href="#desk" data-open-form="sponsor" class="px-4 py-3 text-center font-bold rounded-lg bg-paw-lime">Sponsor Pawse</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="relative overflow-hidden text-white">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,#a74cd4_0%,transparent_42%),radial-gradient(circle_at_90%_10%,#2e74df_0%,transparent_40%),linear-gradient(165deg,#3a1280_0%,#0253d1_62%,#7a27a9_100%)]"></div>
+      <span class="paw-orb paw-orb-a" aria-hidden="true"></span>
+      <span class="paw-orb paw-orb-b" aria-hidden="true"></span>
+      <span class="paw-orb paw-orb-c" aria-hidden="true"></span>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+        <div>
+          <p class="rise inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/25 px-3 py-1 text-sm font-semibold backdrop-blur-sm">
+            <span class="h-2 w-2 rounded-full bg-paw-lime"></span>
+            Pawse 2026–27 · Bhopal
+          </p>
+          <h1 class="rise d1 mt-5 text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.9] hero-title">PAWSE</h1>
+          <p class="rise d2 mt-4 text-2xl sm:text-3xl font-medium text-white/95">Central India's largest celebration of</p>
+          <p class="rise d2 text-3xl sm:text-4xl font-extrabold text-paw-lemon">Paws · People · Planet</p>
+          <div class="rise d3 mt-8 flex flex-wrap gap-3">
+            <a href="#experience" class="inline-flex items-center gap-2 rounded-full bg-paw-lime px-6 py-3 font-bold text-brand-dark shadow-lg hover:-translate-y-0.5 transition">
+              Explore the festival <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+            <a href="#desk" data-open-form="stall" class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-paw-purple hover:-translate-y-0.5 transition">Book a stall</a>
+            <a href="#desk" data-open-form="sponsor" class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-bold text-white hover:bg-white/10 transition">Become a sponsor</a>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="assets/images/pawse.png" alt="Pawse poster: The Ultimate Paw Fest at Bansal One Walk, Bhopal, with Animals With Humanity and Bansal Group." class="poster-tilt float-y relative z-10 w-full rounded-[28px] shadow-2xl border-4 border-white/80" />
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Adoption camp</span><span>✦</span><span>Vegan food</span><span>✦</span><span>Live music</span><span>✦</span><span>Paw walk</span><span>✦</span><span>Workshops</span><span>✦</span><span>Pottery</span><span>✦</span><span>Sustainable shops</span><span>✦</span><span>Tambola</span><span>✦</span><span>Paws · People · Planet</span><span>✦</span><span>Adoption camp</span><span>✦</span><span>Vegan food</span><span>✦</span><span>Live music</span><span>✦</span><span>Paw walk</span><span>✦</span><span>Workshops</span><span>✦</span><span>Pottery</span><span>✦</span><span>Sustainable shops</span><span>✦</span><span>Tambola</span><span>✦</span><span>Paws · People · Planet</span><span>✦</span></div></div>
+
+    <section id="experience" class="scroll-mt-24 bg-[#f7f2fb] py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-bold uppercase tracking-[0.18em] text-paw-purple text-sm">On the ground</p>
+            <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">What you walk into</h2>
+          </div>
+        </div>
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <article class="pop reveal sm:col-span-2 lg:col-span-1 rounded-3xl bg-paw-purple text-white p-6 min-h-52 flex flex-col justify-between">
+            <p class="text-paw-lime font-bold">01</p>
+            <div>
+              <h3 class="text-2xl font-extrabold">Adoption camp</h3>
+            </div>
+          <span class="big" aria-hidden="true">01</span></article>
+          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
+            <h3 class="text-xl font-extrabold">Paint with paws</h3>
+          <span class="big" aria-hidden="true">02</span></article>
+          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
+            <h3 class="text-xl font-extrabold">Pottery</h3>
+          <span class="big" aria-hidden="true">03</span></article>
+          <article class="pop reveal rounded-3xl bg-paw-blue text-white p-6">
+            <h3 class="text-xl font-extrabold">Flute boxing &amp; live music</h3>
+          <span class="big" aria-hidden="true">04</span></article>
+          <article class="pop reveal rounded-3xl bg-paw-lemon p-6">
+            <h3 class="text-xl font-extrabold">Crazyy workshops</h3>
+          <span class="big" aria-hidden="true">05</span></article>
+          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
+            <h3 class="text-xl font-extrabold">Health check-up &amp; vaccination</h3>
+          <span class="big" aria-hidden="true">06</span></article>
+          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
+            <h3 class="text-xl font-extrabold">Shop sustainable</h3>
+          <span class="big" aria-hidden="true">07</span></article>
+          <article class="pop reveal rounded-3xl bg-paw-pink/30 p-6">
+            <h3 class="text-xl font-extrabold">Tambola &amp; games</h3>
+          <span class="big" aria-hidden="true">08</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="everyone" class="scroll-mt-24 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-center">A place for everyone</h2>
+        <div class="mt-10 grid md:grid-cols-3 gap-6">
+          <div class="pop reveal rounded-3xl border border-gray-100 p-6 shadow-sm">
+            <div class="h-12 w-12 rounded-2xl bg-paw-blue text-white grid place-items-center font-extrabold">Paw</div>
+            <ul class="mt-5 space-y-2 text-gray-700 font-medium">
+              <li>Paw walk</li>
+              <li>Understand paw parenting</li>
+              <li>Paw products shops</li>
+              <li>Games for paws</li>
+              <li>Stick station</li>
+              <li>Paws are welcome. Bring a leash.</li>
+            </ul>
+          </div>
+          <div class="pop reveal rounded-3xl border border-gray-100 p-6 shadow-sm bg-paw-lemon/40">
+            <div class="h-12 w-12 rounded-2xl bg-paw-magenta text-white grid place-items-center font-extrabold">You</div>
+            <ul class="mt-5 space-y-2 text-gray-800 font-medium">
+              <li>Photobooth</li>
+              <li>Like karaoke</li>
+              <li>Grow your own food, cupcake decoration, nest making</li>
+              <li>Doodle booth</li>
+            </ul>
+          </div>
+          <div class="pop reveal rounded-3xl border border-gray-100 p-6 shadow-sm">
+            <div class="h-12 w-12 rounded-2xl bg-paw-lime text-brand-dark grid place-items-center font-extrabold">Earth</div>
+            <ul class="mt-5 space-y-2 text-gray-700 font-medium">
+              <li>Learn composting</li>
+              <li>Why waste segregation matters</li>
+              <li>Shop plants</li>
+              <li>Plant-based food</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="glimpses" class="scroll-mt-24 bg-brand-dark text-white py-20" aria-labelledby="glimpses-title">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="font-bold uppercase tracking-[0.18em] text-paw-lime text-sm">Glimpses</p>
+            <h2 id="glimpses-title" class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">From the editions already held</h2>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" id="glimpse-prev" class="h-11 w-11 rounded-full bg-white/10 font-extrabold hover:bg-paw-lime hover:text-brand-dark" aria-label="Previous glimpse">←</button>
+            <button type="button" id="glimpse-next" class="h-11 w-11 rounded-full bg-white/10 font-extrabold hover:bg-paw-lime hover:text-brand-dark" aria-label="Next glimpse">→</button>
+          </div>
+        </div>
+        <div id="glimpse-viewport" class="mt-8 overflow-hidden rounded-[28px] outline-none focus-visible:ring-4 focus-visible:ring-paw-lime" tabindex="0" aria-roledescription="carousel" aria-label="Photos and films from past Pawse editions">
+          <div id="glimpse-track" class="glimpse-track"></div>
+        </div>
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <p id="glimpse-caption" class="font-semibold text-paw-lemon"></p>
+          <div id="glimpse-dots" class="flex items-center gap-2" role="tablist" aria-label="Choose a glimpse"></div>
+        </div>
+        <p id="glimpse-count" class="sr-only" aria-live="polite"></p>
+        <a href="https://kamero.ai/pawse2026" class="mt-5 inline-flex items-center gap-2 font-bold text-paw-lemon hover:underline" target="_blank" rel="noopener noreferrer">See the January 2026 photos <i data-lucide="external-link" class="w-4 h-4"></i></a>
+      </div>
+    </section>
+
+    <section id="editions" class="scroll-mt-24 bg-paw-magenta py-20 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="font-bold uppercase tracking-[0.18em] text-paw-lemon text-sm">Proof, not a promise</p>
+        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Two editions. One walk.</h2>
+        <p class="mt-3 max-w-2xl text-white/90">The next edition is Pawse 2026–27. Dates go first to people who register below.</p>
+
+        <article class="reveal mt-10 rounded-[28px] bg-white text-brand-dark p-6 sm:p-8">
+          <div class="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p class="text-paw-magenta font-extrabold text-3xl">2024 · December</p>
+              <p class="font-semibold">1st edition · 27, 28, 29 December · Bansal One Walk</p>
+            </div>
+          </div>
+          <dl class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold" data-count="4500">0</dt><dd class="text-sm font-semibold text-gray-600">attendees</dd></div>
+            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold" data-count="14">0</dt><dd class="text-sm font-semibold text-gray-600">adoptions</dd></div>
+            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold" data-count="45">0</dt><dd class="text-sm font-semibold text-gray-600">paws</dd></div>
+            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold">1M</dt><dd class="text-sm font-semibold text-gray-600">social reach</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">20+</dt><dd class="text-sm font-semibold text-gray-600">event partners</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">25</dt><dd class="text-sm font-semibold text-gray-600">shops &amp; activities</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">8</dt><dd class="text-sm font-semibold text-gray-600">media features</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">1st</dt><dd class="text-sm font-semibold text-gray-600">paw-friendly green festival</dd></div>
+          </dl>
+        </article>
+
+        <article class="reveal mt-6 rounded-[28px] bg-white text-brand-dark p-6 sm:p-8">
+          <p class="text-paw-purple font-extrabold tracking-wide">PAWSE for a CAUSE</p>
+          <p class="mt-1 text-2xl font-extrabold">2026 · January</p>
+          <p class="font-semibold">2nd edition · 24, 25, 26 January · Bansal One Walk</p>
+          <dl class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold" data-count="3500">0</dt><dd class="text-sm font-semibold text-gray-600">attendees</dd></div>
+            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold" data-count="22">0</dt><dd class="text-sm font-semibold text-gray-600">adoptions</dd></div>
+            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold" data-count="86">0</dt><dd class="text-sm font-semibold text-gray-600">paws</dd></div>
+            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold">2.5M</dt><dd class="text-sm font-semibold text-gray-600">social reach</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">30+</dt><dd class="text-sm font-semibold text-gray-600">event partners</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">36</dt><dd class="text-sm font-semibold text-gray-600">shops &amp; activities</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">15+</dt><dd class="text-sm font-semibold text-gray-600">media features</dd></div>
+            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">45%</dt><dd class="text-sm font-semibold text-gray-600">GHG emissions avoided</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section id="impact" class="scroll-mt-24 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[1fr_1fr] gap-8 items-start">
+          <div>
+            <p class="font-bold uppercase tracking-[0.18em] text-paw-orange text-sm">Social impact</p>
+            <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Partner at the gatherings people already love</h2>
+          </div>
+          <ul class="space-y-3">
+            <li class="rounded-2xl bg-paw-orange text-white px-5 py-4 font-bold text-lg">Piyush Mishra's Brahmagrahan · 2024</li>
+            <li class="rounded-2xl bg-paw-purple text-white px-5 py-4 font-bold text-lg">Rang · Javed Ali · 2023</li>
+            <li class="rounded-2xl bg-paw-blue text-white px-5 py-4 font-bold text-lg">Osho Jaim · 2025</li>
+            <li>
+              <a href="#desk" data-open-form="sponsor" class="flex items-center justify-between rounded-2xl bg-paw-lime px-5 py-4 font-extrabold text-brand-dark hover:-translate-y-0.5 transition">
+                This could be you <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors" class="scroll-mt-24 bg-[#fff4ea] py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="font-bold uppercase tracking-[0.18em] text-paw-orange text-sm">They already paused with us</p>
+        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Previous sponsors &amp; collaborators</h2>
+        <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bansal-group.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bansal Group</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bmc.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bhopal Municipal Corporation</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/aasra.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Aasra Animal Shelter</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/mp-police.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Madhya Pradesh Police</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/nhdc.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">NHDC</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/peta.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">PETA India</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bgi.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bansal Group of Institutes</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/nmims.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">NMIMS</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/sage.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">SAGE University</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/oriental.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Oriental School</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/dansh.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">DANSH</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/mercy.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Mercy for Animals</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/chullbull.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Chullbull Pet Products</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/pawsitivity.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Pawsitivity</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/human-beast.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Human and the Beast</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/drools.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Drools</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/doggyji.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Doggy Ji</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/pawsitive.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Pawsitive India</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/greensarthi.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Green Sarthi</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bio.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bio Nutrients</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/unknown.png" alt="Sponsor logo" class="mx-auto h-20 w-full object-contain" /></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/amera.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Améra</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/stws.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">STWS</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/ecocradle.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Ecocradle</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/toneop.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">ToneOp</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/garlic.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Garlic Bread</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bakeshake.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bake &amp; Shake</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/meepleton.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Meepleton</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/starbucks.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Starbucks</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/adzone.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Adzone</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/arushi.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Arushi</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/drishti.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Hotel Drishti Inn</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bus.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Update Bus Bhopal</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/castrol.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Castrol Power1</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/echo.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Echo Edge</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/conversions.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Conversions</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/artlane.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Art Lane</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/abheeshtam.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">abheeshtam design studio</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bindu.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bindu</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bazarville.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">bazarville</span></li>
+          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/printkaari.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">printkaari</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="media" class="scroll-mt-24 bg-paw-pink/25 py-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="font-bold uppercase tracking-[0.18em] text-paw-magenta text-sm">In the news</p>
+        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Media features</h2>
+        <blockquote class="mt-5 max-w-3xl text-2xl font-semibold leading-snug"><span class="font-hindi">“जब इंसान और जानवर साथ-साथ खुशहाल हों, तभी एक बेहतर भविष्य संभव है।”</span></blockquote>
+        <p class="mt-4 text-sm font-semibold text-gray-600">Hover a panel to open the story. Tap on a phone.</p>
+      </div>
+      <div class="mt-10 media-rail" id="media-rail" aria-label="Media coverage of Pawse"><div class="media-track" id="media-track"></div></div>
+    </section>
+
+    <section id="join" class="scroll-mt-24 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="font-bold uppercase tracking-[0.18em] text-paw-purple text-sm">Get involved</p>
+        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Come in as a sponsor, a stall, or a voice</h2>
+        <div class="mt-8 grid lg:grid-cols-3 gap-5">
+          <article class="pop reveal rounded-3xl bg-paw-blue text-white p-7 flex flex-col">
+            <h3 class="text-2xl font-extrabold">Sponsor the festival</h3>
+            <p class="mt-3 text-white/90 leading-relaxed">Animals With Humanity is a registered NGO with 12A, 80G, and CSR registration. Donors can avail tax exemption under the old tax regime.</p>
+            <a href="#desk" data-open-form="sponsor" class="mt-6 inline-flex w-fit rounded-full bg-paw-lime px-5 py-2.5 font-bold text-brand-dark">Tell us about your brand</a>
+          </article>
+          <article class="pop reveal rounded-3xl bg-paw-purple text-white p-7 flex flex-col">
+            <h3 class="text-2xl font-extrabold">Book a stall</h3>
+            <p class="mt-3 text-white/90 leading-relaxed">A table, chair, and lighting come with the stall.</p>
+            <a href="#desk" data-open-form="stall" class="mt-6 inline-flex w-fit rounded-full bg-white px-5 py-2.5 font-bold text-paw-purple">Apply for a stall</a>
+          </article>
+          <article class="pop reveal rounded-3xl bg-paw-lemon p-7 flex flex-col">
+            <h3 class="text-2xl font-extrabold">Share what you felt</h3>
+            <p class="mt-3 leading-relaxed">Visited, volunteered, fostered, sponsored, or still planning to come. Feedback shapes the next ground.</p>
+            <a href="#desk" data-open-form="feedback" class="mt-6 inline-flex w-fit rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon">Leave feedback</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="desk" class="scroll-mt-24 bg-[#f7f2fb] py-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <h2 class="text-4xl font-extrabold tracking-tight">The Pawse desk</h2>
+        <p class="mt-3 text-gray-600">Fill the form that fits. Until the desk is connected to our backend, sending prepares an email to <a class="font-bold text-paw-purple" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a> so the team receives it.</p>
+
+        <div class="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Pawse forms">
+          <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-sponsor" aria-selected="true" aria-controls="panel-sponsor" data-form-tab="sponsor">Sponsor</button>
+          <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-stall" aria-selected="false" aria-controls="panel-stall" data-form-tab="stall">Stall</button>
+          <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-feedback" aria-selected="false" aria-controls="panel-feedback" data-form-tab="feedback">Feedback</button>
+        </div>
+
+        <div class="mt-5 rounded-[28px] bg-white p-6 sm:p-8 shadow-sm border border-purple-100">
+          <div id="panel-sponsor" class="form-panel" role="tabpanel" aria-labelledby="tab-sponsor">
+            <form id="form-sponsor" data-kind="Sponsor" novalidate>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <label class="block text-sm font-semibold">Your name
+                  <input class="paw-input mt-1" name="name" required autocomplete="name" />
+                </label>
+                <label class="block text-sm font-semibold">Organisation
+                  <input class="paw-input mt-1" name="organisation" required autocomplete="organization" />
+                </label>
+                <label class="block text-sm font-semibold">Email
+                  <input class="paw-input mt-1" type="email" name="email" required autocomplete="email" />
+                </label>
+                <label class="block text-sm font-semibold">Phone
+                  <input class="paw-input mt-1" type="tel" name="phone" required autocomplete="tel" />
+                </label>
+                <label class="block text-sm font-semibold">City
+                  <input class="paw-input mt-1" name="city" required autocomplete="address-level2" />
+                </label>
+                <label class="block text-sm font-semibold">Website or Instagram
+                  <input class="paw-input mt-1" name="link" placeholder="https://" />
+                </label>
+              </div>
+              <label class="block text-sm font-semibold mt-4">How do you want to show up?
+                <select class="paw-select mt-1" name="presence" required>
+                  <option value="">Choose one</option>
+                  <option>Lead the festival with us</option>
+                  <option>Power a zone</option>
+                  <option>Associate with a corner of Pawse</option>
+                  <option>Support the cause</option>
+                  <option>Not sure yet, guide me</option>
+                </select>
+              </label>
+              <label class="block text-sm font-semibold mt-4">Vegan products or experiences you will bring
+                <textarea class="paw-area mt-1" name="veganProducts" required placeholder="Tell us the vegan products, sampling, or planet-friendly activation you want at Pawse."></textarea>
+              </label>
+              <label class="mt-4 flex items-start gap-3 text-sm font-medium">
+                <input type="checkbox" name="veganConfirmed" value="yes" required class="mt-1 h-4 w-4 accent-paw-purple" />
+                <span>I confirm this activation is 100% vegan and fits a sustainable, paw-friendly festival.</span>
+              </label>
+              <label class="mt-3 flex items-start gap-3 text-sm font-medium">
+                <input type="checkbox" name="csrNote" value="yes" class="mt-1 h-4 w-4 accent-paw-purple" />
+                <span>Please share 12A, 80G, and CSR documentation with us.</span>
+              </label>
+              <button class="mt-6 rounded-full bg-paw-purple px-6 py-3 font-bold text-white hover:bg-paw-blue transition" type="submit">Send sponsor note</button>
+            </form>
+            <div class="success hidden" data-success-for="form-sponsor"></div>
+          </div>
+
+          <div id="panel-stall" class="form-panel" role="tabpanel" aria-labelledby="tab-stall" hidden>
+            <form id="form-stall" data-kind="Stall" novalidate>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <label class="block text-sm font-semibold">Your name
+                  <input class="paw-input mt-1" name="name" required autocomplete="name" />
+                </label>
+                <label class="block text-sm font-semibold">Stall or brand name
+                  <input class="paw-input mt-1" name="brand" required />
+                </label>
+                <label class="block text-sm font-semibold">Email
+                  <input class="paw-input mt-1" type="email" name="email" required autocomplete="email" />
+                </label>
+                <label class="block text-sm font-semibold">Phone
+                  <input class="paw-input mt-1" type="tel" name="phone" required autocomplete="tel" />
+                </label>
+                <label class="block text-sm font-semibold">City
+                  <input class="paw-input mt-1" name="city" required />
+                </label>
+                <label class="block text-sm font-semibold">Stall type
+                  <select class="paw-select mt-1" name="stallType" required>
+                    <option value="">Choose one</option>
+                    <option>Food stall</option>
+                    <option>Paw products</option>
+                    <option>Activity stall</option>
+                    <option>Retail stall</option>
+                  </select>
+                </label>
+              </div>
+              <label class="block text-sm font-semibold mt-4">Vegan products you will offer
+                <textarea class="paw-area mt-1" name="veganProducts" required placeholder="List every vegan item, dish, or activity. Example: millet momos, oat lattes, compost kits, upcycled collars."></textarea>
+              </label>
+              <label class="block text-sm font-semibold mt-4">How is the stall packed and served?
+                <select class="paw-select mt-1" name="packaging" required>
+                  <option value="">Choose one</option>
+                  <option>Reusable ware</option>
+                  <option>Home-compostable packaging</option>
+                  <option>Both</option>
+                  <option>I will explain in the note</option>
+                </select>
+              </label>
+              <label class="block text-sm font-semibold mt-4">Instagram or website
+                <input class="paw-input mt-1" name="link" />
+              </label>
+              <label class="block text-sm font-semibold mt-4">Anything else the team should know
+                <textarea class="paw-area mt-1" name="note" placeholder="Power needs, a live demo, or how much space the activity likes. Skip money. We will talk that through with you."></textarea>
+              </label>
+              <label class="mt-4 flex items-start gap-3 text-sm font-medium">
+                <input type="checkbox" name="veganConfirmed" value="yes" required class="mt-1 h-4 w-4 accent-paw-purple" />
+                <span>I confirm this stall is sustainable and 100% vegan. Nothing served or sold will use animal products.</span>
+              </label>
+              <button class="mt-6 rounded-full bg-paw-magenta px-6 py-3 font-bold text-white hover:bg-paw-purple transition" type="submit">Apply for a stall</button>
+            </form>
+            <div class="success hidden" data-success-for="form-stall"></div>
+          </div>
+
+          <div id="panel-feedback" class="form-panel" role="tabpanel" aria-labelledby="tab-feedback" hidden>
+            <form id="form-feedback" data-kind="Feedback" novalidate>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <label class="block text-sm font-semibold">Name
+                  <input class="paw-input mt-1" name="name" required autocomplete="name" />
+                </label>
+                <label class="block text-sm font-semibold">Email <span class="font-normal text-gray-500">(optional)</span>
+                  <input class="paw-input mt-1" type="email" name="email" autocomplete="email" />
+                </label>
+              </div>
+              <label class="block text-sm font-semibold mt-4">I am
+                <select class="paw-select mt-1" name="role" required>
+                  <option value="">Choose one</option>
+                  <option>A visitor</option>
+                  <option>A paw parent</option>
+                  <option>A volunteer</option>
+                  <option>A sponsor</option>
+                  <option>A stall</option>
+                  <option>Someone who has not been yet</option>
+                </select>
+              </label>
+              <label class="block text-sm font-semibold mt-4">Which edition
+                <select class="paw-select mt-1" name="edition" required>
+                  <option value="">Choose one</option>
+                  <option>December 2024</option>
+                  <option>January 2026</option>
+                  <option>Both</option>
+                  <option>I have not been yet</option>
+                </select>
+              </label>
+              <fieldset class="mt-4">
+                <legend class="text-sm font-semibold">How did Pawse feel? <span class="font-normal text-gray-500">5 is the best</span></legend>
+                <div class="stars mt-2">
+                  <input type="radio" name="rating" id="star5" value="5" required /><label for="star5">5</label>
+                  <input type="radio" name="rating" id="star4" value="4" /><label for="star4">4</label>
+                  <input type="radio" name="rating" id="star3" value="3" /><label for="star3">3</label>
+                  <input type="radio" name="rating" id="star2" value="2" /><label for="star2">2</label>
+                  <input type="radio" name="rating" id="star1" value="1" /><label for="star1">1</label>
+                </div>
+              </fieldset>
+              <label class="block text-sm font-semibold mt-4">What should stay
+                <textarea class="paw-area mt-1" name="loved" required></textarea>
+              </label>
+              <label class="block text-sm font-semibold mt-4">What should change
+                <textarea class="paw-area mt-1" name="improve" required></textarea>
+              </label>
+              <label class="mt-4 flex items-start gap-3 text-sm font-medium">
+                <input type="checkbox" name="keepPosted" value="yes" class="mt-1 h-4 w-4 accent-paw-purple" />
+                <span>Tell me when the next Pawse dates are out.</span>
+              </label>
+              <button class="mt-6 rounded-full bg-brand-dark px-6 py-3 font-bold text-paw-lemon" type="submit">Send feedback</button>
+            </form>
+            <div class="success hidden" data-success-for="form-feedback"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paw-lime py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="font-bold text-paw-magenta">Animals With Humanity</p>
+          <h2 class="mt-2 text-5xl sm:text-6xl font-extrabold tracking-tight leading-[0.95]">Will you Pawse for a cause?</h2>
+          <p class="mt-6 font-semibold">Email · <a class="underline" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a></p>
+        </div>
+        <img src="assets/images/pawse/friends.jpg" alt="Two friends smiling with a small dog at Pawse." class="w-full rounded-[28px] object-cover max-h-[420px] shadow-xl" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-50 border-t-8 border-paw-lemon py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
+      <div>
+        <img src="assets/images/logo.png" alt="Animals With Humanity" class="h-14 w-auto" />
+        <p class="mt-3 font-extrabold">Animals With Humanity</p>
+        <p class="font-hindi text-gray-600">दयालुः भवतु, सर्वविधाय।</p>
+        <p class="text-sm text-gray-500 mt-2">Bhopal, Madhya Pradesh</p>
+      </div>
+      <div>
+        <p class="font-bold">Pawse</p>
+        <ul class="mt-3 space-y-2 text-sm text-gray-600">
+          <li><a class="hover:text-paw-purple" href="#experience">Experience</a></li>
+          <li><a class="hover:text-paw-purple" href="#glimpses">Glimpses</a></li>
+          <li><a class="hover:text-paw-purple" href="#editions">Past editions</a></li>
+          <li><a class="hover:text-paw-purple" href="#sponsors">Sponsors</a></li>
+          <li><a class="hover:text-paw-purple" href="#desk" data-open-form="stall">Book a stall</a></li>
+          <li><a class="hover:text-paw-purple" href="index.html">AWH home</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-bold">Find us</p>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a class="text-paw-purple font-semibold" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a></li>
+          <li><a class="text-paw-purple font-semibold" href="https://www.instagram.com/animalswithhumanity_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a class="text-paw-purple font-semibold" href="https://wa.me/7067322053" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+        <p class="mt-4 text-xs text-gray-500">Form notes are used only to reply about Pawse.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    menuBtn?.addEventListener("click", () => {
+      const open = menu.classList.toggle("hidden") === false;
+      menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    menu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => menu.classList.add("hidden"));
+    });
+
+    const tabs = document.querySelectorAll("[data-form-tab]");
+    const panels = {
+      sponsor: document.getElementById("panel-sponsor"),
+      stall: document.getElementById("panel-stall"),
+      feedback: document.getElementById("panel-feedback"),
+    };
+
+    function openForm(name) {
+      tabs.forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.formTab === name)));
+      Object.entries(panels).forEach(([key, panel]) => {
+        if (!panel) return;
+        panel.hidden = key !== name;
+      });
+    }
+
+    tabs.forEach((tab) => tab.addEventListener("click", () => openForm(tab.dataset.formTab)));
+    document.querySelectorAll("[data-open-form]").forEach((link) => {
+      link.addEventListener("click", () => openForm(link.dataset.openForm));
+    });
+
+    // Backend hook. Set this to the future endpoint. Empty keeps the email handoff.
+    const PAWSE_LEAD_ENDPOINT = "";
+
+    function labelize(key) {
+      return key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
+    }
+
+    document.querySelectorAll("form[data-kind]").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        const button = form.querySelector("[type=submit]");
+        button.disabled = true;
+        const data = Object.fromEntries(new FormData(form).entries());
+        data.kind = form.dataset.kind;
+        data.sentAt = new Date().toISOString();
+        if (!data.veganConfirmed) data.veganConfirmed = "no";
+        if (!data.csrNote) data.csrNote = "no";
+        if (!data.keepPosted) data.keepPosted = "no";
+
+        try {
+          const saved = JSON.parse(localStorage.getItem("pawseLeads") || "[]");
+          saved.push(data);
+          localStorage.setItem("pawseLeads", JSON.stringify(saved));
+        } catch (_) { /* private mode can block storage; the email still works */ }
+
+        let delivered = false;
+        if (PAWSE_LEAD_ENDPOINT) {
+          try {
+            const response = await fetch(PAWSE_LEAD_ENDPOINT, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+            delivered = response.ok;
+          } catch (_) { delivered = false; }
+        }
+
+        const lines = Object.entries(data).map(([key, value]) => `${labelize(key)}: ${value || "-"}`).join("\n");
+        const subject = encodeURIComponent(`Pawse ${data.kind}: ${data.brand || data.organisation || data.name || "note"}`);
+        const href = `mailto:pawse@awhbharat.org?subject=${subject}&body=${encodeURIComponent(lines)}`;
+        const success = form.parentElement.querySelector("[data-success-for]");
+        success.classList.remove("hidden");
+        form.classList.add("hidden");
+        success.innerHTML = delivered
+          ? `<p class="text-2xl font-extrabold">Received.</p><p class="mt-2 text-gray-600">The Pawse desk has your ${data.kind.toLowerCase()} note.</p>`
+          : `<p class="text-2xl font-extrabold">One last tap.</p>
+             <p class="mt-2 text-gray-600">Your ${data.kind.toLowerCase()} note is ready. Email it to the Pawse desk so a person actually reads it. The same copy is saved in this browser for when the form connects.</p>
+             <a class="mt-5 inline-flex rounded-full bg-paw-lime px-5 py-3 font-bold text-brand-dark" href="${href}">Email pawse@awhbharat.org</a>
+             <button type="button" class="mt-3 block text-sm font-bold text-paw-purple" data-another>Write another</button>`;
+        success.querySelector("[data-another]")?.addEventListener("click", () => {
+          form.reset();
+          form.classList.remove("hidden");
+          success.classList.add("hidden");
+          success.innerHTML = "";
+          button.disabled = false;
+        });
+        button.disabled = false;
+      });
+    });
+
+    const counters = document.querySelectorAll("[data-count]");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.count);
+        if (reduce) {
+          el.textContent = target.toLocaleString("en-IN") + "+";
+        } else {
+          const start = performance.now();
+          const tick = (now) => {
+            const progress = Math.min(1, (now - start) / 900);
+            el.textContent = Math.round(target * progress).toLocaleString("en-IN");
+            if (progress < 1) requestAnimationFrame(tick);
+            else el.textContent = target.toLocaleString("en-IN") + "+";
+          };
+          requestAnimationFrame(tick);
+        }
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => counterObserver.observe(el));
+
+    if (window.lucide) lucide.createIcons();
+
+    // Past-event reel. Push a film into this list and it joins the same carousel:
+    // { type: "video", src: "assets/videos/pawse/live.mp4", poster: "assets/images/pawse/talk.jpg", alt: "Live music at Pawse", caption: "Live music" },
+    // { type: "video", youtube: "VIDEO_ID", poster: "assets/images/pawse/stage-pup.jpg", alt: "Pawse stage", caption: "On stage" },
+    const GLIMPSES = [
+      { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "Pawse crowd laughing together under strings of lights, with a small white dog in the group.", caption: "The crowd, under the lights" },
+      { type: "image", src: "assets/images/pawse/adoption.jpg", alt: "A volunteer on stage holding two small dogs.", caption: "Adoption camp" },
+      { type: "image", src: "assets/images/pawse/stage-pup.jpg", alt: "A person on stage holding a small puppy.", caption: "A pup on stage" },
+      { type: "image", src: "assets/images/pawse/friends.jpg", alt: "Two friends smiling with a small dog at Pawse.", caption: "Friends on the ground" },
+      { type: "image", src: "assets/images/pawse/audience.jpg", alt: "Audience seated on the floor, clapping at Pawse.", caption: "The audience" },
+      { type: "image", src: "assets/images/pawse/talk.jpg", alt: "A speaker with a microphone on the Pawse stage.", caption: "A talk" },
+      { type: "image", src: "assets/images/pawse/workshop.jpg", alt: "Two people painting together at a Pawse workshop.", caption: "Workshop table" },
+    ];
+
+    const glimpseViewport = document.getElementById("glimpse-viewport");
+    const glimpseTrack = document.getElementById("glimpse-track");
+    if (glimpseViewport && glimpseTrack) {
+      const caption = document.getElementById("glimpse-caption");
+      const count = document.getElementById("glimpse-count");
+      const dots = document.getElementById("glimpse-dots");
+      const esc = (value) => String(value ?? "").replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+      glimpseTrack.innerHTML = GLIMPSES.map((item) => {
+        let media = `<img src="${esc(item.src)}" alt="${esc(item.alt)}" />`;
+        if (item.type === "video" && item.youtube && /^[\w-]{6,}$/.test(item.youtube)) {
+          media = `<button type="button" class="glimpse-yt" data-youtube="${esc(item.youtube)}" aria-label="Play ${esc(item.caption)}"><img src="${esc(item.poster || item.src)}" alt="" /><span class="glimpse-play">Play</span></button>`;
+        } else if (item.type === "video" && item.src) {
+          media = `<video controls playsinline preload="metadata" poster="${esc(item.poster || "")}" aria-label="${esc(item.alt || item.caption)}"><source src="${esc(item.src)}" /></video>`;
+        }
+        return `<div class="glimpse-slide">${media}</div>`;
+      }).join("");
+      dots.innerHTML = GLIMPSES.map((_, index) => `<button type="button" class="glimpse-dot" role="tab" aria-label="Glimpse ${index + 1}"></button>`).join("");
+      const dotButtons = [...dots.querySelectorAll("button")];
+      let index = 0;
+      let timer = 0;
+      let swipeX = null;
+      const pauseFilms = () => glimpseViewport.querySelectorAll("video").forEach((video) => video.pause());
+      const queue = () => {
+        window.clearTimeout(timer);
+        if (reduce) return;
+        const current = GLIMPSES[index];
+        if (current.type === "video") return;
+        timer = window.setTimeout(() => show(index + 1), 5600);
+      };
+      function show(next) {
+        pauseFilms();
+        index = (next + GLIMPSES.length) % GLIMPSES.length;
+        glimpseTrack.style.transform = `translateX(-${index * 100}%)`;
+        caption.textContent = GLIMPSES[index].caption;
+        count.textContent = `Glimpse ${index + 1} of ${GLIMPSES.length}. ${GLIMPSES[index].caption}`;
+        dotButtons.forEach((dot, dotIndex) => {
+          const on = dotIndex === index;
+          if (on) {
+            dot.setAttribute("aria-current", "true");
+            dot.setAttribute("aria-selected", "true");
+          } else {
+            dot.removeAttribute("aria-current");
+            dot.setAttribute("aria-selected", "false");
+          }
+        });
+        queue();
+      }
+      document.getElementById("glimpse-prev")?.addEventListener("click", () => show(index - 1));
+      document.getElementById("glimpse-next")?.addEventListener("click", () => show(index + 1));
+      dotButtons.forEach((dot, dotIndex) => dot.addEventListener("click", () => show(dotIndex)));
+      glimpseViewport.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") { event.preventDefault(); show(index - 1); }
+        if (event.key === "ArrowRight") { event.preventDefault(); show(index + 1); }
+      });
+      glimpseViewport.addEventListener("pointerdown", (event) => {
+        if (event.target.closest("video, button, iframe, a")) return;
+        swipeX = event.clientX;
+      });
+      glimpseViewport.addEventListener("pointerup", (event) => {
+        if (swipeX == null) return;
+        const delta = event.clientX - swipeX;
+        swipeX = null;
+        if (delta > 48) show(index - 1);
+        else if (delta < -48) show(index + 1);
+      });
+      glimpseViewport.addEventListener("mouseenter", () => window.clearTimeout(timer));
+      glimpseViewport.addEventListener("mouseleave", queue);
+      glimpseViewport.addEventListener("click", (event) => {
+        const play = event.target.closest("[data-youtube]");
+        if (!play) return;
+        const id = play.dataset.youtube;
+        play.outerHTML = `<iframe title="${esc(GLIMPSES[index].caption)}" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+        window.clearTimeout(timer);
+      });
+      glimpseViewport.querySelectorAll("video").forEach((video) => {
+        video.addEventListener("play", () => window.clearTimeout(timer));
+        video.addEventListener("ended", () => show(index + 1));
+      });
+      show(0);
+    }
+  </script>
+  <script>
+    // Media rail. Add each article's link in `url` and its panel gets a "Read the article" button.
+    const MEDIA = [
+      { name: "NDTV", lang: "News", url: "" },
+      { name: "The Times of India", lang: "News", url: "" },
+      { name: "Dainik Bhaskar", lang: "हिन्दी", url: "" },
+      { name: "Patrika", lang: "हिन्दी", url: "" },
+      { name: "Jagran", lang: "हिन्दी", url: "" },
+      { name: "Navdunia", lang: "हिन्दी", url: "" },
+      { name: "VIP News", lang: "TV", url: "" },
+      { name: "News World", lang: "TV", url: "" },
+      { name: "Agni Media", lang: "Digital", url: "" },
+      { name: "News 24", lang: "TV", url: "" },
+      { name: "Bansal News", lang: "TV", url: "" },
+    ];
+    const MCOL = ["bg-paw-purple", "bg-paw-blue", "bg-paw-magenta", "bg-brand-dark", "bg-paw-orange"];
+    (() => {
+      const track = document.getElementById("media-track"); if (!track) return;
+      const card = (m, i, hid) => `<button type="button" class="m-card ${MCOL[i % MCOL.length]}" ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
+        <span class="m-no">${String(i % MEDIA.length + 1).padStart(2, "0")}</span>
+        <span class="m-name"><b>${m.name}</b></span>
+        <span class="m-body"><span class="text-paw-lemon font-bold text-sm uppercase tracking-widest">${m.lang} · Pawse coverage</span>
+          <h3>${m.name}</h3><p>Read how ${m.name} covered Pawse, Bhopal's paw-friendly green festival of paws, people and planet.</p>
+          ${m.url ? `<a class="m-go" href="${m.url}" target="_blank" rel="noopener noreferrer">Read the article →</a>` : `<span class="text-sm font-semibold opacity-80">Article link coming soon</span>`}</span></button>`;
+      track.innerHTML = MEDIA.map((m, i) => card(m, i, false)).join("") + MEDIA.map((m, i) => card(m, i, true)).join("");
+      const rail = document.getElementById("media-rail");
+      track.addEventListener("click", (e) => {
+        const c = e.target.closest(".m-card"); if (!c || e.target.closest("a")) return;
+        const was = c.classList.contains("open");
+        track.querySelectorAll(".open").forEach((o) => { o.classList.remove("open"); o.setAttribute("aria-expanded", "false"); });
+        if (!was) { c.classList.add("open"); c.setAttribute("aria-expanded", "true"); }
+        rail.classList.toggle("paused", !was);
+      });
+    })();
+    // scroll reveals + nav shadow
+    (() => {
+      const els = document.querySelectorAll(".reveal");
+      const o = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); o.unobserve(e.target); } }), { threshold: 0.12 });
+      els.forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; o.observe(el); });
+      const nav = document.querySelector("nav");
+      addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10), { passive: true });
+    })();
+  </script>
+  <script src="assets/js/pawse-pup.js" defer></script>
+</body>
+
+</html>

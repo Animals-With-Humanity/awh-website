@@ -5,6 +5,11 @@
       "source": "/lalita.html",
       "destination": "/lalita",
       "permanent": true
+    },
+    {
+      "source": "/pawse.html",
+      "destination": "/pawse",
+      "permanent": true
     }
   ]
 }
