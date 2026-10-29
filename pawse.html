@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pawse | Paws, People, Planet | Animals With Humanity</title>
   <meta name="description"
-    content="Pawse is Animals With Humanity's paw-friendly green festival in Bhopal. Adoption, vegan food, sustainable shops, workshops, and live music. Sponsor, book a stall, or share feedback." />
+    content="Pawse is Animals With Humanity's paw-friendly green festival in Bhopal. Tickets out soon. Adoption, vegan food, sustainable shops, workshops, and live music. Sponsor, book a stall, or share feedback." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://awhbharat.org/pawse" />
   <link rel="icon" href="assets/images/logo.png" type="image/png" />
@@ -75,23 +75,7 @@
     .float-y { animation: floaty 6s ease-in-out infinite; }
     @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-    .paw-orb {
-      position: absolute;
-      z-index: 1;
-      pointer-events: none;
-      border-radius: 999px;
-      animation: floaty 7s ease-in-out infinite;
-    }
-    .paw-orb-a { width: 64px; height: 64px; background: #bef521; top: 11%; left: 44%; box-shadow: 0 14px 30px rgba(190, 245, 33, 0.35); }
-    .paw-orb-b { width: 36px; height: 36px; background: #fd66c4; top: 16%; right: 4%; animation-delay: -2.2s; }
-    .paw-orb-c { width: 22px; height: 22px; background: #eeff66; bottom: 14%; left: 6%; animation-delay: -3.4s; }
-    @media (max-width: 1023px) {
-      .paw-orb-a { left: auto; right: 8%; top: 8%; width: 42px; height: 42px; }
-      .paw-orb-b { display: none; }
-    }
 
-    .poster-tilt { transform: rotate(2.5deg); transition: transform .45s ease; }
-    .poster-tilt:hover { transform: rotate(0deg) scale(1.02); }
 
     .paw-input, .paw-select, .paw-area {
       width: 100%;
@@ -146,7 +130,7 @@
     .glimpse-dot[aria-current="true"] { width: 22px; background: #bef521; }
 
     @media (prefers-reduced-motion: reduce) {
-      .marquee-track, .float-y, .rise, .paw-orb { animation: none !important; opacity: 1; transform: none; }
+      .marquee-track, .float-y, .rise { animation: none !important; opacity: 1; transform: none; }
       .glimpse-track { transition: none; }
     }
 
@@ -184,20 +168,81 @@
     .m-go{display:inline-flex;align-items:center;gap:8px;width:fit-content;border-radius:999px;background:#bef521;color:#1f2937;font-weight:800;padding:.6rem 1.1rem;text-decoration:none}
     @media(max-width:640px){.media-rail{overflow-x:auto}.media-track{animation:none}.m-card.open{width:min(84vw,360px)}.m-card:hover{width:150px}.m-card.open:hover{width:min(84vw,360px)}.m-body{width:min(84vw,360px)}}
     @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track,.media-track,.hero-title{animation:none!important}}
-  </style>
+  
+    /* ---- v3 redesign ---- */
+    .hero{background-color:#0750c3;background-image:repeating-radial-gradient(circle at 50% 62%,rgba(255,255,255,.045) 0 2px,transparent 2px 46px),radial-gradient(circle at 50% 40%,#1a64dc 0%,#0750c3 55%,#05409f 100%)}
+    .hero-tile{position:absolute;top:0;width:clamp(108px,23vw,330px);pointer-events:none;z-index:2}
+    .hero-tile.l{left:0}.hero-tile.r{right:0;transform:scaleX(-1)}
+    .nimbu{position:absolute;top:-4px;left:50%;margin-left:calc(clamp(74px,11vw,118px)/-2);width:clamp(74px,11vw,118px);z-index:6;transform-origin:50% 0;animation:swing 4.8s ease-in-out infinite alternate;cursor:pointer;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25))}
+    .nimbu img{display:block;width:100%;height:auto;pointer-events:none}
+    .nimbu.kick{animation:swingHard 1.6s ease-out 1}
+    @keyframes swing{from{transform:rotate(-5.5deg)}50%{transform:rotate(0deg)}to{transform:rotate(5.5deg)}}
+    @keyframes swingHard{0%{transform:rotate(14deg)}25%{transform:rotate(-11deg)}50%{transform:rotate(7deg)}75%{transform:rotate(-3deg)}100%{transform:rotate(0)}}
+    .scene{display:block;width:100%;max-width:940px;margin:0 auto;height:auto;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 20%);mask-image:linear-gradient(180deg,transparent 0,#000 20%)}
+    @media(min-width:960px){.scene{-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(180deg,transparent 0,#000 20%);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(180deg,transparent 0,#000 20%);-webkit-mask-composite:source-in;mask-composite:intersect}}
+    .ticket{--r:11px;position:relative;display:inline-flex;align-items:stretch;background:#bef521;color:#1f2937;transform:rotate(-2deg);
+      -webkit-mask:radial-gradient(var(--r) at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(var(--r) at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
+      mask:radial-gradient(var(--r) at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(var(--r) at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+    .ticket-stub{padding:.7rem 1rem .7rem 1.5rem;border-right:2px dashed rgba(31,41,55,.45);display:grid;place-items:center;font-weight:800}
+    .ticket-main{padding:.6rem 1.6rem .6rem 1.1rem;text-align:left}
+    .live-dot{display:inline-block;width:9px;height:9px;border-radius:99px;background:#f00281;animation:blink 1.4s ease-in-out infinite}
+    @keyframes blink{50%{opacity:.25}}
+    .sticker{background:#fff;border-radius:26px;padding:14px;box-shadow:0 12px 26px rgba(58,18,128,.14);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+    .sticker:hover{transform:rotate(0) translateY(-6px)!important}
+    /* what's on */
+    .grp-tab{display:flex;align-items:center;gap:.7rem;border-radius:22px;padding:.6rem .9rem;text-align:left;background:#fff;border:2px solid transparent;font-weight:800;transition:transform .25s,box-shadow .25s,background .25s;box-shadow:0 4px 14px rgba(58,18,128,.08)}
+    .grp-tab img{height:42px;width:48px;object-fit:contain}
+    .grp-tab small{display:none;font-weight:600;font-size:.78rem;opacity:.7}
+    @media(min-width:640px){.grp-tab small{display:block}}
+    @media(max-width:639px){.grp-tab{flex-direction:column;text-align:center;gap:.25rem;padding:.55rem .3rem}.grp-tab img{height:34px}}
+    .grp-tab[aria-selected="true"]{transform:translateY(-3px);box-shadow:0 12px 24px rgba(58,18,128,.2)}
+    .stage{position:relative;overflow:hidden;border-radius:28px;min-height:250px;display:grid;place-items:center;transition:background .4s}
+    .stage img,.stage video{max-height:230px;max-width:80%;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(0,0,0,.22));animation:bob 5s ease-in-out infinite}
+    .stage video{border-radius:18px;animation:none;width:80%}
+    @keyframes bob{50%{transform:translateY(-8px) rotate(1.5deg)}}
+    .stage-cap{position:absolute;left:14px;right:14px;bottom:12px;font-weight:800}
+    .chip{border-radius:999px;padding:.5rem .95rem;font-weight:700;font-size:.95rem;background:#fff;border:1.5px solid #e7dff3;transition:background .2s,transform .2s,color .2s;text-align:left}
+    .chip:hover{transform:translateY(-2px)}
+    .chip[aria-pressed="true"]{background:#1f2937;color:#eeff66;border-color:#1f2937}
+    /* editions */
+    .ed-card{background:#fff;color:#1f2937;border-radius:28px;padding:1.4rem 1.4rem 1.2rem}
+    .ed-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+    .ed-more>div{overflow:hidden}
+    .ed-card.open .ed-more,.ed-card:focus-within .ed-more{grid-template-rows:1fr}
+    @media(hover:hover){.ed-card:hover .ed-more{grid-template-rows:1fr}}
+    .ed-toggle .plus{transition:transform .3s}
+    .ed-card.open .ed-toggle .plus{transform:rotate(45deg)}
+    @media(hover:hover){.ed-card:hover .ed-toggle .plus{transform:rotate(45deg)}}
+    /* bunting */
+    .bunting{display:flex;flex-wrap:wrap;justify-content:center;gap:0 10px;position:relative}
+    .bunting.clamped{max-height:312px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
+    .flag{position:relative;width:96px;padding-top:20px;transform-origin:50% 8px;animation:flagIn .5s both}
+    .flag::before{content:"";position:absolute;top:7px;left:-6px;right:-6px;height:2px;background:#7a27a9;opacity:.75}
+    .flag::after{content:"";position:absolute;top:2px;left:50%;margin-left:-6px;width:12px;height:12px;border-radius:99px;background:#f76500;border:2px solid #fff}
+    .flag-in{filter:drop-shadow(0 6px 8px rgba(122,39,169,.18));transform-origin:50% 0}
+    .flag:hover .flag-in{animation:flagSwing .9s ease-out}
+    .flag-body{background:#fff;border-top:7px solid var(--c);padding:10px 6px 24px;clip-path:polygon(0 0,100% 0,100% 90%,50% 100%,0 90%);text-align:center;height:124px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+    .flag-body img{height:48px;width:100%;object-fit:contain}
+    .flag-body span{font-size:10.5px;line-height:1.15;font-weight:700;color:#4b5563;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    @keyframes flagSwing{20%{transform:rotate(9deg)}45%{transform:rotate(-7deg)}70%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+    @keyframes flagIn{from{opacity:0;transform:translateY(-10px)}}
+    @media(max-width:520px){.flag{width:80px}.flag-body{height:112px}.flag-body img{height:40px}.bunting{gap:0 6px}.bunting.clamped{max-height:276px}}
+    .cat{border-radius:999px;padding:.45rem .9rem;font-weight:700;font-size:.92rem;background:#fff;border:1.5px solid #f4d9bf;white-space:nowrap}
+    .cat[aria-pressed="true"]{background:#1f2937;color:#eeff66;border-color:#1f2937}
+    /* desk dialog */
+    dialog.desk{border:0;padding:0;border-radius:28px;width:min(720px,calc(100vw - 20px));max-height:calc(100dvh - 24px);background:#f7f2fb;color:#1f2937;overflow:auto;margin:auto}
+    dialog.desk::backdrop{background:rgba(31,18,60,.62);backdrop-filter:blur(3px)}
+    dialog.desk[open]{animation:dlg .35s cubic-bezier(.2,.8,.2,1)}
+    @keyframes dlg{from{opacity:0;transform:translateY(24px) scale(.97)}}
+    /* closing */
+    .arch{border-radius:999px 999px 28px 28px;overflow:hidden}
+    .cause-h{font-weight:800;line-height:.92;letter-spacing:-.02em;color:#f00281;text-shadow:3px 3px 0 #0253d1}
+    @media (prefers-reduced-motion:reduce){.nimbu,.live-dot,.stage img,.flag{animation:none!important}}
+</style>
 </head>
 
 <body class="bg-white text-brand-dark font-sans antialiased">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[80] focus:bg-paw-lemon focus:px-3 focus:py-2 focus:rounded-lg">Skip to content</a>
-
-  <div class="bg-paw-lemon text-brand-dark text-sm font-semibold">
-    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 text-center">
-      <span class="hidden sm:inline tracking-wide">Paws · People · Planet</span>
-      <span class="sm:hidden">Paws · People · Planet</span>
-      <span class="opacity-40" aria-hidden="true">/</span>
-      <span>An initiative by Animals With Humanity</span>
-    </div>
-  </div>
 
   <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -210,7 +255,8 @@
           </span>
         </a>
         <div class="hidden lg:flex items-center gap-7">
-          <a href="#experience" class="font-semibold text-gray-600 hover:text-paw-purple transition">Experience</a>
+          <a href="#about" class="font-semibold text-gray-600 hover:text-paw-purple transition">About</a>
+          <a href="#experience" class="font-semibold text-gray-600 hover:text-paw-purple transition">What's on</a>
           <a href="#glimpses" class="font-semibold text-gray-600 hover:text-paw-purple transition">Glimpses</a>
           <a href="#editions" class="font-semibold text-gray-600 hover:text-paw-purple transition">Editions</a>
           <a href="#sponsors" class="font-semibold text-gray-600 hover:text-paw-purple transition">Sponsors</a>
@@ -226,7 +272,8 @@
     </div>
     <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
       <div class="flex flex-col p-4 gap-2">
-        <a href="#experience" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Experience</a>
+        <a href="#about" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">About</a>
+        <a href="#experience" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">What's on</a>
         <a href="#glimpses" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Glimpses</a>
         <a href="#editions" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Editions</a>
         <a href="#sponsors" class="px-4 py-3 font-semibold rounded-lg hover:bg-paw-purple/10">Sponsors</a>
@@ -239,108 +286,77 @@
   </nav>
 
   <main id="main">
-    <header class="relative overflow-hidden text-white">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,#a74cd4_0%,transparent_42%),radial-gradient(circle_at_90%_10%,#2e74df_0%,transparent_40%),linear-gradient(165deg,#3a1280_0%,#0253d1_62%,#7a27a9_100%)]"></div>
-      <span class="paw-orb paw-orb-a" aria-hidden="true"></span>
-      <span class="paw-orb paw-orb-b" aria-hidden="true"></span>
-      <span class="paw-orb paw-orb-c" aria-hidden="true"></span>
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
-        <div>
-          <p class="rise inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/25 px-3 py-1 text-sm font-semibold backdrop-blur-sm">
-            <span class="h-2 w-2 rounded-full bg-paw-lime"></span>
-            Pawse 2026–27 · Bhopal
-          </p>
-          <h1 class="rise d1 mt-5 text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.9] hero-title">PAWSE</h1>
-          <p class="rise d2 mt-4 text-2xl sm:text-3xl font-medium text-white/95">Central India's largest celebration of</p>
-          <p class="rise d2 text-3xl sm:text-4xl font-extrabold text-paw-lemon">Paws · People · Planet</p>
-          <div class="rise d3 mt-8 flex flex-wrap gap-3">
-            <a href="#experience" class="inline-flex items-center gap-2 rounded-full bg-paw-lime px-6 py-3 font-bold text-brand-dark shadow-lg hover:-translate-y-0.5 transition">
-              Explore the festival <i data-lucide="arrow-down" class="w-4 h-4"></i>
-            </a>
-            <a href="#desk" data-open-form="stall" class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-paw-purple hover:-translate-y-0.5 transition">Book a stall</a>
-            <a href="#desk" data-open-form="sponsor" class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 font-bold text-white hover:bg-white/10 transition">Become a sponsor</a>
+    <header class="hero relative overflow-hidden text-white">
+      <img src="assets/images/pawse/hero/tile.webp" alt="" class="hero-tile l" />
+      <img src="assets/images/pawse/hero/tile.webp" alt="" class="hero-tile r" />
+      <button type="button" class="nimbu" id="nimbu" aria-label="Nimbu mirchi charm reading 'again' in English, Hindi, Marathi and Kannada. Tap to make it swing.">
+        <img src="assets/images/pawse/hero/nimbu-mirchi.webp" alt="" width="219" height="462" />
+      </button>
+
+      <div class="relative z-10 max-w-3xl mx-auto px-4 text-center pt-[clamp(150px,22vw,250px)]">
+        <p class="rise inline-flex items-center gap-2.5 rounded-full bg-white/15 border border-white/30 pl-4 pr-3.5 py-1.5 backdrop-blur-sm">
+          <span class="font-extrabold tracking-[0.16em] text-paw-lime">PAWSE</span>
+          <span class="h-4 w-px bg-white/40" aria-hidden="true"></span>
+          <span class="inline-flex items-center gap-1 font-semibold"><i data-lucide="map-pin" class="w-4 h-4 text-paw-pink"></i>Bhopal</span>
+        </p>
+        <h1 class="rise d1 mt-4 mx-auto w-[clamp(250px,60vw,600px)]">
+          <img src="assets/images/pawse/hero/pawse-wordmark.png" alt="PAWSE" width="900" height="226" class="w-full h-auto drop-shadow-[0_8px_18px_rgba(0,0,0,.25)]" />
+        </h1>
+        <p class="rise d2 mt-4 text-lg sm:text-2xl font-semibold text-white/95">Central India's largest celebration of <span class="text-paw-lemon font-extrabold whitespace-nowrap">Paws · People · Planet</span></p>
+        <p class="rise d2 mt-1 font-semibold text-white/80">An initiative by Animals With Humanity</p>
+
+        <div class="rise d3 mt-6">
+          <div class="ticket" role="status">
+            <span class="ticket-stub"><i data-lucide="ticket" class="w-7 h-7"></i></span>
+            <span class="ticket-main">
+              <span class="flex items-center gap-2 text-xl font-extrabold leading-tight"><span class="live-dot" aria-hidden="true"></span>Tickets out soon</span>
+              <a href="mailto:pawse@awhbharat.org?subject=Notify%20me%20when%20Pawse%20tickets%20open" class="text-sm font-bold underline decoration-2 underline-offset-2 hover:text-paw-magenta">Email us to be told first</a>
+            </span>
           </div>
         </div>
-        <div class="relative">
-          <img src="assets/images/pawse.png" alt="Pawse poster: The Ultimate Paw Fest at Bansal One Walk, Bhopal, with Animals With Humanity and Bansal Group." class="poster-tilt float-y relative z-10 w-full rounded-[28px] shadow-2xl border-4 border-white/80" />
+
+        <div class="rise d4 mt-6 flex flex-wrap justify-center gap-3">
+          <a href="#experience" class="inline-flex items-center gap-2 rounded-full bg-paw-lime px-6 py-3 font-bold text-brand-dark shadow-lg hover:-translate-y-0.5 transition">See what's on <i data-lucide="arrow-down" class="w-4 h-4"></i></a>
+          <a href="#desk" data-open-form="stall" class="inline-flex items-center rounded-full bg-white px-6 py-3 font-bold text-paw-purple hover:-translate-y-0.5 transition">Book a stall</a>
+          <a href="#desk" data-open-form="sponsor" class="inline-flex items-center rounded-full border border-white/50 px-6 py-3 font-bold text-white hover:bg-white/10 transition">Become a sponsor</a>
         </div>
       </div>
+
+      <img src="assets/images/pawse/hero/scene.webp" alt="Illustration: a woman hugging a flower pot, a black cat with a cup of chai, a pink cactus, a smiling sun and a lotus." width="1241" height="770" class="scene relative z-[3] mt-2 sm:-mt-6" />
     </header>
 
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Adoption camp</span><span>✦</span><span>Vegan food</span><span>✦</span><span>Live music</span><span>✦</span><span>Paw walk</span><span>✦</span><span>Workshops</span><span>✦</span><span>Pottery</span><span>✦</span><span>Sustainable shops</span><span>✦</span><span>Tambola</span><span>✦</span><span>Paws · People · Planet</span><span>✦</span><span>Adoption camp</span><span>✦</span><span>Vegan food</span><span>✦</span><span>Live music</span><span>✦</span><span>Paw walk</span><span>✦</span><span>Workshops</span><span>✦</span><span>Pottery</span><span>✦</span><span>Sustainable shops</span><span>✦</span><span>Tambola</span><span>✦</span><span>Paws · People · Planet</span><span>✦</span></div></div>
 
-    <section id="experience" class="scroll-mt-24 bg-[#f7f2fb] py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p class="font-bold uppercase tracking-[0.18em] text-paw-purple text-sm">On the ground</p>
-            <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">What you walk into</h2>
+    <section id="about" class="scroll-mt-24 py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+        <div>
+          <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.02]">Be kind, to all kinds.</h2>
+          <p class="mt-5 text-lg text-gray-700 leading-relaxed max-w-xl">Animals With Humanity is a youth-led NGO in Bhopal. We want a city where animals and people live together in peace. We help street animals through adoption and vaccination, and we teach people how to care for them.</p>
+          <p class="mt-4 text-lg text-gray-700 leading-relaxed max-w-xl">Pawse is our festival. For three days, paw parents, students, artists and small brands meet in one place to adopt, play, learn and shop sustainably. Everything is vegan, and every paw is welcome.</p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <a href="index.html" class="inline-flex items-center gap-2 rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon hover:-translate-y-0.5 transition">More about AWH <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            <span class="text-sm font-semibold text-gray-500">Registered NGO · 12A · 80G · CSR</span>
           </div>
         </div>
-        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <article class="pop reveal sm:col-span-2 lg:col-span-1 rounded-3xl bg-paw-purple text-white p-6 min-h-52 flex flex-col justify-between">
-            <p class="text-paw-lime font-bold">01</p>
-            <div>
-              <h3 class="text-2xl font-extrabold">Adoption camp</h3>
-            </div>
-          <span class="big" aria-hidden="true">01</span></article>
-          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
-            <h3 class="text-xl font-extrabold">Paint with paws</h3>
-          <span class="big" aria-hidden="true">02</span></article>
-          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
-            <h3 class="text-xl font-extrabold">Pottery</h3>
-          <span class="big" aria-hidden="true">03</span></article>
-          <article class="pop reveal rounded-3xl bg-paw-blue text-white p-6">
-            <h3 class="text-xl font-extrabold">Flute boxing &amp; live music</h3>
-          <span class="big" aria-hidden="true">04</span></article>
-          <article class="pop reveal rounded-3xl bg-paw-lemon p-6">
-            <h3 class="text-xl font-extrabold">Crazyy workshops</h3>
-          <span class="big" aria-hidden="true">05</span></article>
-          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
-            <h3 class="text-xl font-extrabold">Health check-up &amp; vaccination</h3>
-          <span class="big" aria-hidden="true">06</span></article>
-          <article class="pop reveal rounded-3xl bg-white p-6 shadow-sm border border-purple-100">
-            <h3 class="text-xl font-extrabold">Shop sustainable</h3>
-          <span class="big" aria-hidden="true">07</span></article>
-          <article class="pop reveal rounded-3xl bg-paw-pink/30 p-6">
-            <h3 class="text-xl font-extrabold">Tambola &amp; games</h3>
-          <span class="big" aria-hidden="true">08</span></article>
-        </div>
+        <ul class="grid grid-cols-3 gap-3 sm:gap-4">
+          <li class="sticker text-center -rotate-3"><img src="assets/images/pawse/cutouts/pets.webp" alt="" class="mx-auto h-20 sm:h-24 object-contain" loading="lazy" /><p class="mt-2 font-extrabold text-paw-blue">Paws</p><p class="mt-1 text-xs sm:text-sm text-gray-600 leading-snug">Adoption, health and care</p></li>
+          <li class="sticker text-center rotate-2 mt-5"><img src="assets/images/pawse/cutouts/people.webp" alt="" class="mx-auto h-20 sm:h-24 object-contain" loading="lazy" /><p class="mt-2 font-extrabold text-paw-magenta">People</p><p class="mt-1 text-xs sm:text-sm text-gray-600 leading-snug">Art, music and workshops</p></li>
+          <li class="sticker text-center -rotate-2"><img src="assets/images/pawse/cutouts/earth.webp" alt="" class="mx-auto h-20 sm:h-24 object-contain" loading="lazy" /><p class="mt-2 font-extrabold text-paw-purple">Planet</p><p class="mt-1 text-xs sm:text-sm text-gray-600 leading-snug">Compost, plants, green shops</p></li>
+        </ul>
       </div>
     </section>
 
-    <section id="everyone" class="scroll-mt-24 py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-center">A place for everyone</h2>
-        <div class="mt-10 grid md:grid-cols-3 gap-6">
-          <div class="pop reveal rounded-3xl border border-gray-100 p-6 shadow-sm">
-            <div class="h-12 w-12 rounded-2xl bg-paw-blue text-white grid place-items-center font-extrabold">Paw</div>
-            <ul class="mt-5 space-y-2 text-gray-700 font-medium">
-              <li>Paw walk</li>
-              <li>Understand paw parenting</li>
-              <li>Paw products shops</li>
-              <li>Games for paws</li>
-              <li>Stick station</li>
-              <li>Paws are welcome. Bring a leash.</li>
-            </ul>
-          </div>
-          <div class="pop reveal rounded-3xl border border-gray-100 p-6 shadow-sm bg-paw-lemon/40">
-            <div class="h-12 w-12 rounded-2xl bg-paw-magenta text-white grid place-items-center font-extrabold">You</div>
-            <ul class="mt-5 space-y-2 text-gray-800 font-medium">
-              <li>Photobooth</li>
-              <li>Like karaoke</li>
-              <li>Grow your own food, cupcake decoration, nest making</li>
-              <li>Doodle booth</li>
-            </ul>
-          </div>
-          <div class="pop reveal rounded-3xl border border-gray-100 p-6 shadow-sm">
-            <div class="h-12 w-12 rounded-2xl bg-paw-lime text-brand-dark grid place-items-center font-extrabold">Earth</div>
-            <ul class="mt-5 space-y-2 text-gray-700 font-medium">
-              <li>Learn composting</li>
-              <li>Why waste segregation matters</li>
-              <li>Shop plants</li>
-              <li>Plant-based food</li>
-            </ul>
+    <section id="experience" class="scroll-mt-24 bg-[#f7f2fb] py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">A place for everyone</h2>
+        <p class="mt-3 text-gray-600 max-w-2xl">Pick Paw, You or Earth. Tap any activity to see it.</p>
+
+        <div class="mt-8 grid grid-cols-3 gap-2 sm:gap-4" role="tablist" aria-label="Festival zones" id="grp-tabs"></div>
+        <div class="mt-4 grid md:grid-cols-[0.9fr_1.1fr] gap-4 items-stretch" id="grp-panel" role="tabpanel">
+          <div class="stage" id="stage"></div>
+          <div class="rounded-[28px] bg-white/70 border border-purple-100 p-5 sm:p-6">
+            <p id="grp-note" class="font-semibold text-gray-600 min-h-[1.5rem]"></p>
+            <div id="chips" class="mt-3 flex flex-wrap gap-2"></div>
           </div>
         </div>
       </div>
@@ -370,117 +386,79 @@
       </div>
     </section>
 
-    <section id="editions" class="scroll-mt-24 bg-paw-magenta py-20 text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="font-bold uppercase tracking-[0.18em] text-paw-lemon text-sm">Proof, not a promise</p>
-        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Two editions. One walk.</h2>
-        <p class="mt-3 max-w-2xl text-white/90">The next edition is Pawse 2026–27. Dates go first to people who register below.</p>
-
-        <article class="reveal mt-10 rounded-[28px] bg-white text-brand-dark p-6 sm:p-8">
-          <div class="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <p class="text-paw-magenta font-extrabold text-3xl">2024 · December</p>
-              <p class="font-semibold">1st edition · 27, 28, 29 December · Bansal One Walk</p>
-            </div>
-          </div>
-          <dl class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold" data-count="4500">0</dt><dd class="text-sm font-semibold text-gray-600">attendees</dd></div>
-            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold" data-count="14">0</dt><dd class="text-sm font-semibold text-gray-600">adoptions</dd></div>
-            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold" data-count="45">0</dt><dd class="text-sm font-semibold text-gray-600">paws</dd></div>
-            <div class="rounded-2xl bg-paw-pink/25 p-4"><dt class="text-3xl font-extrabold">1M</dt><dd class="text-sm font-semibold text-gray-600">social reach</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">20+</dt><dd class="text-sm font-semibold text-gray-600">event partners</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">25</dt><dd class="text-sm font-semibold text-gray-600">shops &amp; activities</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">8</dt><dd class="text-sm font-semibold text-gray-600">media features</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">1st</dt><dd class="text-sm font-semibold text-gray-600">paw-friendly green festival</dd></div>
-          </dl>
-        </article>
-
-        <article class="reveal mt-6 rounded-[28px] bg-white text-brand-dark p-6 sm:p-8">
-          <p class="text-paw-purple font-extrabold tracking-wide">PAWSE for a CAUSE</p>
-          <p class="mt-1 text-2xl font-extrabold">2026 · January</p>
-          <p class="font-semibold">2nd edition · 24, 25, 26 January · Bansal One Walk</p>
-          <dl class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3">
-            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold" data-count="3500">0</dt><dd class="text-sm font-semibold text-gray-600">attendees</dd></div>
-            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold" data-count="22">0</dt><dd class="text-sm font-semibold text-gray-600">adoptions</dd></div>
-            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold" data-count="86">0</dt><dd class="text-sm font-semibold text-gray-600">paws</dd></div>
-            <div class="rounded-2xl bg-paw-violet/15 p-4"><dt class="text-3xl font-extrabold">2.5M</dt><dd class="text-sm font-semibold text-gray-600">social reach</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">30+</dt><dd class="text-sm font-semibold text-gray-600">event partners</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">36</dt><dd class="text-sm font-semibold text-gray-600">shops &amp; activities</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">15+</dt><dd class="text-sm font-semibold text-gray-600">media features</dd></div>
-            <div class="rounded-2xl bg-[#f7f2fb] p-4"><dt class="text-3xl font-extrabold">45%</dt><dd class="text-sm font-semibold text-gray-600">GHG emissions avoided</dd></div>
-          </dl>
-        </article>
-      </div>
-    </section>
-
-    <section id="impact" class="scroll-mt-24 py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-[1fr_1fr] gap-8 items-start">
+    <section id="editions" class="scroll-mt-24 bg-paw-magenta py-14 sm:py-16 text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p class="font-bold uppercase tracking-[0.18em] text-paw-orange text-sm">Social impact</p>
-            <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Partner at the gatherings people already love</h2>
+            <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Two editions. One walk.</h2>
+            <p class="mt-2 max-w-xl text-white/90">Next up: Pawse 2026–27. Hover or tap a card for every number.</p>
           </div>
-          <ul class="space-y-3">
-            <li class="rounded-2xl bg-paw-orange text-white px-5 py-4 font-bold text-lg">Piyush Mishra's Brahmagrahan · 2024</li>
-            <li class="rounded-2xl bg-paw-purple text-white px-5 py-4 font-bold text-lg">Rang · Javed Ali · 2023</li>
-            <li class="rounded-2xl bg-paw-blue text-white px-5 py-4 font-bold text-lg">Osho Jaim · 2025</li>
-            <li>
-              <a href="#desk" data-open-form="sponsor" class="flex items-center justify-between rounded-2xl bg-paw-lime px-5 py-4 font-extrabold text-brand-dark hover:-translate-y-0.5 transition">
-                This could be you <i data-lucide="arrow-right" class="w-5 h-5"></i>
-              </a>
-            </li>
-          </ul>
+        </div>
+        <div class="mt-8 grid md:grid-cols-2 gap-4 md:gap-5 items-start">
+
+          <article class="ed-card reveal" id="ed1">
+            <div class="flex flex-wrap items-start justify-between gap-2">
+              <div>
+                <p class="text-2xl font-extrabold text-paw-magenta leading-none">December 2024</p>
+                <p class="mt-1 text-sm font-semibold text-gray-600">1st edition · 27–29 Dec · Bansal One Walk</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-paw-lime px-3 py-1 text-xs font-extrabold">1st paw-friendly green festival</span>
+            </div>
+            <dl class="mt-4 grid grid-cols-4 gap-2 text-center">
+              <div class="rounded-2xl bg-paw-pink/25 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold" data-count="4500" data-plus>0</dt><dd class="text-xs font-semibold text-gray-600">attendees</dd></div>
+              <div class="rounded-2xl bg-paw-pink/25 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold" data-count="14">0</dt><dd class="text-xs font-semibold text-gray-600">adoptions</dd></div>
+              <div class="rounded-2xl bg-paw-pink/25 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold" data-count="45">0</dt><dd class="text-xs font-semibold text-gray-600">paws</dd></div>
+              <div class="rounded-2xl bg-paw-pink/25 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold">1M</dt><dd class="text-xs font-semibold text-gray-600">social reach</dd></div>
+            </dl>
+            <div class="ed-more"><div>
+              <dl class="grid grid-cols-3 gap-2 text-center pt-2">
+                <div class="rounded-2xl bg-[#f7f2fb] py-3 px-1"><dt class="text-xl font-extrabold">20+</dt><dd class="text-xs font-semibold text-gray-600">event partners</dd></div>
+                <div class="rounded-2xl bg-[#f7f2fb] py-3 px-1"><dt class="text-xl font-extrabold">25</dt><dd class="text-xs font-semibold text-gray-600">shops &amp; activities</dd></div>
+                <div class="rounded-2xl bg-[#f7f2fb] py-3 px-1"><dt class="text-xl font-extrabold">8</dt><dd class="text-xs font-semibold text-gray-600">media features</dd></div>
+              </dl>
+            </div></div>
+            <button type="button" class="ed-toggle mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-paw-purple" aria-expanded="false"><span class="plus inline-grid h-6 w-6 place-items-center rounded-full bg-paw-purple text-white leading-none">+</span><span class="lbl">All numbers</span></button>
+          </article>
+
+          <article class="ed-card reveal" id="ed2">
+            <div class="flex flex-wrap items-start justify-between gap-2">
+              <div>
+                <p class="text-2xl font-extrabold text-paw-purple leading-none">January 2026</p>
+                <p class="mt-1 text-sm font-semibold text-gray-600">2nd edition · 24–26 Jan · Bansal One Walk</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-paw-lime px-3 py-1 text-xs font-extrabold">45% GHG emissions avoided</span>
+            </div>
+            <dl class="mt-4 grid grid-cols-4 gap-2 text-center">
+              <div class="rounded-2xl bg-paw-violet/15 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold" data-count="3500" data-plus>0</dt><dd class="text-xs font-semibold text-gray-600">attendees</dd></div>
+              <div class="rounded-2xl bg-paw-violet/15 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold" data-count="22">0</dt><dd class="text-xs font-semibold text-gray-600">adoptions</dd></div>
+              <div class="rounded-2xl bg-paw-violet/15 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold" data-count="86">0</dt><dd class="text-xs font-semibold text-gray-600">paws</dd></div>
+              <div class="rounded-2xl bg-paw-violet/15 py-3 px-1"><dt class="text-xl sm:text-2xl font-extrabold">2.5M</dt><dd class="text-xs font-semibold text-gray-600">social reach</dd></div>
+            </dl>
+            <div class="ed-more"><div>
+              <dl class="grid grid-cols-3 gap-2 text-center pt-2">
+                <div class="rounded-2xl bg-[#f7f2fb] py-3 px-1"><dt class="text-xl font-extrabold">30+</dt><dd class="text-xs font-semibold text-gray-600">event partners</dd></div>
+                <div class="rounded-2xl bg-[#f7f2fb] py-3 px-1"><dt class="text-xl font-extrabold">36</dt><dd class="text-xs font-semibold text-gray-600">shops &amp; activities</dd></div>
+                <div class="rounded-2xl bg-[#f7f2fb] py-3 px-1"><dt class="text-xl font-extrabold">15+</dt><dd class="text-xs font-semibold text-gray-600">media features</dd></div>
+              </dl>
+            </div></div>
+            <button type="button" class="ed-toggle mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-paw-purple" aria-expanded="false"><span class="plus inline-grid h-6 w-6 place-items-center rounded-full bg-paw-purple text-white leading-none">+</span><span class="lbl">All numbers</span></button>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="sponsors" class="scroll-mt-24 bg-[#fff4ea] py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="font-bold uppercase tracking-[0.18em] text-paw-orange text-sm">They already paused with us</p>
-        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Previous sponsors &amp; collaborators</h2>
-        <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bansal-group.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bansal Group</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bmc.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bhopal Municipal Corporation</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/aasra.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Aasra Animal Shelter</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/mp-police.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Madhya Pradesh Police</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/nhdc.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">NHDC</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/peta.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">PETA India</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bgi.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bansal Group of Institutes</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/nmims.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">NMIMS</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/sage.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">SAGE University</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/oriental.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Oriental School</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/dansh.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">DANSH</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/mercy.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Mercy for Animals</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/chullbull.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Chullbull Pet Products</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/pawsitivity.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Pawsitivity</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/human-beast.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Human and the Beast</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/drools.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Drools</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/doggyji.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Doggy Ji</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/pawsitive.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Pawsitive India</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/greensarthi.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Green Sarthi</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bio.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bio Nutrients</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/unknown.png" alt="Sponsor logo" class="mx-auto h-20 w-full object-contain" /></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/amera.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Améra</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/stws.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">STWS</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/ecocradle.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Ecocradle</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/toneop.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">ToneOp</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/garlic.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Garlic Bread</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bakeshake.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bake &amp; Shake</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/meepleton.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Meepleton</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/starbucks.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Starbucks</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/adzone.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Adzone</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/arushi.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Arushi</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/drishti.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Hotel Drishti Inn</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bus.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Update Bus Bhopal</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/castrol.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Castrol Power1</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/echo.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Echo Edge</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/conversions.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Conversions</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/artlane.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">The Art Lane</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/abheeshtam.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">abheeshtam design studio</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bindu.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">Bindu</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/bazarville.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">bazarville</span></li>
-          <li class="rounded-2xl bg-white p-3 shadow-sm text-center transition hover:-translate-y-1.5 hover:rotate-1 hover:shadow-lg"><img src="assets/images/pawse/sponsors/printkaari.png" alt="" class="mx-auto h-20 w-full object-contain" /><span class="mt-2 block text-sm font-semibold">printkaari</span></li>
-        </ul>
+    <section id="sponsors" class="scroll-mt-24 bg-[#fff4ea] py-14 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">They already paused with us</h2>
+        <p class="mt-2 text-gray-600"><span id="sp-count">41</span> sponsors and collaborators across two editions. Hover a flag.</p>
+        <div id="sp-cats" class="mt-6 flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap" role="group" aria-label="Filter partners"></div>
+        <ul id="bunting" class="bunting clamped mt-4 pt-1"></ul>
+        <div class="mt-2 text-center"><button type="button" id="sp-more" class="rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon hover:-translate-y-0.5 transition">Show all partners</button></div>
+
+        <p class="mt-10 rounded-2xl border-2 border-dashed border-paw-orange/50 px-4 py-3 text-sm sm:text-base text-gray-700">
+          <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag with Javed Ali (2025) and Raag Mehfil with Osho Jain (2026).
+          <a href="#desk" data-open-form="sponsor" class="font-bold text-paw-purple underline underline-offset-2">Partner with us next</a>
+        </p>
       </div>
     </section>
 
@@ -494,43 +472,77 @@
       <div class="mt-10 media-rail" id="media-rail" aria-label="Media coverage of Pawse"><div class="media-track" id="media-track"></div></div>
     </section>
 
-    <section id="join" class="scroll-mt-24 py-20">
+    <section id="join" class="scroll-mt-24 py-16 sm:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="font-bold uppercase tracking-[0.18em] text-paw-purple text-sm">Get involved</p>
-        <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Come in as a sponsor, a stall, or a voice</h2>
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Come in as a sponsor, a stall, or a voice</h2>
         <div class="mt-8 grid lg:grid-cols-3 gap-5">
           <article class="pop reveal rounded-3xl bg-paw-blue text-white p-7 flex flex-col">
             <h3 class="text-2xl font-extrabold">Sponsor the festival</h3>
             <p class="mt-3 text-white/90 leading-relaxed">Animals With Humanity is a registered NGO with 12A, 80G, and CSR registration. Donors can avail tax exemption under the old tax regime.</p>
-            <a href="#desk" data-open-form="sponsor" class="mt-6 inline-flex w-fit rounded-full bg-paw-lime px-5 py-2.5 font-bold text-brand-dark">Tell us about your brand</a>
+            <button type="button" data-open-form="sponsor" class="mt-6 inline-flex w-fit rounded-full bg-paw-lime px-5 py-2.5 font-bold text-brand-dark">Tell us about your brand</button>
           </article>
           <article class="pop reveal rounded-3xl bg-paw-purple text-white p-7 flex flex-col">
             <h3 class="text-2xl font-extrabold">Book a stall</h3>
             <p class="mt-3 text-white/90 leading-relaxed">A table, chair, and lighting come with the stall.</p>
-            <a href="#desk" data-open-form="stall" class="mt-6 inline-flex w-fit rounded-full bg-white px-5 py-2.5 font-bold text-paw-purple">Apply for a stall</a>
+            <button type="button" data-open-form="stall" class="mt-6 inline-flex w-fit rounded-full bg-white px-5 py-2.5 font-bold text-paw-purple">Apply for a stall</button>
           </article>
           <article class="pop reveal rounded-3xl bg-paw-lemon p-7 flex flex-col">
             <h3 class="text-2xl font-extrabold">Share what you felt</h3>
             <p class="mt-3 leading-relaxed">Visited, volunteered, fostered, sponsored, or still planning to come. Feedback shapes the next ground.</p>
-            <a href="#desk" data-open-form="feedback" class="mt-6 inline-flex w-fit rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon">Leave feedback</a>
+            <button type="button" data-open-form="feedback" class="mt-6 inline-flex w-fit rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon">Leave feedback</button>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="desk" class="scroll-mt-24 bg-[#f7f2fb] py-20">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <h2 class="text-4xl font-extrabold tracking-tight">The Pawse desk</h2>
-        <p class="mt-3 text-gray-600">Fill the form that fits. Until the desk is connected to our backend, sending prepares an email to <a class="font-bold text-paw-purple" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a> so the team receives it.</p>
-
-        <div class="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Pawse forms">
-          <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-sponsor" aria-selected="true" aria-controls="panel-sponsor" data-form-tab="sponsor">Sponsor</button>
-          <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-stall" aria-selected="false" aria-controls="panel-stall" data-form-tab="stall">Stall</button>
-          <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-feedback" aria-selected="false" aria-controls="panel-feedback" data-form-tab="feedback">Feedback</button>
+    <section id="cause" class="relative overflow-hidden bg-paw-lime">
+      <div class="absolute inset-y-0 left-0 w-full lg:w-3/5 opacity-60 bg-cover bg-center [mask-image:linear-gradient(90deg,#000_60%,transparent)]" style="background-image:url(assets/images/pawse/hero/mandala-lime.webp)" aria-hidden="true"></div>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
+        <div>
+          <img src="assets/images/logo.png" alt="Animals With Humanity" class="h-12 w-auto" />
+          <h2 class="mt-6" aria-label="Will you PAWSE for a cause?">
+            <span class="cause-h block text-5xl sm:text-6xl">Will you</span>
+            <img src="assets/images/pawse/hero/pawse-wordmark-blue.png" alt="" width="900" height="226" class="mt-1 w-[min(78vw,430px)] h-auto" />
+            <span class="cause-h block text-5xl sm:text-6xl mt-1">for a cause?</span>
+          </h2>
+          <p class="mt-6 max-w-md font-semibold text-brand-dark/80">Animals With Humanity is a registered NGO with 12A, 80G and CSR registration. Donors can avail tax exemption under the old tax regime.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button type="button" data-open-form="sponsor" class="rounded-full bg-paw-blue px-6 py-3 font-bold text-white shadow-lg hover:-translate-y-0.5 transition">Sponsor Pawse</button>
+            <button type="button" data-open-form="stall" class="rounded-full bg-brand-dark px-6 py-3 font-bold text-paw-lemon shadow-lg hover:-translate-y-0.5 transition">Book a stall</button>
+          </div>
+          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-bold text-brand-dark">
+            <li><a class="inline-flex items-center gap-2 hover:text-paw-magenta" href="mailto:pawse@awhbharat.org"><i data-lucide="mail" class="w-5 h-5"></i>pawse@awhbharat.org</a></li>
+            <li><a class="inline-flex items-center gap-2 hover:text-paw-magenta" href="https://awhbharat.org" target="_blank" rel="noopener noreferrer"><i data-lucide="globe" class="w-5 h-5"></i>awhbharat.org</a></li>
+          </ul>
         </div>
+        <div class="relative mx-auto w-full max-w-[360px] lg:max-w-[400px] pb-6">
+          <div class="absolute inset-0 translate-x-3 translate-y-3 arch border-[3px] border-paw-blue" aria-hidden="true"></div>
+          <div class="arch relative aspect-[3/4] bg-paw-blue shadow-2xl">
+            <img src="assets/images/pawse/hero/group-photo.webp" alt="The Pawse crowd sitting together, laughing and cheering under strings of lights." width="801" height="1200" class="h-full w-full object-cover" />
+          </div>
+          <img src="assets/images/pawse/hero/lotus.webp" alt="" aria-hidden="true" class="absolute -left-10 sm:-left-14 bottom-0 h-40 sm:h-52 w-auto pointer-events-none" />
+          <span class="absolute -right-2 top-16 rotate-6 rounded-full bg-paw-magenta px-4 py-1.5 text-sm font-extrabold text-white shadow-lg">Pawse, Jan 2026</span>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="mt-5 rounded-[28px] bg-white p-6 sm:p-8 shadow-sm border border-purple-100">
-          <div id="panel-sponsor" class="form-panel" role="tabpanel" aria-labelledby="tab-sponsor">
+  <dialog id="desk" class="desk" aria-labelledby="desk-title">
+    <div class="p-5 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="desk-title" class="text-3xl font-extrabold tracking-tight">The Pawse desk</h2>
+          <p class="mt-2 text-sm text-gray-600">Until the desk is connected to our backend, sending prepares an email to <a class="font-bold text-paw-purple" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a> so the team receives it.</p>
+        </div>
+        <button type="button" id="desk-close" class="shrink-0 grid h-10 w-10 place-items-center rounded-full bg-white font-extrabold hover:bg-paw-lime" aria-label="Close form">✕</button>
+      </div>
+      <div class="mt-5 flex flex-wrap gap-2" role="tablist" aria-label="Pawse forms">
+        <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-sponsor" aria-selected="true" aria-controls="panel-sponsor" data-form-tab="sponsor">Sponsor</button>
+        <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-stall" aria-selected="false" aria-controls="panel-stall" data-form-tab="stall">Stall</button>
+        <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-feedback" aria-selected="false" aria-controls="panel-feedback" data-form-tab="feedback">Feedback</button>
+      </div>
+      <div class="mt-5 rounded-[24px] bg-white p-5 sm:p-7 shadow-sm border border-purple-100">
+<div id="panel-sponsor" class="form-panel" role="tabpanel" aria-labelledby="tab-sponsor">
             <form id="form-sponsor" data-kind="Sponsor" novalidate>
               <div class="grid sm:grid-cols-2 gap-4">
                 <label class="block text-sm font-semibold">Your name
@@ -687,21 +699,9 @@
             </form>
             <div class="success hidden" data-success-for="form-feedback"></div>
           </div>
-        </div>
       </div>
-    </section>
-
-    <section class="bg-paw-lime py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="font-bold text-paw-magenta">Animals With Humanity</p>
-          <h2 class="mt-2 text-5xl sm:text-6xl font-extrabold tracking-tight leading-[0.95]">Will you Pawse for a cause?</h2>
-          <p class="mt-6 font-semibold">Email · <a class="underline" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a></p>
-        </div>
-        <img src="assets/images/pawse/friends.jpg" alt="Two friends smiling with a small dog at Pawse." class="w-full rounded-[28px] object-cover max-h-[420px] shadow-xl" />
-      </div>
-    </section>
-  </main>
+    </div>
+  </dialog>
 
   <footer class="bg-gray-50 border-t-8 border-paw-lemon py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
@@ -714,7 +714,8 @@
       <div>
         <p class="font-bold">Pawse</p>
         <ul class="mt-3 space-y-2 text-sm text-gray-600">
-          <li><a class="hover:text-paw-purple" href="#experience">Experience</a></li>
+          <li><a class="hover:text-paw-purple" href="#about">About</a></li>
+          <li><a class="hover:text-paw-purple" href="#experience">What's on</a></li>
           <li><a class="hover:text-paw-purple" href="#glimpses">Glimpses</a></li>
           <li><a class="hover:text-paw-purple" href="#editions">Past editions</a></li>
           <li><a class="hover:text-paw-purple" href="#sponsors">Sponsors</a></li>
@@ -762,7 +763,13 @@
 
     tabs.forEach((tab) => tab.addEventListener("click", () => openForm(tab.dataset.formTab)));
     document.querySelectorAll("[data-open-form]").forEach((link) => {
-      link.addEventListener("click", () => openForm(link.dataset.openForm));
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        openForm(link.dataset.openForm);
+        const dlg = document.getElementById("desk");
+        if (dlg && !dlg.open) dlg.showModal();
+        document.getElementById("mobile-menu")?.classList.add("hidden");
+      });
     });
 
     // Backend hook. Set this to the future endpoint. Empty keeps the email handoff.
@@ -834,14 +841,14 @@
         const el = entry.target;
         const target = Number(el.dataset.count);
         if (reduce) {
-          el.textContent = target.toLocaleString("en-IN") + "+";
+          el.textContent = target.toLocaleString("en-IN") + (el.hasAttribute("data-plus") ? "+" : "");
         } else {
           const start = performance.now();
           const tick = (now) => {
             const progress = Math.min(1, (now - start) / 900);
             el.textContent = Math.round(target * progress).toLocaleString("en-IN");
             if (progress < 1) requestAnimationFrame(tick);
-            else el.textContent = target.toLocaleString("en-IN") + "+";
+            else el.textContent = target.toLocaleString("en-IN") + (el.hasAttribute("data-plus") ? "+" : "");
           };
           requestAnimationFrame(tick);
         }
@@ -945,6 +952,104 @@
       });
       show(0);
     }
+  </script>
+  <script>
+    // ---- v3: hero charm, zones, editions, sponsors bunting, desk dialog ----
+    (() => {
+      const nimbu = document.getElementById("nimbu");
+      nimbu?.addEventListener("click", () => {
+        nimbu.classList.remove("kick"); void nimbu.offsetWidth; nimbu.classList.add("kick");
+        nimbu.addEventListener("animationend", () => nimbu.classList.remove("kick"), { once: true });
+      });
+    })();
+
+    // What's on. To add a film to any activity: { n: "Pottery", img: "pottery", video: "assets/videos/pawse/pottery.mp4" }
+    (() => {
+      const IMG = "assets/images/pawse/cutouts/";
+      const GROUPS = [
+        { id: "paw", name: "Paw", sub: "For four-legged guests", bg: "#0253d1", fg: "#fff", icon: "pets", note: "Paws are welcome. Bring a leash.", items: [
+          { n: "Adoption camp", img: "adoption" }, { n: "Paint with paws", img: "paint" }, { n: "Health check-up & vaccination", img: "health" },
+          { n: "Paw walk", img: "pawfriendly" }, { n: "Understand paw parenting" }, { n: "Paw products shops" }, { n: "Games for paws", img: "pawfriendly" }, { n: "Stick station" } ] },
+        { id: "you", name: "You", sub: "For the humans", bg: "#f00281", fg: "#fff", icon: "people", note: "Make something, sing something, win something.", items: [
+          { n: "Pottery", img: "pottery" }, { n: "Flute boxing & live music", img: "flute" },
+          { n: "Crazyy workshops", img: "workshop", d: "Grow your own food, decorate cupcakes, make a nest." },
+          { n: "Tambola & games", img: "tambola" }, { n: "Photobooth" }, { n: "Like karaoke" }, { n: "Doodle booth" } ] },
+        { id: "earth", name: "Earth", sub: "For the planet", bg: "#bef521", fg: "#1f2937", icon: "earth", note: "Every stall is sustainable and 100% vegan.", items: [
+          { n: "Shop sustainable", img: "tote" }, { n: "Learn composting" }, { n: "Why waste segregation matters" }, { n: "Shop plants", img: "plant" }, { n: "Plant-based food", img: "girl-plant" } ] },
+      ];
+      const tabs = document.getElementById("grp-tabs"), stage = document.getElementById("stage"), chips = document.getElementById("chips"), note = document.getElementById("grp-note");
+      if (!tabs) return;
+      let g = 0, i = 0;
+      const show = () => {
+        const G = GROUPS[g], it = G.items[i];
+        stage.style.background = G.bg; stage.style.color = G.fg;
+        const media = it.video ? `<video src="${it.video}" controls playsinline muted poster="${IMG}${it.img || G.icon}.webp"></video>` : `<img src="${IMG}${it.img || G.icon}.webp" alt="" />`;
+        stage.innerHTML = `${media}<p class="stage-cap"><span class="text-xl">${it.n}</span>${it.d ? `<span class="block text-sm font-semibold opacity-90">${it.d}</span>` : ""}</p>`;
+        chips.querySelectorAll(".chip").forEach((c, k) => c.setAttribute("aria-pressed", String(k === i)));
+      };
+      const pick = (k) => { i = k; show(); };
+      const group = (k) => {
+        g = k; i = 0; const G = GROUPS[k];
+        tabs.querySelectorAll(".grp-tab").forEach((t, n) => { t.setAttribute("aria-selected", String(n === k)); t.style.borderColor = n === k ? G.bg === "#bef521" ? "#1f2937" : G.bg : "transparent"; });
+        note.textContent = G.note;
+        chips.innerHTML = G.items.map((it, n) => `<button type="button" class="chip" aria-pressed="false" data-i="${n}">${it.n}</button>`).join("");
+        show();
+      };
+      tabs.innerHTML = GROUPS.map((G, n) => `<button type="button" role="tab" class="grp-tab" aria-selected="false" data-g="${n}"><img src="${IMG}${G.icon}.webp" alt="" /><span class="text-xl sm:text-2xl leading-none">${G.name}<small>${G.sub}</small></span></button>`).join("");
+      tabs.addEventListener("click", (e) => { const b = e.target.closest("[data-g]"); if (b) group(+b.dataset.g); });
+      chips.addEventListener("click", (e) => { const b = e.target.closest("[data-i]"); if (b) pick(+b.dataset.i); });
+      chips.addEventListener("pointerover", (e) => { if (e.pointerType !== "mouse") return; const b = e.target.closest("[data-i]"); if (b && +b.dataset.i !== i) pick(+b.dataset.i); });
+      group(0);
+    })();
+
+    // Editions: tap to pin the full numbers open
+    document.querySelectorAll(".ed-toggle").forEach((btn) => btn.addEventListener("click", () => {
+      const card = btn.closest(".ed-card"), on = card.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(on));
+      btn.querySelector(".lbl").textContent = on ? "Fewer numbers" : "All numbers";
+    }));
+
+    // Sponsors as festival bunting
+    (() => {
+      const P = "assets/images/pawse/sponsors/";
+      const CATS = [["campus", "Campuses & city"], ["cause", "Causes"], ["brand", "Pet & green brands"], ["food", "Food & stay"], ["studio", "Studios & more"]];
+      const LIST = [
+        ["bansal-group", "Bansal Group", "campus"], ["bmc", "Bhopal Municipal Corporation", "campus"], ["mp-police", "Madhya Pradesh Police", "campus"], ["nhdc", "NHDC", "campus"],
+        ["bgi", "Bansal Group of Institutes", "campus"], ["nmims", "NMIMS", "campus"], ["sage", "SAGE University", "campus"], ["oriental", "The Oriental School", "campus"], ["bus", "Update Bus Bhopal", "campus"],
+        ["aasra", "Aasra Animal Shelter", "cause"], ["peta", "PETA India", "cause"], ["dansh", "DANSH", "cause"], ["mercy", "Mercy for Animals", "cause"],
+        ["pawsitive", "Pawsitive India", "cause"], ["pawsitivity", "Pawsitivity", "cause"], ["human-beast", "Human and the Beast", "cause"], ["arushi", "Arushi", "cause"],
+        ["chullbull", "Chullbull Pet Products", "brand"], ["drools", "Drools", "brand"], ["doggyji", "Doggy Ji", "brand"], ["greensarthi", "Green Sarthi", "brand"], ["bio", "Bio Nutrients", "brand"],
+        ["unknown", "", "brand"], ["amera", "Améra", "brand"], ["stws", "STWS", "brand"], ["ecocradle", "Ecocradle", "brand"], ["toneop", "ToneOp", "brand"],
+        ["garlic", "The Garlic Bread", "food"], ["bakeshake", "Bake & Shake", "food"], ["meepleton", "Meepleton", "food"], ["starbucks", "Starbucks", "food"], ["drishti", "Hotel Drishti Inn", "food"],
+        ["adzone", "Adzone", "studio"], ["echo", "Echo Edge", "studio"], ["conversions", "The Conversions", "studio"], ["artlane", "The Art Lane", "studio"], ["abheeshtam", "abheeshtam design studio", "studio"],
+        ["bindu", "Bindu", "studio"], ["bazarville", "bazarville", "studio"], ["printkaari", "printkaari", "studio"], ["castrol", "Castrol Power1", "studio"],
+      ];
+      const COL = ["#7a27a9", "#f00281", "#0253d1", "#f76500", "#7fb800"];
+      const wrap = document.getElementById("bunting"), cats = document.getElementById("sp-cats"), more = document.getElementById("sp-more");
+      if (!wrap) return;
+      document.getElementById("sp-count").textContent = LIST.length;
+      let cat = "all", open = false;
+      const draw = () => {
+        const rows = LIST.filter((x) => cat === "all" || x[2] === cat);
+        wrap.innerHTML = rows.map((x, k) => `<li class="flag" style="animation-delay:${Math.min(k, 14) * 35}ms"><div class="flag-in"><div class="flag-body" style="--c:${COL[k % COL.length]}"><img src="${P}${x[0]}.png" alt="${x[1] || "Partner logo"}" />${x[1] ? `<span>${x[1]}</span>` : ""}</div></div></li>`).join("");
+        const clamp = cat === "all" && !open;
+        wrap.classList.toggle("clamped", clamp);
+        more.hidden = cat !== "all";
+        more.textContent = open ? "Show fewer" : `Show all ${LIST.length} partners`;
+        cats.querySelectorAll(".cat").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.c === cat)));
+      };
+      cats.innerHTML = [["all", "Everyone"], ...CATS].map(([id, label]) => `<button type="button" class="cat" data-c="${id}" aria-pressed="false">${label} <span class="opacity-60">${id === "all" ? LIST.length : LIST.filter((x) => x[2] === id).length}</span></button>`).join("");
+      cats.addEventListener("click", (e) => { const b = e.target.closest("[data-c]"); if (b) { cat = b.dataset.c; draw(); } });
+      more.addEventListener("click", () => { open = !open; draw(); });
+      draw();
+    })();
+
+    // Desk dialog
+    (() => {
+      const dlg = document.getElementById("desk");
+      document.getElementById("desk-close")?.addEventListener("click", () => dlg.close());
+      dlg?.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+    })();
   </script>
   <script>
     // Media rail. Add each article's link in `url` and its panel gets a "Read the article" button.
