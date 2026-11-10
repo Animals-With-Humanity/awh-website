@@ -117,7 +117,8 @@
     .glimpse-slide { position: relative; flex: 0 0 100%; }
     .glimpse-slide img,
     .glimpse-slide video,
-    .glimpse-slide iframe { display: block; width: 100%; height: min(68vw, 520px); object-fit: cover; background: #111; }
+    .glimpse-slide iframe { display: block; width: 100%; height: min(72vw, 560px); object-fit: contain; object-position: center; background: #111; }
+    .glimpse-slide img.glimpse-cover { object-fit: cover; }
     .glimpse-yt { display: block; position: relative; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; }
     .glimpse-play {
       position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -155,17 +156,25 @@
     .media-rail:hover .media-track,.media-rail:focus-within .media-track,.media-rail.paused .media-track{animation-play-state:paused}
     .m-card{position:relative;flex:0 0 auto;width:150px;height:360px;border-radius:28px;overflow:hidden;color:#fff;cursor:pointer;text-align:left;
       transition:width .55s cubic-bezier(.2,.8,.2,1),transform .4s;box-shadow:0 14px 30px rgba(31,41,55,.18);border:0;padding:0}
-    .m-card:hover,.m-card:focus-visible,.m-card.open{width:440px;transform:translateY(-6px)}
+    .m-card:hover,.m-card:focus-visible,.m-card.open{width:500px;transform:translateY(-6px)}
     .m-card:focus-visible{outline:4px solid #1f2937;outline-offset:3px}
-    .m-name{position:absolute;left:0;top:0;bottom:0;width:150px;display:flex;align-items:flex-end;justify-content:center;padding:22px 0}
-    .m-name b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:1.7rem;font-weight:800;letter-spacing:.01em;white-space:nowrap;transition:opacity .3s}
-    .m-card:hover .m-name b,.m-card.open .m-name b,.m-card:focus-visible .m-name b{opacity:.35}
-    .m-no{position:absolute;top:18px;left:20px;font-weight:800;opacity:.75}
-    .m-body{position:absolute;inset:0;padding:26px 28px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;width:440px;opacity:0;transform:translateX(24px);transition:opacity .35s,transform .45s}
+    .m-name{position:absolute;left:0;top:0;bottom:0;width:150px;display:flex;align-items:flex-end;justify-content:center;padding:22px 0;z-index:2;transition:opacity .25s,visibility .25s}
+    .m-name b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:1.7rem;font-weight:800;letter-spacing:.01em;white-space:nowrap}
+    .m-card:hover .m-name,.m-card.open .m-name,.m-card:focus-visible .m-name{opacity:0;visibility:hidden}
+    .m-no{position:absolute;top:18px;left:20px;font-weight:800;opacity:.75;z-index:2;transition:opacity .25s}
+    .m-card:hover .m-no,.m-card.open .m-no,.m-card:focus-visible .m-no{opacity:0}
+    .m-body{position:absolute;inset:0;padding:26px 28px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;width:500px;opacity:0;transform:translateX(24px);transition:opacity .35s,transform .45s}
     .m-card:hover .m-body,.m-card.open .m-body,.m-card:focus-visible .m-body{opacity:1;transform:none;transition-delay:.18s}
     .m-body h3{font-size:2rem;font-weight:800;line-height:1.05}
     .m-body p{font-weight:500;line-height:1.45;opacity:.92}
     .m-go{display:inline-flex;align-items:center;gap:8px;width:fit-content;border-radius:999px;background:#bef521;color:#1f2937;font-weight:800;padding:.6rem 1.1rem;text-decoration:none}
+    .m-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;background:#111}
+    .m-card.has-shot{background:#111}
+    .m-card.has-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.7) 100%);z-index:1;pointer-events:none}
+    .m-card.has-shot .m-no,.m-card.has-shot .m-name,.m-card.has-shot .m-body{z-index:2}
+    .m-card.has-shot:hover .m-shot,.m-card.has-shot.open .m-shot,.m-card.has-shot:focus-visible .m-shot{object-fit:contain;opacity:1;filter:none}
+    .m-card.has-shot:hover::after,.m-card.has-shot.open::after,.m-card.has-shot:focus-visible::after{background:linear-gradient(180deg,transparent 68%,rgba(0,0,0,.78) 100%)}
+    .m-card.has-shot:hover .m-body p,.m-card.has-shot.open .m-body p,.m-card.has-shot:focus-visible .m-body p{display:none}
     @media(max-width:640px){.media-rail{overflow-x:auto}.media-track{animation:none}.m-card.open{width:min(84vw,360px)}.m-card:hover{width:150px}.m-card.open:hover{width:min(84vw,360px)}.m-body{width:min(84vw,360px)}}
     @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track,.media-track,.hero-title{animation:none!important}}
   
@@ -214,19 +223,23 @@
     .ed-card.open .ed-toggle .plus{transform:rotate(45deg)}
     @media(hover:hover){.ed-card:hover .ed-toggle .plus{transform:rotate(45deg)}}
     /* bunting */
-    .bunting{display:flex;flex-wrap:wrap;justify-content:center;gap:0 10px;position:relative}
-    .bunting.clamped{max-height:312px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
-    .flag{position:relative;width:96px;padding-top:20px;transform-origin:50% 8px;animation:flagIn .5s both}
-    .flag::before{content:"";position:absolute;top:7px;left:-6px;right:-6px;height:2px;background:#7a27a9;opacity:.75}
-    .flag::after{content:"";position:absolute;top:2px;left:50%;margin-left:-6px;width:12px;height:12px;border-radius:99px;background:#f76500;border:2px solid #fff}
-    .flag-in{filter:drop-shadow(0 6px 8px rgba(122,39,169,.18));transform-origin:50% 0}
-    .flag:hover .flag-in{animation:flagSwing .9s ease-out}
-    .flag-body{background:#fff;border-top:7px solid var(--c);padding:10px 6px 24px;clip-path:polygon(0 0,100% 0,100% 90%,50% 100%,0 90%);text-align:center;height:124px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-    .flag-body img{height:48px;width:100%;object-fit:contain}
-    .flag-body span{font-size:10.5px;line-height:1.15;font-weight:700;color:#4b5563;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    @keyframes flagSwing{20%{transform:rotate(9deg)}45%{transform:rotate(-7deg)}70%{transform:rotate(4deg)}100%{transform:rotate(0)}}
-    @keyframes flagIn{from{opacity:0;transform:translateY(-10px)}}
-    @media(max-width:520px){.flag{width:80px}.flag-body{height:112px}.flag-body img{height:40px}.bunting{gap:0 6px}.bunting.clamped{max-height:276px}}
+.sp-sec{background-color:#fff4ea;background-image:radial-gradient(rgba(247,101,0,.16) 1.6px,transparent 1.6px);background-size:26px 26px}
+.sp-rail{overflow:hidden;padding:14px 0 26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.sp-track{display:flex;width:max-content;animation:spmove var(--dur,70s) linear infinite}
+.sp-track>ul{display:flex;flex:none;list-style:none;margin:0;padding:0}
+.sp-rail:hover .sp-track,.sp-rail:focus-within .sp-track{animation-play-state:paused}
+@keyframes spmove{to{transform:translateX(-50%)}}
+.sp-item{flex:none;margin-right:20px;width:240px;background:#fff;border-radius:26px;overflow:hidden;border-bottom:7px solid var(--c);box-shadow:0 14px 28px rgba(122,39,169,.14);display:flex;flex-direction:column;justify-content:flex-start;transition:transform .3s,box-shadow .3s}
+.sp-item:hover{transform:translateY(-8px);box-shadow:0 22px 36px rgba(122,39,169,.22)}
+.sp-logo{height:140px;display:flex;align-items:center;justify-content:center;padding:18px 16px 10px;flex-shrink:0}
+.sp-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.sp-name{margin-top:auto;padding:8px 12px 14px;text-align:center;font-weight:700;font-size:.78rem;line-height:1.35;color:#4b5563;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;word-break:break-word;hyphens:auto}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:18px;list-style:none;padding:0;margin:0}
+.sp-grid .sp-item{width:auto;margin:0;min-height:220px}
+.sp-grid .sp-logo{height:118px;padding:14px 12px 8px}
+.sp-grid .sp-name{font-size:.8rem;padding:0 10px 16px;-webkit-line-clamp:3;flex:1}
+@media(max-width:640px){.sp-item{width:190px}.sp-logo{height:112px}}
+@media (prefers-reduced-motion:reduce){.sp-track{animation:none}.sp-rail{overflow-x:auto}}
     .cat{border-radius:999px;padding:.45rem .9rem;font-weight:700;font-size:.92rem;background:#fff;border:1.5px solid #f4d9bf;white-space:nowrap}
     .cat[aria-pressed="true"]{background:#1f2937;color:#eeff66;border-color:#1f2937}
     /* desk dialog */
@@ -235,8 +248,8 @@
     dialog.desk[open]{animation:dlg .35s cubic-bezier(.2,.8,.2,1)}
     @keyframes dlg{from{opacity:0;transform:translateY(24px) scale(.97)}}
     /* closing */
-    .arch{border-radius:999px 999px 28px 28px;overflow:hidden}
-    .cause-h{font-weight:800;line-height:.92;letter-spacing:-.02em;color:#f00281;text-shadow:3px 3px 0 #0253d1}
+    .arch{overflow:hidden}
+    .cause-h{font-weight:800;line-height:1;letter-spacing:-.02em;color:#f00281}
     @media (prefers-reduced-motion:reduce){.nimbu,.live-dot,.stage img,.flag{animation:none!important}}
 </style>
 </head>
@@ -319,6 +332,7 @@
           <a href="#experience" class="inline-flex items-center gap-2 rounded-full bg-paw-lime px-6 py-3 font-bold text-brand-dark shadow-lg hover:-translate-y-0.5 transition">See what's on <i data-lucide="arrow-down" class="w-4 h-4"></i></a>
           <a href="#desk" data-open-form="stall" class="inline-flex items-center rounded-full bg-white px-6 py-3 font-bold text-paw-purple hover:-translate-y-0.5 transition">Book a stall</a>
           <a href="#desk" data-open-form="sponsor" class="inline-flex items-center rounded-full border border-white/50 px-6 py-3 font-bold text-white hover:bg-white/10 transition">Become a sponsor</a>
+          <a href="#desk" data-open-form="volunteer" class="inline-flex items-center rounded-full bg-white px-6 py-3 font-bold text-paw-blue hover:-translate-y-0.5 transition">Become a volunteer</a>
         </div>
       </div>
 
@@ -331,8 +345,10 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
         <div>
           <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.02]">Be kind, to all kinds.</h2>
-          <p class="mt-5 text-lg text-gray-700 leading-relaxed max-w-xl">Animals With Humanity is a youth-led NGO in Bhopal. We want a city where animals and people live together in peace. We help street animals through adoption and vaccination, and we teach people how to care for them.</p>
-          <p class="mt-4 text-lg text-gray-700 leading-relaxed max-w-xl">Pawse is our festival. For three days, paw parents, students, artists and small brands meet in one place to adopt, play, learn and shop sustainably. Everything is vegan, and every paw is welcome.</p>
+          <p class="mt-5 text-gray-700 leading-relaxed max-w-xl">Animals With Humanity is a grassroots, youth-led movement that works to ensure animals live with dignity, freedom and safety. We rescue and rehabilitate injured and abandoned animals, run sterilisation and vaccination drives, intervene in cruelty cases, promote plant-based living, and build compassionate communities through awareness and education.</p>
+          <p class="mt-4 text-gray-700 leading-relaxed max-w-xl">We believe in true coexistence — a world where animals and humans can live peacefully, and where animals are not seen as property, but as lives that matter.</p>
+          <p class="mt-4 text-gray-700 leading-relaxed max-w-xl"><strong class="text-paw-purple">PAWSE</strong> is a pet-friendly community festival that brings people, animals and the planet together. From animal adoption and paw-friendly activities to vegan food, sustainable brands, music, performances, games and shopping, PAWSE brings together people from different communities to celebrate, connect and have a good time.</p>
+          <p class="mt-4 text-gray-700 leading-relaxed max-w-xl">Whether you're a paw parent, an animal lover, vegan, sustainability enthusiast or simply someone looking for a fun day out, PAWSE has a place for you.</p>
           <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2">
             <a href="index.html" class="inline-flex items-center gap-2 rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon hover:-translate-y-0.5 transition">More about AWH <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             <span class="text-sm font-semibold text-gray-500">Registered NGO · 12A · 80G · CSR</span>
@@ -447,20 +463,32 @@
       </div>
     </section>
 
-    <section id="sponsors" class="scroll-mt-24 bg-[#fff4ea] py-14 sm:py-16">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">They already paused with us</h2>
-        <p class="mt-2 text-gray-600"><span id="sp-count">41</span> sponsors and collaborators across two editions. Hover a flag.</p>
-        <div id="sp-cats" class="mt-6 flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap" role="group" aria-label="Filter partners"></div>
-        <ul id="bunting" class="bunting clamped mt-4 pt-1"></ul>
-        <div class="mt-2 text-center"><button type="button" id="sp-more" class="rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon hover:-translate-y-0.5 transition">Show all partners</button></div>
+<section id="sponsors" class="sp-sec scroll-mt-24 py-14 sm:py-16 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">They already paused with us</h2>
+      <p class="mt-2 text-gray-600"><span id="sp-count">41</span> sponsors and collaborators across two editions.</p>
+    </div>
+    <button type="button" id="sp-toggle" aria-expanded="false" class="rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon hover:-translate-y-0.5 transition">Expand all</button>
+  </div>
 
-        <p class="mt-10 rounded-2xl border-2 border-dashed border-paw-orange/50 px-4 py-3 text-sm sm:text-base text-gray-700">
-          <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag with Javed Ali (2025) and Raag Mehfil with Osho Jain (2026).
-          <a href="#desk" data-open-form="sponsor" class="font-bold text-paw-purple underline underline-offset-2">Partner with us next</a>
-        </p>
-      </div>
-    </section>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+    <div id="sp-cats" class="flex gap-2 overflow-x-auto pb-2 sm:flex-wrap" role="group" aria-label="Filter partners"></div>
+  </div>
+
+  <div id="sp-rail" class="sp-rail mt-4" aria-label="Sponsors and collaborators"><div id="sp-track" class="sp-track"></div></div>
+
+  <div id="sp-all" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-6" hidden>
+    <ul id="sp-grid" class="sp-grid"></ul>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="mt-10 rounded-2xl border-2 border-dashed border-paw-orange/50 bg-white/60 px-4 py-3 text-sm sm:text-base text-gray-700">
+      <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag with Javed Ali (2025) and Raag Mehfil with Osho Jain (2026).
+      <a href="#desk" data-open-form="sponsor" class="font-bold text-paw-purple underline underline-offset-2">Partner with us next</a>
+    </p>
+  </div>
+</section>
 
     <section id="media" class="scroll-mt-24 bg-paw-pink/25 py-20 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -474,8 +502,8 @@
 
     <section id="join" class="scroll-mt-24 py-16 sm:py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Come in as a sponsor, a stall, or a voice</h2>
-        <div class="mt-8 grid lg:grid-cols-3 gap-5">
+        <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Come in as a sponsor, a stall, a volunteer, or a voice</h2>
+        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <article class="pop reveal rounded-3xl bg-paw-blue text-white p-7 flex flex-col">
             <h3 class="text-2xl font-extrabold">Sponsor the festival</h3>
             <p class="mt-3 text-white/90 leading-relaxed">Animals With Humanity is a registered NGO with 12A, 80G, and CSR registration. Donors can avail tax exemption under the old tax regime.</p>
@@ -487,44 +515,47 @@
             <button type="button" data-open-form="stall" class="mt-6 inline-flex w-fit rounded-full bg-white px-5 py-2.5 font-bold text-paw-purple">Apply for a stall</button>
           </article>
           <article class="pop reveal rounded-3xl bg-paw-lemon p-7 flex flex-col">
+            <h3 class="text-2xl font-extrabold">Volunteer with us</h3>
+            <p class="mt-3 leading-relaxed">45 days from 1 Dec to 20 Jan. Pick a skill you can bring — and volunteers receive a certificate.</p>
+            <button type="button" data-open-form="volunteer" class="mt-6 inline-flex w-fit rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon">Apply to volunteer</button>
+          </article>
+          <article class="pop reveal rounded-3xl bg-white border-2 border-purple-100 p-7 flex flex-col sm:col-span-2 lg:col-span-1">
             <h3 class="text-2xl font-extrabold">Share what you felt</h3>
-            <p class="mt-3 leading-relaxed">Visited, volunteered, fostered, sponsored, or still planning to come. Feedback shapes the next ground.</p>
-            <button type="button" data-open-form="feedback" class="mt-6 inline-flex w-fit rounded-full bg-brand-dark px-5 py-2.5 font-bold text-paw-lemon">Leave feedback</button>
+            <p class="mt-3 leading-relaxed text-gray-700">Visited, volunteered, fostered, sponsored, or still planning to come. Feedback shapes the next ground.</p>
+            <button type="button" data-open-form="feedback" class="mt-6 inline-flex w-fit rounded-full bg-paw-purple px-5 py-2.5 font-bold text-white">Leave feedback</button>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="cause" class="relative overflow-hidden bg-paw-lime">
-      <div class="absolute inset-y-0 left-0 w-full lg:w-3/5 opacity-60 bg-cover bg-center [mask-image:linear-gradient(90deg,#000_60%,transparent)]" style="background-image:url(assets/images/pawse/hero/mandala-lime.webp)" aria-hidden="true"></div>
-      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
-        <div>
-          <img src="assets/images/logo.png" alt="Animals With Humanity" class="h-12 w-auto" />
-          <h2 class="mt-6" aria-label="Will you PAWSE for a cause?">
-            <span class="cause-h block text-5xl sm:text-6xl">Will you</span>
-            <img src="assets/images/pawse/hero/pawse-wordmark-blue.png" alt="" width="900" height="226" class="mt-1 w-[min(78vw,430px)] h-auto" />
-            <span class="cause-h block text-5xl sm:text-6xl mt-1">for a cause?</span>
-          </h2>
-          <p class="mt-6 max-w-md font-semibold text-brand-dark/80">Animals With Humanity is a registered NGO with 12A, 80G and CSR registration. Donors can avail tax exemption under the old tax regime.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <button type="button" data-open-form="sponsor" class="rounded-full bg-paw-blue px-6 py-3 font-bold text-white shadow-lg hover:-translate-y-0.5 transition">Sponsor Pawse</button>
-            <button type="button" data-open-form="stall" class="rounded-full bg-brand-dark px-6 py-3 font-bold text-paw-lemon shadow-lg hover:-translate-y-0.5 transition">Book a stall</button>
-          </div>
-          <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-bold text-brand-dark">
-            <li><a class="inline-flex items-center gap-2 hover:text-paw-magenta" href="mailto:pawse@awhbharat.org"><i data-lucide="mail" class="w-5 h-5"></i>pawse@awhbharat.org</a></li>
-            <li><a class="inline-flex items-center gap-2 hover:text-paw-magenta" href="https://awhbharat.org" target="_blank" rel="noopener noreferrer"><i data-lucide="globe" class="w-5 h-5"></i>awhbharat.org</a></li>
-          </ul>
-        </div>
-        <div class="relative mx-auto w-full max-w-[360px] lg:max-w-[400px] pb-6">
-          <div class="absolute inset-0 translate-x-3 translate-y-3 arch border-[3px] border-paw-blue" aria-hidden="true"></div>
-          <div class="arch relative aspect-[3/4] bg-paw-blue shadow-2xl">
-            <img src="assets/images/pawse/hero/group-photo.webp" alt="The Pawse crowd sitting together, laughing and cheering under strings of lights." width="801" height="1200" class="h-full w-full object-cover" />
-          </div>
-          <img src="assets/images/pawse/hero/lotus.webp" alt="" aria-hidden="true" class="absolute -left-10 sm:-left-14 bottom-0 h-40 sm:h-52 w-auto pointer-events-none" />
-          <span class="absolute -right-2 top-16 rotate-6 rounded-full bg-paw-magenta px-4 py-1.5 text-sm font-extrabold text-white shadow-lg">Pawse, Jan 2026</span>
-        </div>
+  <section id="cause" class="relative overflow-hidden bg-paw-lime">
+  <div class="absolute inset-0 opacity-50 bg-cover bg-center" style="background-image:url(assets/images/pawse/hero/mandala-lime.webp)" aria-hidden="true"></div>
+  <div class="relative max-w-6xl mx-auto px-6 sm:px-8 py-16 sm:py-24 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="text-center lg:text-left">
+      <h2 class="flex flex-col items-center lg:items-start gap-3" aria-label="Will you PAWSE for a cause?">
+        <span class="cause-h text-5xl sm:text-6xl">Will you</span>
+        <img src="assets/images/pawse/hero/pawse-wordmark-blue.png" alt="" width="900" height="226" class="w-[min(78vw,400px)] h-auto" />
+        <span class="cause-h text-5xl sm:text-6xl">for a cause?</span>
+      </h2>
+      <p class="mt-8 max-w-md mx-auto lg:mx-0 font-semibold text-brand-dark/80">Animals With Humanity is a registered NGO with 12A, 80G and CSR registration. Donors can avail tax exemption under the old tax regime.</p>
+      <div class="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+        <button type="button" data-open-form="sponsor" class="rounded-full bg-paw-blue px-6 py-3 font-bold text-white shadow-lg hover:-translate-y-0.5 transition">Sponsor Pawse</button>
+        <button type="button" data-open-form="stall" class="rounded-full bg-brand-dark px-6 py-3 font-bold text-paw-lemon shadow-lg hover:-translate-y-0.5 transition">Book a stall</button>
       </div>
-    </section>
+      <ul class="mt-8 flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 font-bold text-brand-dark">
+        <li><a class="inline-flex items-center gap-2 hover:text-paw-magenta" href="mailto:pawse@awhbharat.org"><i data-lucide="mail" class="w-5 h-5"></i>pawse@awhbharat.org</a></li>
+        <li><a class="inline-flex items-center gap-2 hover:text-paw-magenta" href="https://awhbharat.org" target="_blank" rel="noopener noreferrer"><i data-lucide="globe" class="w-5 h-5"></i>awhbharat.org</a></li>
+      </ul>
+    </div>
+    <div class="relative mx-auto w-full max-w-[380px] pb-2">
+      <div class="arch relative aspect-[3/4] bg-paw-blue shadow-2xl overflow-visible">
+        <img src="assets/images/pawse/hero/group-photo.webp" alt="The Pawse crowd sitting together, laughing and cheering under strings of lights." width="801" height="1200" class="h-full w-full object-cover" />
+      </div>
+    
+      <span class="absolute right-3 top-6 rotate-6 rounded-full bg-paw-magenta px-4 py-1.5 text-sm font-extrabold text-white shadow-lg">Pawse, Jan 2026</span>
+    </div>
+  </div>
+</section>
   </main>
 
   <dialog id="desk" class="desk" aria-labelledby="desk-title">
@@ -532,7 +563,7 @@
       <div class="flex items-start justify-between gap-4">
         <div>
           <h2 id="desk-title" class="text-3xl font-extrabold tracking-tight">The Pawse desk</h2>
-          <p class="mt-2 text-sm text-gray-600">Until the desk is connected to our backend, sending prepares an email to <a class="font-bold text-paw-purple" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a> so the team receives it.</p>
+          <p class="mt-2 text-sm text-gray-600">Submissions go to the Pawse team spreadsheet (one tab per form). If sending fails, you can still email <a class="font-bold text-paw-purple" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a>.</p>
         </div>
         <button type="button" id="desk-close" class="shrink-0 grid h-10 w-10 place-items-center rounded-full bg-white font-extrabold hover:bg-paw-lime" aria-label="Close form">✕</button>
       </div>
@@ -540,10 +571,11 @@
         <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-sponsor" aria-selected="true" aria-controls="panel-sponsor" data-form-tab="sponsor">Sponsor</button>
         <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-stall" aria-selected="false" aria-controls="panel-stall" data-form-tab="stall">Stall</button>
         <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-feedback" aria-selected="false" aria-controls="panel-feedback" data-form-tab="feedback">Feedback</button>
+        <button type="button" class="tab-btn rounded-full px-4 py-2 font-bold bg-white" role="tab" id="tab-volunteer" aria-selected="false" aria-controls="panel-volunteer" data-form-tab="volunteer">Volunteer</button>
       </div>
       <div class="mt-5 rounded-[24px] bg-white p-5 sm:p-7 shadow-sm border border-purple-100">
 <div id="panel-sponsor" class="form-panel" role="tabpanel" aria-labelledby="tab-sponsor">
-            <form id="form-sponsor" data-kind="Sponsor" novalidate>
+            <form id="form-sponsor" data-kind="Sponsor" data-form-type="sponsor" novalidate>
               <div class="grid sm:grid-cols-2 gap-4">
                 <label class="block text-sm font-semibold">Your name
                   <input class="paw-input mt-1" name="name" required autocomplete="name" />
@@ -574,24 +606,13 @@
                   <option>Not sure yet, guide me</option>
                 </select>
               </label>
-              <label class="block text-sm font-semibold mt-4">Vegan products or experiences you will bring
-                <textarea class="paw-area mt-1" name="veganProducts" required placeholder="Tell us the vegan products, sampling, or planet-friendly activation you want at Pawse."></textarea>
-              </label>
-              <label class="mt-4 flex items-start gap-3 text-sm font-medium">
-                <input type="checkbox" name="veganConfirmed" value="yes" required class="mt-1 h-4 w-4 accent-paw-purple" />
-                <span>I confirm this activation is 100% vegan and fits a sustainable, paw-friendly festival.</span>
-              </label>
-              <label class="mt-3 flex items-start gap-3 text-sm font-medium">
-                <input type="checkbox" name="csrNote" value="yes" class="mt-1 h-4 w-4 accent-paw-purple" />
-                <span>Please share 12A, 80G, and CSR documentation with us.</span>
-              </label>
               <button class="mt-6 rounded-full bg-paw-purple px-6 py-3 font-bold text-white hover:bg-paw-blue transition" type="submit">Send sponsor note</button>
             </form>
             <div class="success hidden" data-success-for="form-sponsor"></div>
           </div>
 
           <div id="panel-stall" class="form-panel" role="tabpanel" aria-labelledby="tab-stall" hidden>
-            <form id="form-stall" data-kind="Stall" novalidate>
+            <form id="form-stall" data-kind="Stall" data-form-type="stall" novalidate>
               <div class="grid sm:grid-cols-2 gap-4">
                 <label class="block text-sm font-semibold">Your name
                   <input class="paw-input mt-1" name="name" required autocomplete="name" />
@@ -618,27 +639,11 @@
                   </select>
                 </label>
               </div>
-              <label class="block text-sm font-semibold mt-4">Vegan products you will offer
-                <textarea class="paw-area mt-1" name="veganProducts" required placeholder="List every vegan item, dish, or activity. Example: millet momos, oat lattes, compost kits, upcycled collars."></textarea>
-              </label>
-              <label class="block text-sm font-semibold mt-4">How is the stall packed and served?
-                <select class="paw-select mt-1" name="packaging" required>
-                  <option value="">Choose one</option>
-                  <option>Reusable ware</option>
-                  <option>Home-compostable packaging</option>
-                  <option>Both</option>
-                  <option>I will explain in the note</option>
-                </select>
-              </label>
               <label class="block text-sm font-semibold mt-4">Instagram or website
                 <input class="paw-input mt-1" name="link" />
               </label>
               <label class="block text-sm font-semibold mt-4">Anything else the team should know
                 <textarea class="paw-area mt-1" name="note" placeholder="Power needs, a live demo, or how much space the activity likes. Skip money. We will talk that through with you."></textarea>
-              </label>
-              <label class="mt-4 flex items-start gap-3 text-sm font-medium">
-                <input type="checkbox" name="veganConfirmed" value="yes" required class="mt-1 h-4 w-4 accent-paw-purple" />
-                <span>I confirm this stall is sustainable and 100% vegan. Nothing served or sold will use animal products.</span>
               </label>
               <button class="mt-6 rounded-full bg-paw-magenta px-6 py-3 font-bold text-white hover:bg-paw-purple transition" type="submit">Apply for a stall</button>
             </form>
@@ -646,7 +651,7 @@
           </div>
 
           <div id="panel-feedback" class="form-panel" role="tabpanel" aria-labelledby="tab-feedback" hidden>
-            <form id="form-feedback" data-kind="Feedback" novalidate>
+            <form id="form-feedback" data-kind="Feedback" data-form-type="feedback" novalidate>
               <div class="grid sm:grid-cols-2 gap-4">
                 <label class="block text-sm font-semibold">Name
                   <input class="paw-input mt-1" name="name" required autocomplete="name" />
@@ -691,13 +696,44 @@
               <label class="block text-sm font-semibold mt-4">What should change
                 <textarea class="paw-area mt-1" name="improve" required></textarea>
               </label>
-              <label class="mt-4 flex items-start gap-3 text-sm font-medium">
-                <input type="checkbox" name="keepPosted" value="yes" class="mt-1 h-4 w-4 accent-paw-purple" />
-                <span>Tell me when the next Pawse dates are out.</span>
-              </label>
               <button class="mt-6 rounded-full bg-brand-dark px-6 py-3 font-bold text-paw-lemon" type="submit">Send feedback</button>
             </form>
             <div class="success hidden" data-success-for="form-feedback"></div>
+          </div>
+
+          <div id="panel-volunteer" class="form-panel" role="tabpanel" aria-labelledby="tab-volunteer" hidden>
+            <form id="form-volunteer" data-kind="Volunteer" data-form-type="volunteer" novalidate>
+              <p class="text-sm text-gray-600 mb-4">Volunteering runs for <strong>45 days</strong>, from <strong>1 December</strong> to <strong>20 January</strong>. Volunteers who complete the period receive a <strong>certificate</strong>.</p>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <label class="block text-sm font-semibold">Your name
+                  <input class="paw-input mt-1" name="name" required autocomplete="name" />
+                </label>
+                <label class="block text-sm font-semibold">Email
+                  <input class="paw-input mt-1" type="email" name="email" required autocomplete="email" />
+                </label>
+                <label class="block text-sm font-semibold">Phone
+                  <input class="paw-input mt-1" type="tel" name="phone" required autocomplete="tel" />
+                </label>
+                <label class="block text-sm font-semibold">City
+                  <input class="paw-input mt-1" name="city" required autocomplete="address-level2" />
+                </label>
+              </div>
+              <label class="block text-sm font-semibold mt-4">What are you good at?
+                <select class="paw-select mt-1" name="volunteerCategory" required>
+                  <option value="">Choose the skill that fits you</option>
+                  <option value="Communication">Communication — talking to people, writing, social media, spreading the word (etc.)</option>
+                  <option value="Logistics & management">Logistics &amp; management — planning, operations, keeping things running (etc.)</option>
+                  <option value="Artistic">Artistic — drawing, painting, decoration, visual work (etc.)</option>
+                  <option value="Coordination">Coordination — stall / team coordination, bringing people together (etc.)</option>
+                  <option value="Others">Others — tell us in the experience box below (etc.)</option>
+                </select>
+              </label>
+              <label class="block text-sm font-semibold mt-4">Prior experience
+                <textarea class="paw-area mt-1" name="priorExperience" placeholder="Mention any relevant experience, even if brief."></textarea>
+              </label>
+              <button class="mt-6 rounded-full bg-paw-blue px-6 py-3 font-bold text-white hover:bg-paw-purple transition" type="submit">Apply to volunteer</button>
+            </form>
+            <div class="success hidden" data-success-for="form-volunteer"></div>
           </div>
       </div>
     </div>
@@ -719,6 +755,7 @@
           <li><a class="hover:text-paw-purple" href="#glimpses">Glimpses</a></li>
           <li><a class="hover:text-paw-purple" href="#editions">Past editions</a></li>
           <li><a class="hover:text-paw-purple" href="#sponsors">Sponsors</a></li>
+          <li><a class="hover:text-paw-purple" href="#desk" data-open-form="volunteer">Become a volunteer</a></li>
           <li><a class="hover:text-paw-purple" href="#desk" data-open-form="stall">Book a stall</a></li>
           <li><a class="hover:text-paw-purple" href="index.html">AWH home</a></li>
         </ul>
@@ -727,7 +764,7 @@
         <p class="font-bold">Find us</p>
         <ul class="mt-3 space-y-2 text-sm">
           <li><a class="text-paw-purple font-semibold" href="mailto:pawse@awhbharat.org">pawse@awhbharat.org</a></li>
-          <li><a class="text-paw-purple font-semibold" href="https://www.instagram.com/animalswithhumanity_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a class="text-paw-purple font-semibold" href="https://www.instagram.com/eventsbyawh?utm_source=ig_web_button_share_sheet&dlrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           <li><a class="text-paw-purple font-semibold" href="https://wa.me/7067322053" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
         </ul>
         <p class="mt-4 text-xs text-gray-500">Form notes are used only to reply about Pawse.</p>
@@ -735,6 +772,12 @@
     </div>
   </footer>
 
+  <script>
+    // Google Apps Script web app URL (Deploy → Web app → Anyone). See google-apps-script/PawseFormsBackend.gs
+    window.PAWSE_FORMS = {
+      submitUrl: "",
+    };
+  </script>
   <script type="module">
     const menuBtn = document.getElementById("menu-btn");
     const menu = document.getElementById("mobile-menu");
@@ -751,6 +794,7 @@
       sponsor: document.getElementById("panel-sponsor"),
       stall: document.getElementById("panel-stall"),
       feedback: document.getElementById("panel-feedback"),
+      volunteer: document.getElementById("panel-volunteer"),
     };
 
     function openForm(name) {
@@ -772,11 +816,73 @@
       });
     });
 
-    // Backend hook. Set this to the future endpoint. Empty keeps the email handoff.
-    const PAWSE_LEAD_ENDPOINT = "";
+    const PAWSE_FORM_SUBMIT_URL = (window.PAWSE_FORMS && window.PAWSE_FORMS.submitUrl) || "AKfycbzgsj_ZRloyjxstbW4-aWy_nQxDm-9FiaZ0A4GGXbmyXvl-W8y7nIdEWRrQ1Zost19g";
 
     function labelize(key) {
       return key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
+    }
+
+    async function submitToGoogleSheet(payload) {
+      if (!PAWSE_FORM_SUBMIT_URL) return { ok: false, reason: "no-endpoint" };
+      const body = new URLSearchParams({ payload: JSON.stringify(payload) });
+      try {
+        const response = await fetch(PAWSE_FORM_SUBMIT_URL, {
+          method: "POST",
+          mode: "cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+          body,
+        });
+        const text = await response.text();
+        let parsed = null;
+        try {
+          parsed = JSON.parse(text);
+        } catch (_) {
+          parsed = { ok: response.ok, raw: text };
+        }
+        if (parsed && parsed.ok) return { ok: true, parsed };
+        return { ok: false, reason: "server", parsed };
+      } catch (_) {
+        try {
+          await fetch(PAWSE_FORM_SUBMIT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+            body,
+          });
+          return { ok: true, reason: "no-cors" };
+        } catch (err2) {
+          return { ok: false, reason: "network", error: err2 };
+        }
+      }
+    }
+
+    function showFormSuccess(form, button, state, data, mailtoHref) {
+      const success = form.parentElement.querySelector("[data-success-for]");
+      const kindLabel = (data.kind || "note").toLowerCase();
+      success.classList.remove("hidden");
+      form.classList.add("hidden");
+      if (state === "saved") {
+        success.innerHTML = `<p class="text-2xl font-extrabold">Received.</p><p class="mt-2 text-gray-600">Your ${kindLabel} is saved with the Pawse team. We will get back to you soon.</p>
+          <button type="button" class="mt-5 text-sm font-bold text-paw-purple" data-another>Send another</button>`;
+      } else if (state === "mailto") {
+        success.innerHTML = `<p class="text-2xl font-extrabold">One last tap.</p>
+          <p class="mt-2 text-gray-600">Your ${kindLabel} note is ready. Tap below to email the Pawse desk (until the sheet link is added on the site).</p>
+          <a class="mt-5 inline-flex rounded-full bg-paw-lime px-5 py-3 font-bold text-brand-dark" href="${mailtoHref}">Email pawse@awhbharat.org</a>
+          <button type="button" class="mt-3 block text-sm font-bold text-paw-purple" data-another>Write another</button>`;
+      } else {
+        success.innerHTML = `<p class="text-2xl font-extrabold">Could not send automatically.</p>
+          <p class="mt-2 text-gray-600">Please email the desk so nothing is lost — or try again in a moment.</p>
+          <a class="mt-5 inline-flex rounded-full bg-paw-lime px-5 py-3 font-bold text-brand-dark" href="${mailtoHref}">Email pawse@awhbharat.org</a>
+          <button type="button" class="mt-3 block text-sm font-bold text-paw-purple" data-another>Try again</button>`;
+      }
+      success.querySelector("[data-another]")?.addEventListener("click", () => {
+        form.reset();
+        form.classList.remove("hidden");
+        success.classList.add("hidden");
+        success.innerHTML = "";
+        button.disabled = false;
+      });
+      button.disabled = false;
     }
 
     document.querySelectorAll("form[data-kind]").forEach((form) => {
@@ -784,52 +890,29 @@
         event.preventDefault();
         if (!form.reportValidity()) return;
         const button = form.querySelector("[type=submit]");
+        const prevLabel = button.textContent;
         button.disabled = true;
+        button.textContent = "Sending…";
         const data = Object.fromEntries(new FormData(form).entries());
         data.kind = form.dataset.kind;
+        data.formType = form.dataset.formType || form.dataset.kind.toLowerCase();
         data.sentAt = new Date().toISOString();
-        if (!data.veganConfirmed) data.veganConfirmed = "no";
-        if (!data.csrNote) data.csrNote = "no";
-        if (!data.keepPosted) data.keepPosted = "no";
 
-        try {
-          const saved = JSON.parse(localStorage.getItem("pawseLeads") || "[]");
-          saved.push(data);
-          localStorage.setItem("pawseLeads", JSON.stringify(saved));
-        } catch (_) { /* private mode can block storage; the email still works */ }
+        const lines = Object.entries(data)
+          .filter(([key]) => !["formType"].includes(key))
+          .map(([key, value]) => `${labelize(key)}: ${value || "-"}`)
+          .join("\n");
+        const subject = encodeURIComponent(`Pawse ${data.kind}: ${data.brand || data.organisation || data.name || "note"}`);
+        const mailtoHref = `mailto:pawse@awhbharat.org?subject=${subject}&body=${encodeURIComponent(lines)}`;
 
-        let delivered = false;
-        if (PAWSE_LEAD_ENDPOINT) {
-          try {
-            const response = await fetch(PAWSE_LEAD_ENDPOINT, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(data),
-            });
-            delivered = response.ok;
-          } catch (_) { delivered = false; }
+        let state = "mailto";
+        if (PAWSE_FORM_SUBMIT_URL) {
+          const result = await submitToGoogleSheet(data);
+          state = result.ok ? "saved" : "error";
         }
 
-        const lines = Object.entries(data).map(([key, value]) => `${labelize(key)}: ${value || "-"}`).join("\n");
-        const subject = encodeURIComponent(`Pawse ${data.kind}: ${data.brand || data.organisation || data.name || "note"}`);
-        const href = `mailto:pawse@awhbharat.org?subject=${subject}&body=${encodeURIComponent(lines)}`;
-        const success = form.parentElement.querySelector("[data-success-for]");
-        success.classList.remove("hidden");
-        form.classList.add("hidden");
-        success.innerHTML = delivered
-          ? `<p class="text-2xl font-extrabold">Received.</p><p class="mt-2 text-gray-600">The Pawse desk has your ${data.kind.toLowerCase()} note.</p>`
-          : `<p class="text-2xl font-extrabold">One last tap.</p>
-             <p class="mt-2 text-gray-600">Your ${data.kind.toLowerCase()} note is ready. Email it to the Pawse desk so a person actually reads it. The same copy is saved in this browser for when the form connects.</p>
-             <a class="mt-5 inline-flex rounded-full bg-paw-lime px-5 py-3 font-bold text-brand-dark" href="${href}">Email pawse@awhbharat.org</a>
-             <button type="button" class="mt-3 block text-sm font-bold text-paw-purple" data-another>Write another</button>`;
-        success.querySelector("[data-another]")?.addEventListener("click", () => {
-          form.reset();
-          form.classList.remove("hidden");
-          success.classList.add("hidden");
-          success.innerHTML = "";
-          button.disabled = false;
-        });
-        button.disabled = false;
+        showFormSuccess(form, button, state, data, mailtoHref);
+        button.textContent = prevLabel;
       });
     });
 
@@ -863,13 +946,17 @@
     // { type: "video", src: "assets/videos/pawse/live.mp4", poster: "assets/images/pawse/talk.jpg", alt: "Live music at Pawse", caption: "Live music" },
     // { type: "video", youtube: "VIDEO_ID", poster: "assets/images/pawse/stage-pup.jpg", alt: "Pawse stage", caption: "On stage" },
     const GLIMPSES = [
-      { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "Pawse crowd laughing together under strings of lights, with a small white dog in the group.", caption: "The crowd, under the lights" },
-      { type: "image", src: "assets/images/pawse/adoption.jpg", alt: "A volunteer on stage holding two small dogs.", caption: "Adoption camp" },
-      { type: "image", src: "assets/images/pawse/stage-pup.jpg", alt: "A person on stage holding a small puppy.", caption: "A pup on stage" },
-      { type: "image", src: "assets/images/pawse/friends.jpg", alt: "Two friends smiling with a small dog at Pawse.", caption: "Friends on the ground" },
-      { type: "image", src: "assets/images/pawse/audience.jpg", alt: "Audience seated on the floor, clapping at Pawse.", caption: "The audience" },
-      { type: "image", src: "assets/images/pawse/talk.jpg", alt: "A speaker with a microphone on the Pawse stage.", caption: "A talk" },
-      { type: "image", src: "assets/images/pawse/workshop.jpg", alt: "Two people painting together at a Pawse workshop.", caption: "Workshop table" },
+      { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "The Pawse crowd sitting together, laughing and cheering under strings of lights.", caption: "The crowd, under the lights" },
+      { type: "image", src: "assets/images/pawse/glimpses/friends-golden.jpg", fit: "cover", alt: "Friends gathered around a golden retriever under festival lights.", caption: "Friends and a golden" },
+      { type: "image", src: "assets/images/pawse/glimpses/adoption-pup.jpg", alt: "A volunteer smiling while holding a white indie puppy.", caption: "Adoption camp" },
+      { type: "image", src: "assets/images/pawse/glimpses/stage-pups.jpg", alt: "A volunteer on stage holding two small puppies.", caption: "Pups on stage" },
+      { type: "image", src: "assets/images/pawse/glimpses/child-pup.jpg", alt: "A child petting a puppy sitting in someone's lap.", caption: "A first meeting" },
+      { type: "image", src: "assets/images/pawse/glimpses/puppy-lights.jpg", alt: "A puppy held up under the One Walk festival lights.", caption: "A pup under the lights" },
+      { type: "image", src: "assets/images/pawse/glimpses/paint-night.jpg", alt: "Two people painting together at a Pawse workshop table.", caption: "Workshop table" },
+      { type: "image", src: "assets/images/pawse/glimpses/pottery-kid.jpg", alt: "A child and an adult at the pottery stall.", caption: "Pottery" },
+      { type: "image", src: "assets/images/pawse/glimpses/plant-stall.jpg", alt: "A plant stall with recipe cards and saplings.", caption: "Shop plants" },
+      { type: "image", src: "assets/images/pawse/glimpses/cat-close.jpg", fit: "cover", alt: "A white and tabby cat on a volunteer's shoulder.", caption: "A cat at Pawse" },
+      { type: "image", src: "assets/images/pawse/glimpses/singer.jpg", alt: "A singer performing on the Pawse stage.", caption: "Live on stage" },
     ];
 
     const glimpseViewport = document.getElementById("glimpse-viewport");
@@ -880,7 +967,7 @@
       const dots = document.getElementById("glimpse-dots");
       const esc = (value) => String(value ?? "").replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
       glimpseTrack.innerHTML = GLIMPSES.map((item) => {
-        let media = `<img src="${esc(item.src)}" alt="${esc(item.alt)}" />`;
+        let media = `<img src="${esc(item.src)}" alt="${esc(item.alt)}" class="${item.fit === "cover" ? "glimpse-cover" : ""}" />`;
         if (item.type === "video" && item.youtube && /^[\w-]{6,}$/.test(item.youtube)) {
           media = `<button type="button" class="glimpse-yt" data-youtube="${esc(item.youtube)}" aria-label="Play ${esc(item.caption)}"><img src="${esc(item.poster || item.src)}" alt="" /><span class="glimpse-play">Play</span></button>`;
         } else if (item.type === "video" && item.src) {
@@ -983,7 +1070,8 @@
       const show = () => {
         const G = GROUPS[g], it = G.items[i];
         stage.style.background = G.bg; stage.style.color = G.fg;
-        const media = it.video ? `<video src="${it.video}" controls playsinline muted poster="${IMG}${it.img || G.icon}.webp"></video>` : `<img src="${IMG}${it.img || G.icon}.webp" alt="" />`;
+        const pic = `${IMG}${it.img || G.icon}.webp`;
+        const media = it.video ? `<video src="${it.video}" controls playsinline muted poster="${pic}"></video>` : `<img src="${pic}" alt="" />`;
         stage.innerHTML = `${media}<p class="stage-cap"><span class="text-xl">${it.n}</span>${it.d ? `<span class="block text-sm font-semibold opacity-90">${it.d}</span>` : ""}</p>`;
         chips.querySelectorAll(".chip").forEach((c, k) => c.setAttribute("aria-pressed", String(k === i)));
       };
@@ -1010,39 +1098,57 @@
     }));
 
     // Sponsors as festival bunting
-    (() => {
-      const P = "assets/images/pawse/sponsors/";
-      const CATS = [["campus", "Campuses & city"], ["cause", "Causes"], ["brand", "Pet & green brands"], ["food", "Food & stay"], ["studio", "Studios & more"]];
-      const LIST = [
-        ["bansal-group", "Bansal Group", "campus"], ["bmc", "Bhopal Municipal Corporation", "campus"], ["mp-police", "Madhya Pradesh Police", "campus"], ["nhdc", "NHDC", "campus"],
-        ["bgi", "Bansal Group of Institutes", "campus"], ["nmims", "NMIMS", "campus"], ["sage", "SAGE University", "campus"], ["oriental", "The Oriental School", "campus"], ["bus", "Update Bus Bhopal", "campus"],
-        ["aasra", "Aasra Animal Shelter", "cause"], ["peta", "PETA India", "cause"], ["dansh", "DANSH", "cause"], ["mercy", "Mercy for Animals", "cause"],
-        ["pawsitive", "Pawsitive India", "cause"], ["pawsitivity", "Pawsitivity", "cause"], ["human-beast", "Human and the Beast", "cause"], ["arushi", "Arushi", "cause"],
-        ["chullbull", "Chullbull Pet Products", "brand"], ["drools", "Drools", "brand"], ["doggyji", "Doggy Ji", "brand"], ["greensarthi", "Green Sarthi", "brand"], ["bio", "Bio Nutrients", "brand"],
-        ["unknown", "", "brand"], ["amera", "Améra", "brand"], ["stws", "STWS", "brand"], ["ecocradle", "Ecocradle", "brand"], ["toneop", "ToneOp", "brand"],
-        ["garlic", "The Garlic Bread", "food"], ["bakeshake", "Bake & Shake", "food"], ["meepleton", "Meepleton", "food"], ["starbucks", "Starbucks", "food"], ["drishti", "Hotel Drishti Inn", "food"],
-        ["adzone", "Adzone", "studio"], ["echo", "Echo Edge", "studio"], ["conversions", "The Conversions", "studio"], ["artlane", "The Art Lane", "studio"], ["abheeshtam", "abheeshtam design studio", "studio"],
-        ["bindu", "Bindu", "studio"], ["bazarville", "bazarville", "studio"], ["printkaari", "printkaari", "studio"], ["castrol", "Castrol Power1", "studio"],
-      ];
-      const COL = ["#7a27a9", "#f00281", "#0253d1", "#f76500", "#7fb800"];
-      const wrap = document.getElementById("bunting"), cats = document.getElementById("sp-cats"), more = document.getElementById("sp-more");
-      if (!wrap) return;
-      document.getElementById("sp-count").textContent = LIST.length;
-      let cat = "all", open = false;
-      const draw = () => {
-        const rows = LIST.filter((x) => cat === "all" || x[2] === cat);
-        wrap.innerHTML = rows.map((x, k) => `<li class="flag" style="animation-delay:${Math.min(k, 14) * 35}ms"><div class="flag-in"><div class="flag-body" style="--c:${COL[k % COL.length]}"><img src="${P}${x[0]}.png" alt="${x[1] || "Partner logo"}" />${x[1] ? `<span>${x[1]}</span>` : ""}</div></div></li>`).join("");
-        const clamp = cat === "all" && !open;
-        wrap.classList.toggle("clamped", clamp);
-        more.hidden = cat !== "all";
-        more.textContent = open ? "Show fewer" : `Show all ${LIST.length} partners`;
-        cats.querySelectorAll(".cat").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.c === cat)));
-      };
-      cats.innerHTML = [["all", "Everyone"], ...CATS].map(([id, label]) => `<button type="button" class="cat" data-c="${id}" aria-pressed="false">${label} <span class="opacity-60">${id === "all" ? LIST.length : LIST.filter((x) => x[2] === id).length}</span></button>`).join("");
-      cats.addEventListener("click", (e) => { const b = e.target.closest("[data-c]"); if (b) { cat = b.dataset.c; draw(); } });
-      more.addEventListener("click", () => { open = !open; draw(); });
-      draw();
-    })();
+  // Sponsors: random moving single line with category filter, expandable to the full grid
+(() => {
+  const P = "assets/images/pawse/sponsors/";
+  const CATS = [["campus", "Campuses & city", "#0253d1"], ["cause", "Causes", "#f00281"], ["brand", "Pet & green brands", "#7fb800"], ["food", "Food & stay", "#f76500"], ["studio", "Studios & more", "#7a27a9"]];
+  const COLOR = Object.fromEntries(CATS.map((c) => [c[0], c[2]]));
+  const LIST = [
+    ["bansal-group", "Bansal Group", "campus"], ["bmc", "Bhopal Municipal Corporation", "campus"], ["mp-police", "Madhya Pradesh Police", "campus"], ["nhdc", "NHDC", "campus"],
+    ["bgi", "Bansal Group of Institutes", "campus"], ["nmims", "NMIMS", "campus"], ["sage", "SAGE University", "campus"], ["oriental", "The Oriental School", "campus"], ["bus", "Update Bus Bhopal", "campus"],
+    ["aasra", "Aasra Animal Shelter", "cause"], ["peta", "PETA India", "cause"], ["dansh", "DANSH", "cause"], ["mercy", "Mercy for Animals", "cause"],
+    ["pawsitive", "Pawsitive India", "cause"], ["pawsitivity", "Pawsitivity", "cause"], ["human-beast", "Human and the Beast", "cause"], ["arushi", "Arushi", "cause"],
+    ["chullbull", "Chullbull Pet Products", "brand"], ["drools", "Drools", "brand"], ["doggyji", "Doggy Ji", "brand"], ["greensarthi", "Green Sarthi", "brand"], ["bio", "Bio Nutrients", "brand"],
+    ["unknown", "", "brand"], ["amera", "Améra", "brand"], ["stws", "STWS", "brand"], ["ecocradle", "Ecocradle", "brand"], ["toneop", "ToneOp", "brand"],
+    ["garlic", "The Garlic Bread", "food"], ["bakeshake", "Bake & Shake", "food"], ["meepleton", "Meepleton", "food"], ["starbucks", "Starbucks", "food"], ["drishti", "Hotel Drishti Inn", "food"],
+    ["adzone", "Adzone", "studio"], ["echo", "Echo Edge", "studio"], ["conversions", "The Conversions", "studio"], ["artlane", "The Art Lane", "studio"], ["abheeshtam", "abheeshtam design studio", "studio"],
+    ["bindu", "Bindu", "studio"], ["bazarville", "bazarville", "studio"], ["printkaari", "printkaari", "studio"], ["castrol", "Castrol Power1", "studio"],
+  ];
+  const rail = document.getElementById("sp-rail"), track = document.getElementById("sp-track"),
+        all = document.getElementById("sp-all"), grid = document.getElementById("sp-grid"),
+        cats = document.getElementById("sp-cats"), toggle = document.getElementById("sp-toggle");
+  if (!track) return;
+  document.getElementById("sp-count").textContent = LIST.length;
+
+  const item = (x, hid) => `<li class="sp-item" style="--c:${COLOR[x[2]]}" ${hid ? 'aria-hidden="true"' : ""}><div class="sp-logo"><img src="${P}${x[0]}.png" alt="${hid ? "" : (x[1] || "Partner logo")}" loading="lazy" /></div><p class="sp-name">${x[1]}</p></li>`;
+  const shuffle = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const filtered = () => LIST.filter((x) => cat === "all" || x[2] === cat);
+
+  let cat = "all", open = false;
+  const drawRail = () => {
+    const s = shuffle(filtered());
+    const reps = Math.max(1, Math.ceil(12 / s.length));          // enough cards to always fill the screen
+    const half = Array.from({ length: reps }, () => s).flat();
+    track.style.setProperty("--dur", half.length * 1.8 + "s");   // same speed for every category
+    track.innerHTML = `<ul>${half.map((x) => item(x)).join("")}</ul><ul aria-hidden="true">${half.map((x) => item(x, true)).join("")}</ul>`;
+  };
+  const drawGrid = () => { grid.innerHTML = filtered().map((x) => item(x)).join(""); };
+  const draw = () => {
+    cats.querySelectorAll(".cat").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.c === cat)));
+    open ? drawGrid() : drawRail();
+  };
+
+  cats.innerHTML = [["all", "Everyone"], ...CATS].map(([id, label]) => `<button type="button" class="cat" data-c="${id}" aria-pressed="false">${label} <span class="opacity-60">${id === "all" ? LIST.length : LIST.filter((x) => x[2] === id).length}</span></button>`).join("");
+  cats.addEventListener("click", (e) => { const b = e.target.closest("[data-c]"); if (b) { cat = b.dataset.c; draw(); } });
+  toggle.addEventListener("click", () => {
+    open = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Collapse" : "Expand all";
+    rail.hidden = open; all.hidden = !open;
+    draw();
+  });
+  draw();
+})();
 
     // Desk dialog
     (() => {
@@ -1054,22 +1160,23 @@
   <script>
     // Media rail. Add each article's link in `url` and its panel gets a "Read the article" button.
     const MEDIA = [
-      { name: "NDTV", lang: "News", url: "" },
-      { name: "The Times of India", lang: "News", url: "" },
-      { name: "Dainik Bhaskar", lang: "हिन्दी", url: "" },
+      { name: "NDTV", lang: "News", url: "", img: "assets/images/pawse/news/news.jpg" },
+      { name: "The Times of India", lang: "News", url: "", img: "assets/images/pawse/news/news2.jpg" },
+      { name: "Dainik Bhaskar", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/news.jpg" },
       { name: "Patrika", lang: "हिन्दी", url: "" },
-      { name: "Jagran", lang: "हिन्दी", url: "" },
-      { name: "Navdunia", lang: "हिन्दी", url: "" },
-      { name: "VIP News", lang: "TV", url: "" },
-      { name: "News World", lang: "TV", url: "" },
+      { name: "Jagran", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/jagran.jpg" },
+      { name: "Navdunia", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/navdunia-full.jpg" },
+      { name: "VIP News", lang: "TV", url: "", img: "assets/images/pawse/news/vip-news.jpg" },
+      { name: "News World", lang: "TV", url: "", img: "assets/images/pawse/news/news-world.jpg" },
       { name: "Agni Media", lang: "Digital", url: "" },
-      { name: "News 24", lang: "TV", url: "" },
+      { name: "News 24", lang: "TV", url: "", img: "assets/images/pawse/news/tv-dogs.jpg" },
       { name: "Bansal News", lang: "TV", url: "" },
     ];
     const MCOL = ["bg-paw-purple", "bg-paw-blue", "bg-paw-magenta", "bg-brand-dark", "bg-paw-orange"];
     (() => {
       const track = document.getElementById("media-track"); if (!track) return;
-      const card = (m, i, hid) => `<button type="button" class="m-card ${MCOL[i % MCOL.length]}" ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
+      const card = (m, i, hid) => `<button type="button" class="m-card ${MCOL[i % MCOL.length]}${m.img ? " has-shot" : ""}" ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
+        ${m.img ? `<img class="m-shot" src="${m.img}" alt="" loading="lazy" />` : ""}
         <span class="m-no">${String(i % MEDIA.length + 1).padStart(2, "0")}</span>
         <span class="m-name"><b>${m.name}</b></span>
         <span class="m-body"><span class="text-paw-lemon font-bold text-sm uppercase tracking-widest">${m.lang} · Pawse coverage</span>
@@ -1095,6 +1202,7 @@
     })();
   </script>
   <script src="assets/js/pawse-pup.js" defer></script>
+  <script src="assets/js/pawse-friends.js" defer></script>
 </body>
 
 </html>

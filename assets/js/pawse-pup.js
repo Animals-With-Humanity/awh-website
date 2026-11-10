@@ -666,6 +666,7 @@ function start(THREE) {
     if (!el || !el.closest) return null;
     const hit = el.closest(INTERACTIVE);
     if (!hit || hit === toggle || toggle.contains(hit)) return null;
+    if (hit.hasAttribute("data-friend") || hit.classList.contains("fr-toggle")) return null; // Sprout / Mitra controls
     const r = hit.getBoundingClientRect();
     if (r.width < 56 || r.height < 28) return null;
     return hit;
