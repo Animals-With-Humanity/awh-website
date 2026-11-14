@@ -149,10 +149,11 @@
     .hero-title{background:linear-gradient(100deg,#bef521,#eeff66,#fd66c4,#bef521);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
     @keyframes shine{to{background-position:250% 0}}
     nav.scrolled{box-shadow:0 10px 30px rgba(31,41,55,.12)}
-    /* media rail */
-    .media-rail{overflow-x:auto;scrollbar-width:none;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+    /* media rail — two equal sets, translated by exactly half so the row never runs out */
+    .media-rail{overflow:hidden;padding:10px 0 30px;scrollbar-width:none;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
     .media-rail::-webkit-scrollbar{display:none}
-    .media-track{display:flex;gap:14px;width:max-content;padding:10px 24px 30px;animation:marquee 60s linear infinite}
+    .media-track{display:flex;width:max-content;animation:marquee 60s linear infinite}
+    .media-set{display:flex;flex:none;gap:14px;padding-right:14px}
     .media-rail:hover .media-track,.media-rail:focus-within .media-track,.media-rail.paused .media-track{animation-play-state:paused}
     .m-card{position:relative;flex:0 0 auto;width:150px;height:360px;border-radius:28px;overflow:hidden;color:#fff;cursor:pointer;text-align:left;
       transition:width .55s cubic-bezier(.2,.8,.2,1),transform .4s;box-shadow:0 14px 30px rgba(31,41,55,.18);border:0;padding:0}
@@ -175,8 +176,8 @@
     .m-card.has-shot:hover .m-shot,.m-card.has-shot.open .m-shot,.m-card.has-shot:focus-visible .m-shot{object-fit:contain;opacity:1;filter:none}
     .m-card.has-shot:hover::after,.m-card.has-shot.open::after,.m-card.has-shot:focus-visible::after{background:linear-gradient(180deg,transparent 68%,rgba(0,0,0,.78) 100%)}
     .m-card.has-shot:hover .m-body p,.m-card.has-shot.open .m-body p,.m-card.has-shot:focus-visible .m-body p{display:none}
-    @media(max-width:640px){.media-rail{overflow-x:auto}.media-track{animation:none}.m-card.open{width:min(84vw,360px)}.m-card:hover{width:150px}.m-card.open:hover{width:min(84vw,360px)}.m-body{width:min(84vw,360px)}}
-    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track,.media-track,.hero-title{animation:none!important}}
+    @media(max-width:640px){.m-card.open{width:min(84vw,360px)}.m-card:hover{width:150px}.m-card.open:hover{width:min(84vw,360px)}.m-body{width:min(84vw,360px)}}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track,.media-track,.hero-title{animation:none!important}.media-rail{overflow-x:auto}}
   
     /* ---- v3 redesign ---- */
     .hero{background-color:#0750c3;background-image:repeating-radial-gradient(circle at 50% 62%,rgba(255,255,255,.045) 0 2px,transparent 2px 46px),radial-gradient(circle at 50% 40%,#1a64dc 0%,#0750c3 55%,#05409f 100%)}
@@ -816,7 +817,7 @@
       });
     });
 
-    const PAWSE_FORM_SUBMIT_URL = (window.PAWSE_FORMS && window.PAWSE_FORMS.submitUrl) || "AKfycbzgsj_ZRloyjxstbW4-aWy_nQxDm-9FiaZ0A4GGXbmyXvl-W8y7nIdEWRrQ1Zost19g";
+    const PAWSE_FORM_SUBMIT_URL ="https://script.google.com/macros/s/AKfycbzgsj_ZRloyjxstbW4-aWy_nQxDm-9FiaZ0A4GGXbmyXvl-W8y7nIdEWRrQ1Zost19g/exec";
 
     function labelize(key) {
       return key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
@@ -1056,11 +1057,11 @@
       const GROUPS = [
         { id: "paw", name: "Paw", sub: "For four-legged guests", bg: "#0253d1", fg: "#fff", icon: "pets", note: "Paws are welcome. Bring a leash.", items: [
           { n: "Adoption camp", img: "adoption" }, { n: "Paint with paws", img: "paint" }, { n: "Health check-up & vaccination", img: "health" },
-          { n: "Paw walk", img: "pawfriendly" }, { n: "Understand paw parenting" }, { n: "Paw products shops" }, { n: "Games for paws", img: "pawfriendly" }, { n: "Stick station" } ] },
+          { n: "Paw walk", img: "paw_walk" }, { n: "Understand paw parenting" , img:"dog_cartoon"}, { n: "Paw products shops" }, { n: "Games for paws", img: "dog_cartoon" }, { n: "Stick station" } ] },
         { id: "you", name: "You", sub: "For the humans", bg: "#f00281", fg: "#fff", icon: "people", note: "Make something, sing something, win something.", items: [
           { n: "Pottery", img: "pottery" }, { n: "Flute boxing & live music", img: "flute" },
           { n: "Crazyy workshops", img: "workshop", d: "Grow your own food, decorate cupcakes, make a nest." },
-          { n: "Tambola & games", img: "tambola" }, { n: "Photobooth" }, { n: "Like karaoke" }, { n: "Doodle booth" } ] },
+          { n: "Tambola & games", img: "tambola" }, { n: "Photobooth", img: "photo_booth" }, { n: "Like karaoke" }, { n: "Doodle booth", img: "doodle_booth" } ] },
         { id: "earth", name: "Earth", sub: "For the planet", bg: "#bef521", fg: "#1f2937", icon: "earth", note: "Every stall is sustainable and 100% vegan.", items: [
           { n: "Shop sustainable", img: "tote" }, { n: "Learn composting" }, { n: "Why waste segregation matters" }, { n: "Shop plants", img: "plant" }, { n: "Plant-based food", img: "girl-plant" } ] },
       ];
@@ -1174,7 +1175,9 @@
     ];
     const MCOL = ["bg-paw-purple", "bg-paw-blue", "bg-paw-magenta", "bg-brand-dark", "bg-paw-orange"];
     (() => {
-      const track = document.getElementById("media-track"); if (!track) return;
+      const track = document.getElementById("media-track");
+      const rail = document.getElementById("media-rail");
+      if (!track || !rail) return;
       const card = (m, i, hid) => `<button type="button" class="m-card ${MCOL[i % MCOL.length]}${m.img ? " has-shot" : ""}" ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
         ${m.img ? `<img class="m-shot" src="${m.img}" alt="" loading="lazy" />` : ""}
         <span class="m-no">${String(i % MEDIA.length + 1).padStart(2, "0")}</span>
@@ -1182,8 +1185,34 @@
         <span class="m-body"><span class="text-paw-lemon font-bold text-sm uppercase tracking-widest">${m.lang} · Pawse coverage</span>
           <h3>${m.name}</h3><p>Read how ${m.name} covered Pawse, Bhopal's paw-friendly green festival of paws, people and planet.</p>
           ${m.url ? `<a class="m-go" href="${m.url}" target="_blank" rel="noopener noreferrer">Read the article →</a>` : `<span class="text-sm font-semibold opacity-80">Article link coming soon</span>`}</span></button>`;
-      track.innerHTML = MEDIA.map((m, i) => card(m, i, false)).join("") + MEDIA.map((m, i) => card(m, i, true)).join("");
-      const rail = document.getElementById("media-rail");
+      const sequence = (hid) => MEDIA.map((m, i) => card(m, i, hid)).join("");
+      let reps = 0;
+      const fill = () => {
+        const probe = document.createElement("div");
+        probe.className = "media-set";
+        probe.style.cssText = "position:absolute;visibility:hidden;pointer-events:none";
+        probe.innerHTML = sequence(true);
+        track.appendChild(probe);
+        const unitW = probe.getBoundingClientRect().width || 1;
+        probe.remove();
+        const next = Math.max(1, Math.ceil((rail.clientWidth + 200) / unitW));
+        if (next === reps && track.querySelector(".media-set")) return;
+        reps = next;
+        const set = (hid) => `<div class="media-set"${hid ? ' aria-hidden="true"' : ""}>${Array.from({ length: reps }, (_, n) => sequence(hid || n > 0)).join("")}</div>`;
+        track.innerHTML = set(false) + set(true);
+        const half = track.scrollWidth / 2;
+        track.style.animationDuration = Math.max(24, Math.round(half / 30)) + "s";
+      };
+      let filling = false;
+      const refill = () => {
+        if (filling) return;
+        filling = true;
+        fill();
+        filling = false;
+      };
+      refill();
+      if (window.ResizeObserver) new ResizeObserver(refill).observe(rail);
+      else addEventListener("resize", refill);
       track.addEventListener("click", (e) => {
         const c = e.target.closest(".m-card"); if (!c || e.target.closest("a")) return;
         const was = c.classList.contains("open");
@@ -1191,6 +1220,19 @@
         if (!was) { c.classList.add("open"); c.setAttribute("aria-expanded", "true"); }
         rail.classList.toggle("paused", !was);
       });
+      // The marquee already loops. A leftover scroll offset slides the row into the blank
+      // area past the last card, so keep the rail parked while it is animating.
+      // With motion reduced the animation is off and a manual scroll wraps by one set.
+      let wrapping = false;
+      rail.addEventListener("scroll", () => {
+        if (wrapping) return;
+        const half = track.scrollWidth / 2;
+        if (!(half > 0)) return;
+        wrapping = true;
+        if (getComputedStyle(track).animationName !== "none") rail.scrollLeft = 0;
+        else if (rail.scrollLeft >= half) rail.scrollLeft -= half;
+        wrapping = false;
+      }, { passive: true });
     })();
     // scroll reveals + nav shadow
     (() => {
