@@ -117,7 +117,7 @@
     .glimpse-slide { position: relative; flex: 0 0 100%; }
     .glimpse-slide img,
     .glimpse-slide video,
-    .glimpse-slide iframe { display: block; width: 100%; height: min(72vw, 560px); object-fit: contain; object-position: center; background: #111; }
+    .glimpse-slide iframe { display: block; width: 100%; height: min(72vw, 560px); object-fit: contain; object-position: center;  }
     .glimpse-slide img.glimpse-cover { object-fit: cover; }
     .glimpse-yt { display: block; position: relative; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; }
     .glimpse-play {
@@ -953,17 +953,23 @@
     // { type: "video", src: "assets/videos/pawse/live.mp4", poster: "assets/images/pawse/talk.jpg", alt: "Live music at Pawse", caption: "Live music" },
     // { type: "video", youtube: "VIDEO_ID", poster: "assets/images/pawse/stage-pup.jpg", alt: "Pawse stage", caption: "On stage" },
     const GLIMPSES = [
-      { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "The Pawse crowd sitting together, laughing and cheering under strings of lights.", caption: "The crowd, under the lights" },
       { type: "image", src: "assets/images/pawse/glimpses/friends-golden.jpg", fit: "cover", alt: "Friends gathered around a golden retriever under festival lights.", caption: "Friends and a golden" },
+      { type: "image", src: "assets/images/pawse/glimpses/group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" },
+      { type: "image", src: "assets/images/pawse/glimpses/stage-singing.jpeg", alt: "A singer performing on the Pawse stage.", caption: "Live on stage" },
+      { type: "image", src: "assets/images/pawse/glimpses/cat-close.jpg", fit: "cover", alt: "A white and tabby cat on a volunteer's shoulder.", caption: "A cat at Pawse" },
+      { type: "image", src: "assets/images/pawse/glimpses/stage-group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" },
+      { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "The Pawse crowd sitting together, laughing and cheering under strings of lights.", caption: "The crowd, under the lights" },
+      { type: "image", src: "assets/images/pawse/glimpses/dog-close.jpeg", alt: "A dog's face close up, looking curious and friendly.", caption: "Dog close up" },
+      { type: "image", src: "assets/images/pawse/glimpses/pottery-kid.jpg", alt: "A child and an adult at the pottery stall.", caption: "Pottery" },
       { type: "image", src: "assets/images/pawse/glimpses/adoption-pup.jpg", alt: "A volunteer smiling while holding a white indie puppy.", caption: "Adoption camp" },
+      { type: "image", src: "assets/images/pawse/glimpses/stage.jpeg", alt: "A volunteer on stage.", caption: "Pups on stage" },
+      { type: "image", src: "assets/images/pawse/glimpses/singer.jpg", alt: "A singer performing on the Pawse stage.", caption: "Live on stage" },
       { type: "image", src: "assets/images/pawse/glimpses/stage-pups.jpg", alt: "A volunteer on stage holding two small puppies.", caption: "Pups on stage" },
+      { type: "image", src: "assets/images/pawse/glimpses/paint-night.jpg", alt: "Two people painting together at a Pawse workshop table.", caption: "Workshop table" },
+      { type: "image", src: "assets/images/pawse/glimpses/stage1.jpeg", alt: "A volunteer on stage.", caption: "Pups on stage" },
       { type: "image", src: "assets/images/pawse/glimpses/child-pup.jpg", alt: "A child petting a puppy sitting in someone's lap.", caption: "A first meeting" },
       { type: "image", src: "assets/images/pawse/glimpses/puppy-lights.jpg", alt: "A puppy held up under the One Walk festival lights.", caption: "A pup under the lights" },
-      { type: "image", src: "assets/images/pawse/glimpses/paint-night.jpg", alt: "Two people painting together at a Pawse workshop table.", caption: "Workshop table" },
-      { type: "image", src: "assets/images/pawse/glimpses/pottery-kid.jpg", alt: "A child and an adult at the pottery stall.", caption: "Pottery" },
       { type: "image", src: "assets/images/pawse/glimpses/plant-stall.jpg", alt: "A plant stall with recipe cards and saplings.", caption: "Shop plants" },
-      { type: "image", src: "assets/images/pawse/glimpses/cat-close.jpg", fit: "cover", alt: "A white and tabby cat on a volunteer's shoulder.", caption: "A cat at Pawse" },
-      { type: "image", src: "assets/images/pawse/glimpses/singer.jpg", alt: "A singer performing on the Pawse stage.", caption: "Live on stage" },
     ];
 
     const glimpseViewport = document.getElementById("glimpse-viewport");
@@ -1062,21 +1068,21 @@
       const IMG = "assets/images/pawse/cutouts/";
       const GROUPS = [
         { id: "paw", name: "Paw", sub: "For four-legged guests", bg: "#0253d1", fg: "#fff", icon: "pets", note: "Paws are welcome. Bring a leash.", items: [
-          { n: "Adoption camp", img: "adoption" }, { n: "Paint with paws", img: "paint" }, { n: "Health check-up & vaccination", img: "health" },
-          { n: "Paw walk", img: "paw_walk" }, { n: "Understand paw parenting" , img:"dog_cartoon"}, { n: "Paw products shops" }, { n: "Games for paws", img: "dog_cartoon" }, { n: "Stick station" } ] },
+          { n: "Adoption camp", img: "adoption" }, { n: "Paint with paws", img: "paint_with_pawse" }, { n: "Health check-up & vaccination", img: "checkup" },
+          { n: "Paw walk", img: "paw-walk" }, { n: "Understand paw parenting" , img:"understanding"}, { n: "Paw products shops" ,img:"product"}, { n: "Games for paws", img: "games" }, { n: "Stick station" ,img:"stick"} ] },
         { id: "you", name: "You", sub: "For the humans", bg: "#f00281", fg: "#fff", icon: "people", note: "Make something, sing something, win something.", items: [
           { n: "Pottery", img: "pottery" }, { n: "Flute boxing & live music", img: "flute" },
           { n: "Crazyy workshops", img: "workshop", d: "Grow your own food, decorate cupcakes, make a nest." },
-          { n: "Tambola & games", img: "tambola" }, { n: "Photobooth", img: "photo_booth" }, { n: "Like karaoke" }, { n: "Doodle booth", img: "doodle_booth" } ] },
+          { n: "Tambola & games", img: "fun-work" }, { n: "Photobooth", img: "group" }, { n: "Like karaoke" ,img:"singer"}, { n: "Doodle booth", img: "doodle" } ] },
         { id: "earth", name: "Earth", sub: "For the planet", bg: "#bef521", fg: "#1f2937", icon: "earth", note: "Every stall is sustainable and 100% vegan.", items: [
-          { n: "Shop sustainable", img: "tote" }, { n: "Learn composting" }, { n: "Why waste segregation matters" }, { n: "Shop plants", img: "plant" }, { n: "Plant-based food", img: "girl-plant" } ] },
+          { n: "Shop sustainable", img: "shopSus" }, { n: "Learn composting",img:"learnComposting" }, { n: "Why waste segregation matters" ,img:"wasteAggregation"}, { n: "Shop plants", img: "plant" }, { n: "Plant-based food", img: "plant-stall" } ] },
       ];
       const tabs = document.getElementById("grp-tabs"), stage = document.getElementById("stage"), chips = document.getElementById("chips"), note = document.getElementById("grp-note");
       if (!tabs) return;
       let g = 0, i = 0;
       const show = () => {
         const G = GROUPS[g], it = G.items[i];
-        stage.style.background = G.bg; stage.style.color = G.fg;
+        /* stage.style.background = G.bg; stage.style.color = G.fg; */
         const pic = `${IMG}${it.img || G.icon}.webp`;
         const media = it.video ? `<video src="${it.video}" controls playsinline muted poster="${pic}"></video>` : `<img src="${pic}" alt="" />`;
         stage.innerHTML = `${media}<p class="stage-cap"><span class="text-xl">${it.n}</span>${it.d ? `<span class="block text-sm font-semibold opacity-90">${it.d}</span>` : ""}</p>`;
@@ -1167,17 +1173,17 @@
   <script>
     // Media rail. Add each article's link in `url` and its panel gets a "Read the article" button.
     const MEDIA = [
-      { name: "NDTV", lang: "News", url: "", img: "assets/images/pawse/news/news.jpg" },
-      { name: "The Times of India", lang: "News", url: "", img: "assets/images/pawse/news/news2.jpg" },
-      { name: "Dainik Bhaskar", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/news.jpg" },
-      { name: "Patrika", lang: "हिन्दी", url: "" },
+      /* { name: "NDTV", lang: "News", url: "", img: "assets/images/pawse/news/news.jpg" }, */
+      /* { name: "The Times of India", lang: "News", url: "", img: "assets/images/pawse/news/news2.jpg" }, */
+      /* { name: "Dainik Bhaskar", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/news.jpg" }, */
+      /* { name: "Patrika", lang: "हिन्दी", url: "" }, */
       { name: "Jagran", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/jagran.jpg" },
       { name: "Navdunia", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/navdunia-full.jpg" },
-      { name: "VIP News", lang: "TV", url: "", img: "assets/images/pawse/news/vip-news.jpg" },
-      { name: "News World", lang: "TV", url: "", img: "assets/images/pawse/news/news-world.jpg" },
-      { name: "Agni Media", lang: "Digital", url: "" },
-      { name: "News 24", lang: "TV", url: "", img: "assets/images/pawse/news/tv-dogs.jpg" },
-      { name: "Bansal News", lang: "TV", url: "" },
+      { name: "Navdunia", lang: "हिन्दी", url: "", img: "assets/images/pawse/news/navdunia.svg" },
+      { name: "VIP News", lang: "TV", url: "", img: "assets/images/pawse/news/vip-news.svg" },
+      { name: "News World", lang: "TV", url: "", img: "assets/images/pawse/news/news-world.svg" },
+      { name: "Agni Media", lang: "Digital", img: "assets/images/pawse/news/agni-news.png" },
+      { name: "Bansal News", lang: "TV", img: "assets/images/pawse/news/bansal-news.png" },
     ];
     const MCOL = ["bg-paw-purple", "bg-paw-blue", "bg-paw-magenta", "bg-brand-dark", "bg-paw-orange"];
     (() => {
