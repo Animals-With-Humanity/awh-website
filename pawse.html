@@ -207,9 +207,10 @@
     @media(max-width:639px){.grp-tab{flex-direction:column;text-align:center;gap:.25rem;padding:.55rem .3rem}.grp-tab img{height:34px}}
     .grp-tab[aria-selected="true"]{transform:translateY(-3px);box-shadow:0 12px 24px rgba(58,18,128,.2)}
     .stage{position:relative;overflow:hidden;border-radius:28px;min-height:250px;display:grid;place-items:center;transition:background .4s}
-    .stage img,.stage video{max-height:230px;max-width:80%;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(0,0,0,.22));animation:bob 5s ease-in-out infinite}
-    .stage video{border-radius:18px;animation:none;width:80%}
-    @keyframes bob{50%{transform:translateY(-8px) rotate(1.5deg)}}
+    .stage img,.stage video{max-height:274px;max-width:80%;object-fit:contain;
+      /* filter:drop-shadow(0 14px 18px rgba(0,0,0,.22)) */
+    }
+    .stage video{border-radius:18px;width:80%}
     .stage-cap{position:absolute;left:14px;right:14px;bottom:12px;font-weight:800}
     .chip{border-radius:999px;padding:.5rem .95rem;font-weight:700;font-size:.95rem;background:#fff;border:1.5px solid #e7dff3;transition:background .2s,transform .2s,color .2s;text-align:left}
     .chip:hover{transform:translateY(-2px)}
@@ -1068,14 +1069,14 @@
       const IMG = "assets/images/pawse/cutouts/";
       const GROUPS = [
         { id: "paw", name: "Paw", sub: "For four-legged guests", bg: "#0253d1", fg: "#fff", icon: "pets", note: "Paws are welcome. Bring a leash.", items: [
-          { n: "Adoption camp", img: "adoption" }, { n: "Paint with paws", img: "paint_with_pawse" }, { n: "Health check-up & vaccination", img: "checkup" },
-          { n: "Paw walk", img: "paw-walk" }, { n: "Understand paw parenting" , img:"understanding"}, { n: "Paw products shops" ,img:"product"}, { n: "Games for paws", img: "games" }, { n: "Stick station" ,img:"stick"} ] },
+          { n: "Adoption camp", img: "adoptoinCamp" }, { n: "Paint with paws", img: "paintPaws" }, { n: "Health check-up & vaccination", img: "checkup" },
+          { n: "Paw walk", img: "paw-walk" }, { n: "Understand paw parenting" , img:"understanding"}, { n: "Paw products shops" ,img:"product"}, { n: "Games for paws", img: "gamesPaws" }, { n: "Stick station" ,img:"stickStation"} ] },
         { id: "you", name: "You", sub: "For the humans", bg: "#f00281", fg: "#fff", icon: "people", note: "Make something, sing something, win something.", items: [
           { n: "Pottery", img: "pottery" }, { n: "Flute boxing & live music", img: "flute" },
-          { n: "Crazyy workshops", img: "workshop", d: "Grow your own food, decorate cupcakes, make a nest." },
-          { n: "Tambola & games", img: "fun-work" }, { n: "Photobooth", img: "group" }, { n: "Like karaoke" ,img:"singer"}, { n: "Doodle booth", img: "doodle" } ] },
+          { n: "Crazyy workshops", img: "crazyWork", d: "Grow your own food, decorate cupcakes, make a nest." },
+          { n: "Tambola & games", img: "fun-work" }, { n: "Photobooth", img: "photobooth" }, { n: "Like karaoke" ,img:"singer"}, { n: "Doodle booth", img: "doodle" } ] },
         { id: "earth", name: "Earth", sub: "For the planet", bg: "#bef521", fg: "#1f2937", icon: "earth", note: "Every stall is sustainable and 100% vegan.", items: [
-          { n: "Shop sustainable", img: "shopSus" }, { n: "Learn composting",img:"learnComposting" }, { n: "Why waste segregation matters" ,img:"wasteAggregation"}, { n: "Shop plants", img: "plant" }, { n: "Plant-based food", img: "plant-stall" } ] },
+          { n: "Shop sustainable", img: "shopSustainable" }, { n: "Learn composting",img:"learnComposting" }, { n: "Why waste segregation matters" ,img:"wasteAggregation"}, { n: "Shop plants", img: "plant" }, { n: "Plant-based food", img: "plant-stall" } ] },
       ];
       const tabs = document.getElementById("grp-tabs"), stage = document.getElementById("stage"), chips = document.getElementById("chips"), note = document.getElementById("grp-note");
       if (!tabs) return;
