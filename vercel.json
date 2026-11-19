@@ -2,6 +2,28 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "pawse.awhbharat.org"
+        }
+      ],
+      "destination": "/pawse",
+      "permanent": false
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "pawse.awhbharat.org"
+        }
+      ],
+      "destination": "/pawse",
+      "permanent": false
+    },
+    {
       "source": "/lalita.html",
       "destination": "/lalita",
       "permanent": true
@@ -10,18 +32,6 @@
       "source": "/pawse.html",
       "destination": "/pawse",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "pawse.awhbharat.org"
-        }
-      ],
-      "destination": "/pawse"
     }
   ]
 }
