@@ -114,12 +114,12 @@
     .form-panel[hidden] { display: none; }
 
     .glimpse-track { display: flex; transition: transform .45s ease; }
-    .glimpse-slide { position: relative; flex: 0 0 100%; }
+    .glimpse-slide { position: relative; flex: 0 0 100%; display: flex; align-items: center; justify-content: center; height: min(72vw, 560px); }
     .glimpse-slide img,
     .glimpse-slide video,
-    .glimpse-slide iframe { display: block; width: 100%; height: min(72vw, 560px); object-fit: contain; object-position: center;  }
-    .glimpse-slide img.glimpse-cover { object-fit: cover; }
-    .glimpse-yt { display: block; position: relative; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; }
+    .glimpse-slide iframe { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; object-position: center; border-radius: 28px; }
+    .glimpse-slide img.glimpse-cover { width: 100%; height: 100%; object-fit: cover; }
+    .glimpse-yt { display: block; position: relative; width: auto; max-width: 100%; max-height: 100%; padding: 0; border: 0; border-radius: 28px; overflow: hidden; background: #111; cursor: pointer; }
     .glimpse-play {
       position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
       width: 76px; height: 76px; border-radius: 999px;
@@ -129,6 +129,7 @@
     }
     .glimpse-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.45); transition: width .2s ease, background .2s ease; }
     .glimpse-dot[aria-current="true"] { width: 22px; background: #bef521; }
+    #glimpse-viewport { touch-action: pan-y; }
 
     @media (prefers-reduced-motion: reduce) {
       .marquee-track, .float-y, .rise { animation: none !important; opacity: 1; transform: none; }
@@ -150,13 +151,14 @@
     @keyframes shine{to{background-position:250% 0}}
     nav.scrolled{box-shadow:0 10px 30px rgba(31,41,55,.12)}
     /* media rail - two equal sets, translated by exactly half so the row never runs out */
-    .media-rail{overflow:hidden;padding:10px 0 30px;scrollbar-width:none;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+    .media-rail{overflow:hidden;padding:10px 0 30px;scrollbar-width:none;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);touch-action:pan-y;cursor:grab}
     .media-rail::-webkit-scrollbar{display:none}
+    .media-rail.dragging{cursor:grabbing}
     .media-track{display:flex;width:max-content;animation:marquee 60s linear infinite}
     .media-set{display:flex;flex:none;gap:14px;padding-right:14px}
     .media-rail:hover .media-track,.media-rail:focus-within .media-track,.media-rail.paused .media-track{animation-play-state:paused}
     .m-card{position:relative;flex:0 0 auto;width:150px;height:360px;border-radius:28px;overflow:hidden;color:#fff;cursor:pointer;text-align:left;
-      transition:width .55s cubic-bezier(.2,.8,.2,1),transform .4s;box-shadow:0 14px 30px rgba(31,41,55,.18);border:0;padding:0}
+      transition:width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1),transform .4s;box-shadow:0 14px 30px rgba(31,41,55,.18);border:0;padding:0}
     .m-card:hover,.m-card:focus-visible,.m-card.open{width:500px;transform:translateY(-6px)}
     .m-card:focus-visible{outline:4px solid #1f2937;outline-offset:3px}
     .m-name{position:absolute;left:0;top:0;bottom:0;width:150px;display:flex;align-items:flex-end;justify-content:center;padding:22px 0;z-index:2;transition:opacity .25s,visibility .25s}
@@ -169,14 +171,33 @@
     .m-body h3{font-size:2rem;font-weight:800;line-height:1.05}
     .m-body p{font-weight:500;line-height:1.45;opacity:.92}
     .m-go{display:inline-flex;align-items:center;gap:8px;width:fit-content;border-radius:999px;background:#bef521;color:#1f2937;font-weight:800;padding:.6rem 1.1rem;text-decoration:none}
-    .m-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;background:#111}
-    .m-card.has-shot{background:#111}
-    .m-card.has-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.7) 100%);z-index:1;pointer-events:none}
+    .m-shot{position:absolute;left:8px;right:8px;top:8px;bottom:52px;width:calc(100% - 16px);height:calc(100% - 60px);object-fit:contain;object-position:center;z-index:0;background:transparent;pointer-events:none;-webkit-user-drag:none;opacity:0;visibility:hidden}
+    .m-card.has-shot{cursor:zoom-in}
     .m-card.has-shot .m-no,.m-card.has-shot .m-name,.m-card.has-shot .m-body{z-index:2}
-    .m-card.has-shot:hover .m-shot,.m-card.has-shot.open .m-shot,.m-card.has-shot:focus-visible .m-shot{object-fit:contain;opacity:1;filter:none}
-    .m-card.has-shot:hover::after,.m-card.has-shot.open::after,.m-card.has-shot:focus-visible::after{background:linear-gradient(180deg,transparent 68%,rgba(0,0,0,.78) 100%)}
-    .m-card.has-shot:hover .m-body p,.m-card.has-shot.open .m-body p,.m-card.has-shot:focus-visible .m-body p{display:none}
-    @media(max-width:640px){.m-card.open{width:min(84vw,360px)}.m-card:hover{width:150px}.m-card.open:hover{width:min(84vw,360px)}.m-body{width:min(84vw,360px)}}
+    .m-card.has-shot:hover,.m-card.has-shot.open,.m-card.has-shot:focus-visible{width:min(70vw,440px);height:min(62vh,480px);background-color:color-mix(in srgb, var(--card) 34%, transparent)}
+    .m-card.has-shot:hover .m-shot,.m-card.has-shot.open .m-shot,.m-card.has-shot:focus-visible .m-shot{opacity:1;visibility:visible}
+    .m-card.has-shot:hover .m-body,.m-card.has-shot.open .m-body,.m-card.has-shot:focus-visible .m-body{inset:auto 0 0 0;width:auto;padding:10px 16px 14px;gap:8px;background:transparent}
+    .m-card.has-shot:hover .m-body > :not(.m-go),.m-card.has-shot.open .m-body > :not(.m-go),.m-card.has-shot:focus-visible .m-body > :not(.m-go){display:none}
+    .media-rail.dragging .m-card.has-shot:hover .m-shot,.media-rail.dragging .m-shot{opacity:0;visibility:hidden}
+    .media-rail.dragging .m-card:hover,.media-rail.dragging .m-card.has-shot:hover{width:150px;height:360px;transform:none;background-color:var(--card)}
+    .news-reader{border:0;padding:16px;margin:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;background:transparent}
+    .news-reader[open]{display:grid;place-items:center}
+    .news-reader::backdrop{background:rgba(18,8,28,.82)}
+    .news-reader-frame{width:fit-content;max-width:calc(100vw - 28px);max-height:100%;border-radius:28px;padding:12px 14px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+    .news-reader-x{align-self:flex-end;width:42px;height:42px;border:0;border-radius:999px;background:#fff;color:#1f2937;font-weight:800;font-size:1.5rem;line-height:1;cursor:pointer}
+    .news-reader img{display:block;width:auto;height:auto;max-width:min(92vw,1120px);max-height:min(78vh,860px);object-fit:contain;object-position:center;border-radius:12px;background:transparent}
+    .news-reader-cap{margin:0;font-weight:800;color:#fff;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+    .news-reader-go{display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:#bef521;color:#1f2937;font-weight:800;padding:.65rem 1.15rem;text-decoration:none}
+    .news-reader-go[hidden]{display:none}
+    @media(max-width:640px){
+      .m-card.open{width:min(84vw,360px)}
+      .m-card:hover,.m-card.has-shot:hover{width:150px;height:360px}
+      .m-card.has-shot:hover .m-shot{opacity:0;visibility:hidden}
+      .m-card.open:hover{width:min(84vw,360px)}
+      .m-card.has-shot.open,.m-card.has-shot.open:hover{width:min(88vw,440px);height:min(62vh,480px)}
+      .m-card.has-shot.open .m-shot,.m-card.has-shot.open:hover .m-shot{opacity:1;visibility:visible}
+      .m-body{width:min(84vw,360px)}
+    }
     @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.ticker-track,.media-track,.hero-title{animation:none!important}.media-rail{overflow-x:auto}}
   
     /* ---- v3 redesign ---- */
@@ -224,7 +245,9 @@
     @media(hover:hover){.ed-card:hover .ed-toggle .plus{transform:rotate(45deg)}}
     /* bunting */
 .sp-sec{background-color:#fff4ea;background-image:radial-gradient(rgba(247,101,0,.16) 1.6px,transparent 1.6px);background-size:26px 26px}
-.sp-rail{overflow:hidden;padding:14px 0 26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.sp-rail{overflow:hidden;padding:14px 0 26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);touch-action:pan-y;cursor:grab}
+.sp-rail.dragging{cursor:grabbing}
+.sp-rail img{pointer-events:none;-webkit-user-drag:none;user-select:none}
 .sp-track{display:flex;width:max-content;animation:spmove var(--dur,70s) linear infinite}
 .sp-track>ul{display:flex;flex:none;list-style:none;margin:0;padding:0}
 .sp-rail:hover .sp-track,.sp-rail:focus-within .sp-track{animation-play-state:paused}
@@ -313,10 +336,11 @@
       </button>
 
       <div class="relative z-10 max-w-3xl mx-auto px-4 text-center pt-[clamp(150px,22vw,250px)]">
-        <p class="rise inline-flex items-center gap-2.5 rounded-full bg-white/15 border border-white/30 pl-4 pr-3.5 py-1.5 backdrop-blur-sm">
-          <span class="font-extrabold tracking-[0.16em] text-paw-lime">PAWSE</span>
+        <p class="rise inline-flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 rounded-full bg-white/15 border border-white/30 pl-4 pr-3.5 py-1.5 backdrop-blur-sm">
+          <span class="font-extrabold tracking-[0.08em] text-paw-lime">15–17 JAN 2027</span>
           <span class="h-4 w-px bg-white/40" aria-hidden="true"></span>
-          <span class="inline-flex items-center gap-1 font-semibold"><i data-lucide="map-pin" class="w-4 h-4 text-paw-pink"></i>Bhopal</span>
+          <!-- Paste the Bansal One Walk map link in href -->
+          <a href="#" class="inline-flex items-center gap-1 font-semibold hover:text-paw-lemon"><i data-lucide="map-pin" class="w-4 h-4 text-paw-pink"></i>Bansal One Walk</a>
         </p>
         <h1 class="rise d1 mt-4 mx-auto w-[clamp(250px,60vw,600px)]">
           <img src="assets/images/pawse/hero/pawse-wordmark.png" alt="PAWSE" width="900" height="226" class="w-full h-auto drop-shadow-[0_8px_18px_rgba(0,0,0,.25)]" />
@@ -490,7 +514,7 @@
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <p class="mt-10 rounded-2xl border-2 border-dashed border-paw-orange/50 bg-white/60 px-4 py-3 text-sm sm:text-base text-gray-700">
-      <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag with Javed Ali (2025) and Raag Mehfil with Osho Jain (2026).
+      <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag Mehfil with Javed Ali (2025) and Raag Fest with Osho Jain (2026).
       <a href="#desk" data-open-form="sponsor" class="font-bold text-paw-purple underline underline-offset-2">Partner with us next</a>
     </p>
   </div>
@@ -501,9 +525,17 @@
         <p class="font-bold uppercase tracking-[0.18em] text-paw-magenta text-sm">In the news</p>
         <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold tracking-tight">Media features</h2>
         <blockquote class="mt-5 max-w-3xl text-2xl font-semibold leading-snug"><span class="font-hindi">“जब इंसान और जानवर साथ-साथ खुशहाल हों, तभी एक बेहतर भविष्य संभव है।”</span></blockquote>
-        <p class="mt-4 text-sm font-semibold text-gray-600">Hover a panel to open the story. Tap on a phone.</p>
+        <p class="mt-4 text-sm font-semibold text-gray-600">Swipe or scroll the row. Hover or tap a card to see the clipping.</p>
       </div>
       <div class="mt-10 media-rail" id="media-rail" aria-label="Media coverage of Pawse"><div class="media-track" id="media-track"></div></div>
+      <dialog id="news-reader" class="news-reader" aria-label="News clipping">
+        <div class="news-reader-frame">
+          <button type="button" class="news-reader-x" data-close aria-label="Close clipping">×</button>
+          <img alt="" />
+          <p class="news-reader-cap"></p>
+          <a class="news-reader-go" href="#" target="_blank" rel="noopener noreferrer" hidden>Read the article →</a>
+        </div>
+      </dialog>
     </section>
 
     <section id="join" class="scroll-mt-24 py-16 sm:py-20">
@@ -954,7 +986,7 @@
     const GLIMPSES = [
       { type: "image", src: "assets/images/pawse/glimpses/friends-golden.jpg", fit: "cover", alt: "Friends gathered around a golden retriever under festival lights.", caption: "Friends and a golden" },
       { type: "image", src: "assets/images/pawse/glimpses/stage-singing.jpeg", alt: "A singer performing on the Pawse stage.", caption: "Live on stage" },
-      { type: "image", src: "assets/images/pawse/glimpses/group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" },
+      /* { type: "image", src: "assets/images//pawse/glimpses/group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" }, */
       { type: "image", src: "assets/images/pawse/glimpses/cat-close.jpg", fit: "cover", alt: "A white and tabby cat on a volunteer's shoulder.", caption: "A cat at Pawse" },
       { type: "image", src: "assets/images/pawse/glimpses/stage-group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" },
       /* { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "The Pawse crowd sitting together, laughing and cheering under strings of lights.", caption: "The crowd, under the lights" }, */
@@ -1001,13 +1033,15 @@
       let index = 0;
       let timer = 0;
       let swipeX = null;
+      let swipeY = null;
+      let wheelLock = 0;
       const pauseFilms = () => glimpseViewport.querySelectorAll("video").forEach((video) => video.pause());
       const queue = () => {
         window.clearTimeout(timer);
         if (reduce) return;
         const current = GLIMPSES[index];
         if (current.type === "video") return;
-        timer = window.setTimeout(() => show(index + 1), 5600);
+        timer = window.setTimeout(() => show(index + 1), 2400);
       };
       function show(next) {
         pauseFilms();
@@ -1037,14 +1071,27 @@
       glimpseViewport.addEventListener("pointerdown", (event) => {
         if (event.target.closest("video, button, iframe, a")) return;
         swipeX = event.clientX;
+        swipeY = event.clientY;
       });
       glimpseViewport.addEventListener("pointerup", (event) => {
         if (swipeX == null) return;
-        const delta = event.clientX - swipeX;
+        const dx = event.clientX - swipeX;
+        const dy = event.clientY - swipeY;
         swipeX = null;
-        if (delta > 48) show(index - 1);
-        else if (delta < -48) show(index + 1);
+        swipeY = null;
+        if (Math.abs(dx) < 36 || Math.abs(dx) < Math.abs(dy)) return;
+        show(index + (dx > 0 ? -1 : 1));
       });
+      glimpseViewport.addEventListener("pointercancel", () => { swipeX = null; swipeY = null; });
+      glimpseViewport.addEventListener("wheel", (event) => {
+        const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+        if (Math.abs(delta) < 8) return;
+        event.preventDefault();
+        const now = Date.now();
+        if (now - wheelLock < 420) return;
+        wheelLock = now;
+        show(index + (delta > 0 ? 1 : -1));
+      }, { passive: false });
       glimpseViewport.addEventListener("mouseenter", () => window.clearTimeout(timer));
       glimpseViewport.addEventListener("mouseleave", queue);
       glimpseViewport.addEventListener("click", (event) => {
@@ -1122,6 +1169,83 @@
       btn.querySelector(".lbl").textContent = on ? "Fewer numbers" : "All numbers";
     }));
 
+    // Drag, swipe, and mouse-wheel control for a looping horizontal row.
+    function bindHandRail(rail, track, getSpeed) {
+      if (!rail || !track || rail.dataset.hands === "1") return;
+      rail.dataset.hands = "1";
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let offset = 0, drag = false, pid = null, startX = 0, startOff = 0, moved = 0, hover = false, last = 0, lastW = 0;
+      track.style.animation = "none";
+      const half = () => track.scrollWidth / 2;
+      const apply = () => {
+        const w = half();
+        if (!(w > 0)) return;
+        offset = ((offset % w) + w) % w;
+        track.style.transform = `translate3d(${-offset}px,0,0)`;
+      };
+      const frame = (now) => {
+        if (!last) last = now;
+        const dt = Math.min(48, now - last);
+        last = now;
+        if (!reduceMotion && !drag && !hover && !rail.classList.contains("paused")) {
+          offset += getSpeed() * dt / 1000;
+          apply();
+        }
+        requestAnimationFrame(frame);
+      };
+      requestAnimationFrame(frame);
+      if (window.ResizeObserver) {
+        new ResizeObserver(() => {
+          const w = half();
+          if (lastW > 0 && w > 0) offset = offset / lastW * w;
+          lastW = w;
+          apply();
+        }).observe(track);
+      }
+      rail.addEventListener("pointerdown", (event) => {
+        if (event.button != null && event.button !== 0) return;
+        if (event.target.closest("a")) return;
+        drag = true;
+        moved = 0;
+        startX = event.clientX;
+        startOff = offset;
+        pid = event.pointerId;
+        rail.classList.add("dragging");
+        rail.setPointerCapture?.(event.pointerId);
+      });
+      rail.addEventListener("pointermove", (event) => {
+        if (!drag || event.pointerId !== pid) return;
+        const dx = event.clientX - startX;
+        if (Math.abs(dx) > 6) moved = Math.abs(dx);
+        offset = startOff - dx;
+        apply();
+      });
+      const endDrag = (event) => {
+        if (!drag || (event && event.pointerId != null && event.pointerId !== pid)) return;
+        drag = false;
+        rail.classList.remove("dragging");
+        if (moved > 8) rail.dataset.suppressClick = "1";
+      };
+      rail.addEventListener("pointerup", endDrag);
+      rail.addEventListener("pointercancel", endDrag);
+      rail.addEventListener("mouseenter", () => { hover = true; });
+      rail.addEventListener("mouseleave", () => { hover = false; });
+      rail.addEventListener("wheel", (event) => {
+        const raw = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+        if (!raw) return;
+        const unit = event.deltaMode === 1 ? 18 : event.deltaMode === 2 ? rail.clientWidth : 1;
+        event.preventDefault();
+        offset += raw * unit;
+        apply();
+      }, { passive: false });
+      rail.addEventListener("click", (event) => {
+        if (rail.dataset.suppressClick !== "1") return;
+        rail.dataset.suppressClick = "";
+        event.preventDefault();
+        event.stopPropagation();
+      }, true);
+    }
+
     // Sponsors as festival bunting
   // Sponsors: random moving single line with category filter, expandable to the full grid
 (() => {
@@ -1136,8 +1260,8 @@
     ["chullbull.svg", "Chullbull Pet Products", "brand"], ["drools.svg", "Drools", "brand"], ["doggyji.svg", "Doggy Ji", "brand"], ["greenSarthi.svg", "Green Sarthi", "brand"], ["bioNutrient.svg", "Bio Nutrients", "brand"],
     ["seva.svg", "MSK", "brand"], ["amera.svg", "Améra", "brand"], ["stws.svg", "STWS", "food"], ["ecocradle.svg", "Ecocradle", "brand"], ["toneop.svg", "ToneOp", "brand"],
     ["garlicBread.svg", "The Garlic Bread", "food"], ["bakeAndShake.svg", "Bake & Shake", "food"], ["meepletone.svg", "Meepleton", "food"], ["starbucks.svg", "Starbucks", "food"], ["dristi.svg", "Hotel Drishti Inn", "food"],
-    ["adzone.svg", "Adzone", "studio"], ["ecoEdge.svg", "Echo Edge", "studio"], ["conversions.svg", "The Conversions", "studio"], ["artlane.svg", "The Art Lane", "studio"], ["abheestham.svg", "abheeshtam design studio", "studio"],
-    ["bindu.svg", "Bindu", "studio"], ["bazarville.svg", "bazarville", "studio"], ["printkarri.svg", "printkaari", "studio"], ["castrol.svg", "Castrol Power1", "studio"],
+    ["adzone.svg", "Adzone", "studio"], ["ecoEdge.svg", "Echo Edge", "studio"], ["conversions.svg", "The Conversions", "studio"], ["artlane.svg", "The Art Lane", "studio"], ["abheestham.svg", "Abheeshtam Design Studio", "studio"],
+    ["bindu.svg", "Bindu", "studio"], ["bazarville.svg", "Bazarville", "studio"], ["printkarri.svg", "Printkaari", "studio"], ["castrol.svg", "Castrol Power1", "studio"],
   ];
   const rail = document.getElementById("sp-rail"), track = document.getElementById("sp-track"),
         all = document.getElementById("sp-all"), grid = document.getElementById("sp-grid"),
@@ -1173,6 +1297,11 @@
     draw();
   });
   draw();
+  bindHandRail(rail, track, () => {
+    const dur = parseFloat(track.style.getPropertyValue("--dur")) || 70;
+    const w = track.scrollWidth / 2;
+    return w > 0 ? w / dur : 40;
+  });
 })();
 
     // Desk dialog
@@ -1197,18 +1326,46 @@
       { name: "Agni Media", lang: "Digital", img: "assets/images/pawse/news/agni-news.png" },
       { name: "Bansal News", lang: "TV", img: "assets/images/pawse/news/bansal-news.png" },
     ];
-    const MCOL = ["bg-paw-purple", "bg-paw-blue", "bg-paw-magenta", "bg-brand-dark", "bg-paw-orange"];
+    const MCOL = [["bg-paw-purple", "#7a27a9"], ["bg-paw-blue", "#0253d1"], ["bg-paw-magenta", "#f00281"], ["bg-brand-dark", "#1f2937"], ["bg-paw-orange", "#f76500"]];
     (() => {
       const track = document.getElementById("media-track");
       const rail = document.getElementById("media-rail");
       if (!track || !rail) return;
-      const card = (m, i, hid) => `<button type="button" class="m-card ${MCOL[i % MCOL.length]}${m.img ? " has-shot" : ""}" ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
-        ${m.img ? `<img class="m-shot" src="${m.img}" alt="" loading="lazy" />` : ""}
+      const esc = (value) => String(value ?? "").replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+      const colorAt = (() => {
+        const shuffled = () => {
+          const bag = MCOL.map((_, idx) => idx);
+          for (let j = bag.length - 1; j > 0; j--) {
+            const k = Math.floor(Math.random() * (j + 1));
+            [bag[j], bag[k]] = [bag[k], bag[j]];
+          }
+          return bag;
+        };
+        const fits = (order) => order.every((color, i) => color !== order[(i + 1) % order.length]);
+        for (let attempt = 0; attempt < 30; attempt++) {
+          const order = [];
+          while (order.length < MEDIA.length) {
+            const bag = shuffled();
+            if (order.length && bag[0] === order[order.length - 1]) bag.push(bag.shift());
+            order.push(...bag);
+          }
+          order.length = MEDIA.length;
+          if (fits(order)) return order;
+        }
+        const bag = shuffled();
+        return Array.from({ length: MEDIA.length }, (_, i) => bag[i % bag.length]);
+      })();
+      const card = (m, i, hid) => {
+        const href = String(m.url || "").trim();
+        const [tone, hex] = MCOL[colorAt[i % MEDIA.length]];
+        return `<button type="button" class="m-card ${tone}${m.img ? " has-shot" : ""}" style="--card:${hex}" ${href ? `data-url="${esc(href)}"` : ""} ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
+        ${m.img ? `<img class="m-shot" src="${esc(m.img)}" alt="" loading="lazy" />` : ""}
         <span class="m-no">${String(i % MEDIA.length + 1).padStart(2, "0")}</span>
-        <span class="m-name"><b>${m.name}</b></span>
-        <span class="m-body"><span class="text-paw-lemon font-bold text-sm uppercase tracking-widest">${m.lang} · Pawse coverage</span>
-          <h3>${m.name}</h3><p>Read how ${m.name} covered Pawse, Bhopal's paw-friendly green festival of paws, people and planet.</p>
-          ${m.url ? `<a class="m-go" href="${m.url}" target="_blank" rel="noopener noreferrer">Read the article →</a>` : `<span class="text-sm font-semibold opacity-80">Article link coming soon</span>`}</span></button>`;
+        <span class="m-name"><b>${esc(m.name)}</b></span>
+        <span class="m-body"><span class="text-paw-lemon font-bold text-sm uppercase tracking-widest">${esc(m.lang)} · Pawse coverage</span>
+          <h3>${esc(m.name)}</h3><p>Read how ${esc(m.name)} covered Pawse, Bhopal's paw-friendly green festival of paws, people and planet.</p>
+          ${href ? `<a class="m-go" href="${esc(href)}" target="_blank" rel="noopener noreferrer">Read the article →</a>` : ""}</span></button>`;
+      };
       const sequence = (hid) => MEDIA.map((m, i) => card(m, i, hid)).join("");
       let reps = 0;
       const fill = () => {
@@ -1237,8 +1394,56 @@
       refill();
       if (window.ResizeObserver) new ResizeObserver(refill).observe(rail);
       else addEventListener("resize", refill);
+      bindHandRail(rail, track, () => 32);
+      const reader = document.getElementById("news-reader");
+      const readerImg = reader?.querySelector("img");
+      const readerCap = reader?.querySelector(".news-reader-cap");
+      const readerGo = reader?.querySelector(".news-reader-go");
+      const readerFrame = reader?.querySelector(".news-reader-frame");
+      const openReader = (card, shot) => {
+        if (!reader || !readerImg) return;
+        const href = card.dataset.url || "";
+        readerImg.src = shot.currentSrc || shot.src;
+        readerImg.alt = card.querySelector("h3")?.textContent || "News clipping";
+        const fitReader = () => {
+          const nw = readerImg.naturalWidth;
+          const nh = readerImg.naturalHeight;
+          if (!nw || !nh) return;
+          const maxW = Math.min(window.innerWidth - 64, 1120);
+          const maxH = Math.min(window.innerHeight - 150, 860);
+          const scale = Math.min(maxW / nw, maxH / nh);
+          readerImg.style.width = Math.round(nw * scale) + "px";
+          readerImg.style.height = Math.round(nh * scale) + "px";
+        };
+        if (readerImg.complete && readerImg.naturalWidth) fitReader();
+        else readerImg.addEventListener("load", fitReader, { once: true });
+        if (readerCap) readerCap.textContent = card.querySelector("h3")?.textContent || "";
+        if (readerGo) {
+          readerGo.hidden = !href;
+          if (href) readerGo.href = href;
+        }
+        if (readerFrame) {
+          const tone = (card.style.getPropertyValue("--card") || "").trim() || getComputedStyle(card).backgroundColor;
+          readerFrame.style.background = `color-mix(in srgb, ${tone} 34%, transparent)`;
+        }
+        rail.classList.add("paused");
+        reader.showModal();
+      };
+      reader?.querySelector("[data-close]")?.addEventListener("click", () => reader.close());
+      reader?.addEventListener("click", (e) => { if (!e.target.closest(".news-reader-frame")) reader.close(); });
+      reader?.addEventListener("close", () => rail.classList.remove("paused"));
+      track.addEventListener("error", (e) => {
+        const img = e.target;
+        if (!(img instanceof HTMLImageElement)) return;
+        const card = img.closest(".m-card");
+        img.remove();
+        card?.classList.remove("has-shot");
+      }, true);
       track.addEventListener("click", (e) => {
+        if (rail.dataset.suppressClick === "1") return;
         const c = e.target.closest(".m-card"); if (!c || e.target.closest("a")) return;
+        const shot = c.querySelector(".m-shot");
+        if (shot) { openReader(c, shot); return; }
         const was = c.classList.contains("open");
         track.querySelectorAll(".open").forEach((o) => { o.classList.remove("open"); o.setAttribute("aria-expanded", "false"); });
         if (!was) { c.classList.add("open"); c.setAttribute("aria-expanded", "true"); }
