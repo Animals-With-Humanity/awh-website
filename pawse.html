@@ -114,12 +114,12 @@
     .form-panel[hidden] { display: none; }
 
     .glimpse-track { display: flex; transition: transform .45s ease; }
-    .glimpse-slide { position: relative; flex: 0 0 100%; }
+    .glimpse-slide { position: relative; flex: 0 0 100%; display: flex; align-items: center; justify-content: center; height: min(72vw, 560px); }
     .glimpse-slide img,
     .glimpse-slide video,
-    .glimpse-slide iframe { display: block; width: 100%; height: min(72vw, 560px); object-fit: contain; object-position: center;  }
-    .glimpse-slide img.glimpse-cover { object-fit: cover; }
-    .glimpse-yt { display: block; position: relative; width: 100%; padding: 0; border: 0; background: #111; cursor: pointer; }
+    .glimpse-slide iframe { display: block; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; object-position: center; border-radius: 28px; }
+    .glimpse-slide img.glimpse-cover { width: 100%; height: 100%; object-fit: cover; }
+    .glimpse-yt { display: block; position: relative; width: auto; max-width: 100%; max-height: 100%; padding: 0; border: 0; border-radius: 28px; overflow: hidden; background: #111; cursor: pointer; }
     .glimpse-play {
       position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
       width: 76px; height: 76px; border-radius: 999px;
@@ -514,7 +514,7 @@
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <p class="mt-10 rounded-2xl border-2 border-dashed border-paw-orange/50 bg-white/60 px-4 py-3 text-sm sm:text-base text-gray-700">
-      <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag with Javed Ali (2025) and Raag Mehfil with Osho Jain (2026).
+      <span class="font-bold">Social impact partner at</span> Piyush Mishra's Ballimaaran (2024), Raag Mehfil with Javed Ali (2025) and Raag fest with Osho Jain (2026).
       <a href="#desk" data-open-form="sponsor" class="font-bold text-paw-purple underline underline-offset-2">Partner with us next</a>
     </p>
   </div>
@@ -986,7 +986,7 @@
     const GLIMPSES = [
       { type: "image", src: "assets/images/pawse/glimpses/friends-golden.jpg", fit: "cover", alt: "Friends gathered around a golden retriever under festival lights.", caption: "Friends and a golden" },
       { type: "image", src: "assets/images/pawse/glimpses/stage-singing.jpeg", alt: "A singer performing on the Pawse stage.", caption: "Live on stage" },
-      { type: "image", src: "assets/images/pawse/glimpses/group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" },
+      /* { type: "image", src: "assets/images//pawse/glimpses/group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" }, */
       { type: "image", src: "assets/images/pawse/glimpses/cat-close.jpg", fit: "cover", alt: "A white and tabby cat on a volunteer's shoulder.", caption: "A cat at Pawse" },
       { type: "image", src: "assets/images/pawse/glimpses/stage-group.jpeg", alt: "A group of people gathered around a table, laughing and chatting.", caption: "Group at Pawse" },
       /* { type: "image", src: "assets/images/pawse/crowd.jpg", alt: "The Pawse crowd sitting together, laughing and cheering under strings of lights.", caption: "The crowd, under the lights" }, */
@@ -1332,9 +1332,32 @@
       const rail = document.getElementById("media-rail");
       if (!track || !rail) return;
       const esc = (value) => String(value ?? "").replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+      const colorAt = (() => {
+        const shuffled = () => {
+          const bag = MCOL.map((_, idx) => idx);
+          for (let j = bag.length - 1; j > 0; j--) {
+            const k = Math.floor(Math.random() * (j + 1));
+            [bag[j], bag[k]] = [bag[k], bag[j]];
+          }
+          return bag;
+        };
+        const fits = (order) => order.every((color, i) => color !== order[(i + 1) % order.length]);
+        for (let attempt = 0; attempt < 30; attempt++) {
+          const order = [];
+          while (order.length < MEDIA.length) {
+            const bag = shuffled();
+            if (order.length && bag[0] === order[order.length - 1]) bag.push(bag.shift());
+            order.push(...bag);
+          }
+          order.length = MEDIA.length;
+          if (fits(order)) return order;
+        }
+        const bag = shuffled();
+        return Array.from({ length: MEDIA.length }, (_, i) => bag[i % bag.length]);
+      })();
       const card = (m, i, hid) => {
         const href = String(m.url || "").trim();
-        const [tone, hex] = MCOL[i % MCOL.length];
+        const [tone, hex] = MCOL[colorAt[i % MEDIA.length]];
         return `<button type="button" class="m-card ${tone}${m.img ? " has-shot" : ""}" style="--card:${hex}" ${href ? `data-url="${esc(href)}"` : ""} ${hid ? 'aria-hidden="true" tabindex="-1"' : ""} aria-expanded="false">
         ${m.img ? `<img class="m-shot" src="${esc(m.img)}" alt="" loading="lazy" />` : ""}
         <span class="m-no">${String(i % MEDIA.length + 1).padStart(2, "0")}</span>
